@@ -93,11 +93,13 @@
             // Verificar si los campos están vacíos
             if (user.trim() === ' ' || sameUser.trim() === ' ' ||  password.trim() === ' ' || samePassword.trim()  === ' '  )
            {
-                alert('¡Registrado exitosamente!');
+               
+                alert('¡Completa todos los campos!');
             } else  if (user.trim() === sameUser.trim() && password.trim() === samePassword.trim()  ) 
                 // Realizar alguna acción, como enviar los datos a Firebase
                 // Aquí puedes colocar tu código para guardar los datos en Firebase
-                alert('¡Completa todos los campos!');
+               
+                alert('¡Registrado exitosamente!');
             }
         }
 
