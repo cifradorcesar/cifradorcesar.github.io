@@ -84,24 +84,21 @@
     <!-- Script JavaScript -->
     <script>
         function sendMessage() {
-            // Obtener valores de los campos
-            const user = document.getElementById('user').value;
-            const sameUser = document.getElementById('sameUser').value;
-            const password = document.getElementById('password').value;
-            const samePassword = document.getElementById('samePassword').value;
+    // Obtener valores de los campos
+    const user = document.getElementById('user').value;
+    const sameUser = document.getElementById('sameUser').value;
+    const password = document.getElementById('password').value;
+    const samePassword = document.getElementById('samePassword').value;
 
-            // Verificar si los campos están vacíos
-            if (user.trim() === ' ' || sameUser.trim() === ' ' ||  password.trim() === ' ' || samePassword.trim()  === ' '  )
-           {
-               
-                alert('¡Completa todos los campos!');
-            } else  if (user.trim() === sameUser.trim() && password.trim() === samePassword.trim()  ) 
-                // Realizar alguna acción, como enviar los datos a Firebase
-                // Aquí puedes colocar tu código para guardar los datos en Firebase
-               
-                alert('¡Registrado exitosamente!');
-            }
-        }
+    // Verificar si los campos están vacíos
+    if (user.trim() === '' || sameUser.trim() === '' || password.trim() === '' || samePassword.trim() === '') {
+        alert('¡Completa todos los campos!');
+    } else if (user.trim() === sameUser.trim() && password.trim() === samePassword.trim()) {
+        // Realizar alguna acción, como enviar los datos a Firebase
+        // Aquí puedes colocar tu código para guardar los datos en Firebase
+        alert('¡Registrado exitosamente!');
+    }
+}
 
         function togglePasswordVisibility() {
             // Función para alternar la visibilidad de la contraseña
