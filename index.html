@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enviar datos por enlace HTML</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Color de fondo lindo */
+            font-family: Arial, sans-serif;
+            text-align: center; /* Centrar el texto */
+            padding-top: 50px; /* Espacio superior para centrar el título */
+        }
+
+        h1 {
+            color: #333; /* Color del título */
+        }
+
+        p {
+            font-size: 18px; /* Tamaño de fuente del mensaje de bienvenida */
+            color: #555; /* Color del texto del mensaje */
+        }
+    </style>
 </head>
 <body>
     <h1>Página de bienvenida</h1>
@@ -18,7 +35,7 @@
         const refered = obtenerParametrosURL().get('refered');
 
         // Mostrar un mensaje de bienvenida con el nombre obtenido
-        if (nombre) {
+        if (refered) {
             document.write(`<p>Bienvenido, ${refered}!</p>`);
         } else {
             document.write('<p>Bienvenido!</p>');
