@@ -5,7 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enviar datos por enlace HTML</title>
     <style>
-        /* Estilos CSS */
+        body {
+            background-color: #FFD1DC; /* Fondo color rosa */
+            font-family: Arial, sans-serif;
+            text-align: center; /* Centrar el texto */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Alineación central de los elementos */
+            margin-top: 50px; /* Espacio superior para centrar el contenedor */
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        label {
+            margin-right: 10px;
+        }
+        input[type="text"], input[type="password"] {
+            margin: 5px;
+            padding: 10px;
+            width: 200px;
+        }
+        input[type="text"][readonly] {
+            background-color: #f0f0f0; /* Color de fondo para campos de solo lectura */
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        .show-password-label {
+            margin-left: 10px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50; /* Color de fondo del botón */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
