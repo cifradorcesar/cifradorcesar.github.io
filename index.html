@@ -1,15 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cifrador Cesar</title>
+    <title>Enviar datos por enlace HTML</title>
 </head>
 <body>
-    <main>
-        <h1>Cifrador Cesar.</h1>
-        <!-- Textbox con id "input-original" y valor obtenido del parámetro en la URL -->
-        <input id="input-original" spellcheck="false" type="text" name="text">
+    <h1>Página de bienvenida</h1>
+    <script>
+        // Función para obtener los parámetros de la URL
+        function obtenerParametrosURL() {
+            const parametros = new URLSearchParams(window.location.search);
+            return parametros;
+        }
+
+        // Obtener el valor del parámetro 'nombre' de la URL
+        const nombre = obtenerParametrosURL().get('nombre');
+
+        // Mostrar un mensaje de bienvenida con el nombre obtenido
+        if (nombre) {
+            document.write(`<p>Bienvenido, ${nombre}!</p>`);
+        } else {
+            document.write('<p>Bienvenido!</p>');
+        }
+    </script>
 </body>
 </html>
