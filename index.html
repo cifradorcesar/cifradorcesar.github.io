@@ -20,10 +20,41 @@
             font-size: 18px; /* Tamaño de fuente del mensaje de bienvenida */
             color: #555; /* Color del texto del mensaje */
         }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            margin: 5px;
+            padding: 10px;
+            width: 200px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <h1>Brownies</h1>
+    <div class="container">
+        <h1>Brownies</h1>
+        <input type="text" id="referedTextbox" value="">
+        <input type="text" id="otherTextbox1" value="">
+        <input type="text" id="otherTextbox2" value="">
+        <input type="text" id="otherTextbox3" value="">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+
     <script>
         // Función para obtener los parámetros de la URL
         function obtenerParametrosURL() {
@@ -34,11 +65,17 @@
         // Obtener el valor del parámetro 'nombre' de la URL
         const refered = obtenerParametrosURL().get('refered');
 
-        // Mostrar un mensaje de bienvenida con el nombre obtenido
-        if (refered) {
-            document.write(`<p>${refered}</p>`);
-        } else {
-            document.write('<p>Bienvenido!</p>');
+        // Asignar el valor de 'refered' al primer textbox
+        document.getElementById('referedTextbox').value = refered;
+
+        // Función para enviar el mensaje
+        function sendMessage() {
+            // Obtener el valor del textbox refered
+            const message = document.getElementById('referedTextbox').value;
+
+            // Aquí puedes realizar cualquier acción con el mensaje, como enviarlo a un servidor
+            // En este ejemplo, simplemente lo mostramos en la consola
+            console.log(message);
         }
     </script>
 </body>
