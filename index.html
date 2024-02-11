@@ -77,28 +77,40 @@
                 <label for="showSamePassword" class="show-password-label"></label>
             </div>
         </div>
+        <!-- Textbox bloqueado para mostrar el parámetro del enlace -->
+        <div class="form-group">
+            <input type="text" id="referralCode" value="" readonly>
+        </div>
         <!-- Botón de enviar -->
         <button onclick="sendMessage()">Enviar</button>
     </div>
 
     <!-- Script JavaScript -->
     <script>
-        function sendMessage() {
-    // Obtener valores de los campos
-    const user = document.getElementById('user').value;
-    const sameUser = document.getElementById('sameUser').value;
-    const password = document.getElementById('password').value;
-    const samePassword = document.getElementById('samePassword').value;
+        window.onload = function() {
+            // Obtener el parámetro del enlace
+            const urlParams = new URLSearchParams(window.location.search);
+            const referralCode = urlParams.get('refered');
+            // Mostrar el parámetro en el textbox bloqueado
+            document.getElementById('referralCode').value = referralCode;
+        };
 
-    // Verificar si los campos están vacíos
-    if (user.trim() === '' || sameUser.trim() === '' || password.trim() === '' || samePassword.trim() === '') {
-        alert('¡Completa todos los campos!');
-    } else if (user.trim() === sameUser.trim() && password.trim() === samePassword.trim()) {
-        // Realizar alguna acción, como enviar los datos a Firebase
-        // Aquí puedes colocar tu código para guardar los datos en Firebase
-        alert('¡Registrado exitosamente!');
-    }
-}
+        function sendMessage() {
+            // Obtener valores de los campos
+            const user = document.getElementById('user').value;
+            const sameUser = document.getElementById('sameUser').value;
+            const password = document.getElementById('password').value;
+            const samePassword = document.getElementById('samePassword').value;
+
+            // Verificar si los campos están vacíos
+            if (user.trim() === '' || sameUser.trim() === '' || password.trim() === '' || samePassword.trim() === '') {
+                alert('¡Completa todos los campos!');
+            } else if (user.trim() === sameUser.trim() && password.trim() === samePassword.trim()) {
+                // Realizar alguna acción, como enviar los datos a Firebase
+                // Aquí puedes colocar tu código para guardar los datos en Firebase
+                alert('¡Registrado exitosamente!');
+            }
+        }
 
         function togglePasswordVisibility() {
             // Función para alternar la visibilidad de la contraseña
