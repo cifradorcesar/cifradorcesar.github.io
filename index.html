@@ -42,6 +42,10 @@
             width: 200px;
         }
 
+        input[type="text"][readonly] {
+            background-color: #f0f0f0; /* Color de fondo para campos de solo lectura */
+        }
+
         .checkbox-group {
             display: flex;
             align-items: center;
@@ -94,7 +98,7 @@
         </div>
         <div class="form-group">
             <label for="refered">Referido:</label> <!-- Se cambió el texto del label -->
-            <input type="text" id="refered" value="">
+            <input type="text" id="refered" value="" readonly> <!-- Se agregó el atributo readonly -->
         </div>
         <button onclick="sendMessage()">Enviar</button>
     </div>
