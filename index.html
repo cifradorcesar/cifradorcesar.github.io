@@ -27,6 +27,14 @@
             align-items: center;
         }
 
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            margin-right: 10px;
+        }
+
         input[type="text"] {
             margin: 5px;
             padding: 10px;
@@ -48,10 +56,14 @@
 <body>
     <div class="container">
         <h1>Brownies</h1>
-        <input type="text" id="referedTextbox" value="">
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" value="">
+        </div>
         <input type="text" id="otherTextbox1" value="">
         <input type="text" id="otherTextbox2" value="">
         <input type="text" id="otherTextbox3" value="">
+        <input type="text" id="referedTextbox" value="">
         <button onclick="sendMessage()">Enviar</button>
     </div>
 
@@ -62,10 +74,10 @@
             return parametros;
         }
 
-        // Obtener el valor del parámetro 'nombre' de la URL
+        // Obtener el valor del parámetro 'refered' de la URL
         const refered = obtenerParametrosURL().get('refered');
 
-        // Asignar el valor de 'refered' al primer textbox
+        // Asignar el valor de 'refered' al último textbox
         document.getElementById('referedTextbox').value = refered;
 
         // Función para enviar el mensaje
