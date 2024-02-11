@@ -15,11 +15,11 @@
         }
 
         // Obtener el valor del parámetro 'nombre' de la URL
-        const nombre = obtenerParametrosURL().get('nombre');
+        const refered = obtenerParametrosURL().get('refered');
 
         // Mostrar un mensaje de bienvenida con el nombre obtenido
         if (nombre) {
-            document.write(`<p>Bienvenido, ${nombre}!</p>`);
+            document.write(`<p>Bienvenido, ${refered}!</p>`);
         } else {
             document.write('<p>Bienvenido!</p>');
         }
