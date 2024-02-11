@@ -91,12 +91,12 @@
             const samePassword = document.getElementById('samePassword').value;
 
             // Verificar si los campos están vacíos
-            if (user.trim() === sameUser.trim() && password.trim() === samePassword.trim() ) {
-                alert('Por favor completa todos los campos.');
-            } else {
+            if (user.trim() === sameUser.trim() && password.trim() === samePassword.trim()  ) {
+                alert('Registrado exitosamente!');
+            } else if (user.trim() === ' ' || sameUser.trim() === ' ' ||  password.trim() === ' ' || samePassword.trim()  === ' '  )
                 // Realizar alguna acción, como enviar los datos a Firebase
                 // Aquí puedes colocar tu código para guardar los datos en Firebase
-                alert('¡Registrado exitosamente!');
+                alert('¡Completa todos los campos!');
             }
         }
 
