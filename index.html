@@ -4,8 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enviar datos por enlace HTML</title>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"></script>
+    <style>
+        body {
+            background-color: #FFD1DC; /* Color de fondo lindo */
+            font-family: Arial, sans-serif;
+            text-align: center; /* Centrar el texto */
+            padding-top: 50px; /* Espacio superior para centrar el título */
+        }
+        h1 {
+            color: #333; /* Color del título */
+        }
+        p {
+            font-size: 18px; /* Tamaño de fuente del mensaje de bienvenida */
+            color: #555; /* Color del texto del mensaje */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Alineación central de los elementos */
+            margin-top: 50px; /* Espacio superior para centrar el contenedor */
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            margin-right: 10px;
+        }
+        input[type="text"], input[type="password"] {
+            margin: 5px;
+            padding: 10px;
+            width: 200px;
+        }
+
+        input[type="text"][readonly] {
+            background-color: #f0f0f0; /* Color de fondo para campos de solo lectura */
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        .show-password-label {
+            margin-left: 10px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -15,59 +67,62 @@
             <input type="text" id="user" value="">
         </div>
         <div class="form-group">
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" value="">
+            <label for="sameUser">Mismo Usuario:</label>
+            <input type="text" id="sameUser" value="">
         </div>
-        <button id="btnEnviar">Enviar</button>
+        <div class="form-group">
+            
+            <div class="checkbox-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" value="">
+                <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
+                <label for="showPassword" class="show-password-label"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            
+            <div class="checkbox-group">
+                <label for="samePassword">Misma Contraseña:</label>
+                <input type="password" id="samePassword" value="">
+                <input type="checkbox" id="showSamePassword" onchange="toggleSamePasswordVisibility()">
+                <label for="showSamePassword" class="show-password-label"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="refered">Referido:</label> <!-- Se cambió el texto del label -->
+            <input type="text" id="refered" value="">
+            <input type="text" id="refered" value="" readonly> <!-- Se agregó el atributo readonly -->
+        </div>
+        <button onclick="sendMessage()">Enviar</button>
     </div>
-
     <script>
-        // Configura tu proyecto de Firebase
-        const firebaseConfig = {
-            apiKey: "TU_API_KEY",
-            authDomain: "TU_DOMINIO.firebaseapp.com",
-            databaseURL: "https://TU_DOMINIO.firebaseio.com",
-            projectId: "TU_ID_DE_PROYECTO",
-            storageBucket: "TU_DOMINIO.appspot.com",
-            messagingSenderId: "TU_ID_DE_MENSAJES",
-            appId: "TU_APP_ID"
-        };
-
-        // Inicializa Firebase
-        firebase.initializeApp(firebaseConfig);
-
-        // Obtén referencia al botón de enviar
-        const btnEnviar = document.getElementById('btnEnviar');
-
-        // Agrega un event listener al botón de enviar
-        btnEnviar.addEventListener('click', function() {
-            // Obtiene los valores de usuario y contraseña
-            const usuario = document.getElementById('user').value;
-            const contraseña = document.getElementById('password').value;
-
-            // Verifica si los campos no están vacíos
-            if (usuario && contraseña) {
-                // Accede a la base de datos de Firebase
-                const dbRef = firebase.database().ref('usuarios');
-
-                // Verifica si el usuario ya existe
-                dbRef.child(usuario).get().then((snapshot) => {
-                    if (snapshot.exists()) {
-                        alert("El usuario ya existe en la base de datos");
-                    } else {
-                        // Guarda el usuario y la contraseña en la base de datos
-                        dbRef.child(usuario).set({
-                            contraseña: contraseña
-                        });
-                        alert("Usuario y contraseña guardados correctamente");
-                    }
-                }).catch((error) => {
-                    console.error(error);
-                });
-            } else {
-                alert("Por favor, completa todos los campos");
-            }
-        });
+        // Función para obtener los parámetros de la URL
+        function obtenerParametrosURL() {
+            const parametros = new URLSearchParams(window.location.search);
+            return parametros;
+        }
+        // Obtener el valor del parámetro 'refered' de la URL
+        const refered = obtenerParametrosURL().get('refered');
+        // Asignar el valor de 'refered' al último textbox
+        document.getElementById('refered').value = refered;
+        // Función para enviar el mensaje
+        function sendMessage() {
+            // Obtener el valor del textbox refered
+            const message = document.getElementById('refered').value;
+            // Aquí puedes realizar cualquier acción con el mensaje, como enviarlo a un servidor
+            // En este ejemplo, simplemente lo mostramos en la consola
+            console.log(message);
+        }
+        // Función para alternar la visibilidad de la contraseña
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+        }
+        // Función para alternar la visibilidad de la misma contraseña
+        function toggleSamePasswordVisibility() {
+            const samePasswordInput = document.getElementById('samePassword');
+            samePasswordInput.type = samePasswordInput.type === 'password' ? 'text' : 'password';
+        }
     </script>
 </body>
 </html>
