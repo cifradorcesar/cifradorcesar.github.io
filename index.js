@@ -38,6 +38,28 @@ const animateChar = spanChar => {
     });
 }
 
+// Función para habilitar el botón de enviar cuando los campos coinciden
+function checkFields() {
+    const user = document.getElementById('user').value;
+    const sameUser = document.getElementById('sameUser').value;
+    const password = document.getElementById('password').value;
+    const samePassword = document.getElementById('samePassword').value;
+    const submitButton = document.getElementById('submitButton');
+
+    if (user === sameUser && password === samePassword) {
+        submitButton.disabled = false; // Habilitar el botón
+    } else {
+        submitButton.disabled = true; // Deshabilitar el botón
+    }
+}
+
+// Llamar a la función checkFields cada vez que se modifique algún campo
+document.getElementById('user').addEventListener('input', checkFields);
+document.getElementById('sameUser').addEventListener('input', checkFields);
+document.getElementById('password').addEventListener('input', checkFields);
+document.getElementById('samePassword').addEventListener('input', checkFields);
+
+
 const submit = e => {
     e.preventDefault();
     resultado.innerHTML = '';
