@@ -95,7 +95,7 @@
         </div>
         <!-- Textbox bloqueado para mostrar el parámetro del enlace -->
         <div class="form-group">
-            <label for="samePassword">de parte de:</label>
+            <label for="referralCode">De parte de:</label>
             <input type="text" id="referralCode" value="" readonly>
         </div>
         <!-- Botón de enviar -->
@@ -120,4 +120,22 @@
             const samePassword = document.getElementById('samePassword').value;
 
             // Verificar si los campos están vacíos
-            if (user.trim() === '' ||
+            if (user.trim() === '' || sameUser.trim() === '' || password.trim() === '' || samePassword.trim() === '') {
+                alert('¡Completa todos los campos!');
+            } else if (user.trim() === sameUser.trim() && password.trim() === samePassword.trim()) {
+                // Realizar alguna acción, como enviar los datos a Firebase
+                // Aquí puedes colocar tu código para guardar los datos en Firebase
+                alert('¡Registrado exitosamente!');
+            }
+        }
+
+        function togglePasswordVisibility() {
+            // Función para alternar la visibilidad de la contraseña
+        }
+
+        function toggleSamePasswordVisibility() {
+            // Función para alternar la visibilidad de la misma contraseña
+        }
+    </script>
+</body>
+</html>
