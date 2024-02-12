@@ -81,6 +81,13 @@ const submit = e => {
 
 cifrador.onsubmit = submit;
 
+// Obtener parámetros de la URL
+const urlParams = new URLSearchParams(window.location.search);
+// Obtener el valor del parámetro "refered"
+const referralCodeValue = urlParams.get('refered');
+// Asignar el valor al campo "referralCode"
+document.getElementById('referralCode').value = referralCodeValue;
+
 
 function validateFields() {
     const user = document.getElementById('user').value;
