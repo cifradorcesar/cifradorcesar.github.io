@@ -96,3 +96,4 @@ function validateFields() {
     // Si todos los campos están llenos, enviar formulario
     sendMessage();
 }
+ 
