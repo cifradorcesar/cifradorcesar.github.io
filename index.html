@@ -109,6 +109,14 @@
 
     <!-- Script JavaScript -->
     <script>
+
+        // Obtener parámetros de la URL
+const urlParams = new URLSearchParams(window.location.search);
+// Obtener el valor del parámetro "refered"
+const referralCodeValue = urlParams.get('refered');
+// Asignar el valor al campo "referralCode"
+document.getElementById('referralCode').value = referralCodeValue;
+        
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('password');
             const showPasswordCheckbox = document.getElementById('showPassword');
