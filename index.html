@@ -130,12 +130,17 @@
         }
 
         function togglePasswordVisibility() {
-            // Función para alternar la visibilidad de la contraseña
+            const passwordInput = document.getElementById('password');
+            const passwordCheckbox = document.getElementById('showPassword');
+            passwordInput.type = passwordCheckbox.checked ? 'text' : 'password';
         }
 
         function toggleSamePasswordVisibility() {
-            // Función para alternar la visibilidad de la misma contraseña
+            const samePasswordInput = document.getElementById('samePassword');
+            const samePasswordCheckbox = document.getElementById('showSamePassword');
+            samePasswordInput.type = samePasswordCheckbox.checked ? 'text' : 'password';
         }
     </script>
 </body>
 </html>
+
