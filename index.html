@@ -60,7 +60,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        button:hover {
+         {
             background-color: #45a049; /* Cambiar color al pasar el mouse */
         }
     </style>
@@ -109,6 +109,17 @@
 
     <!-- Script JavaScript -->
     <script>
-        window.onload = function() {
-            // Obtener el parámetro del enlace
-            const urlParams = new URLSearchParams(window.location
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const showPasswordCheckbox = document.getElementById('showPassword');
+            passwordInput.type = showPasswordCheckbox.checked ? 'text' : 'password';
+        }
+
+        function toggleSamePasswordVisibility() {
+            const samePasswordInput = document.getElementById('samePassword');
+            const showSamePasswordCheckbox = document.getElementById('showSamePassword');
+            samePasswordInput.type = showSamePasswordCheckbox.checked ? 'text' : 'password';
+        }
+    </script>
+</body>
+</html>
