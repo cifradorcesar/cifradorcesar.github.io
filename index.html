@@ -71,27 +71,31 @@
         <!-- Formulario de entrada -->
         <div class="form-group">
             <label for="user">Usuario:</label>
-            <input type="text" id="user" value="">
+            <input type="text" id="user" placeholder="Ingrese su nombre de usuario" required>
+            <div id="userError" style="color: red;"></div> <!-- Mensaje de error para el usuario -->
         </div>
         <div class="form-group">
             <label for="sameUser">Mismo Usuario:</label>
-            <input type="text" id="sameUser" value="">
+            <input type="text" id="sameUser" placeholder="Repita su nombre de usuario" required>
+            <div id="sameUserError" style="color: red;"></div> <!-- Mensaje de error para el mismo usuario -->
         </div>
         <div class="form-group">
             <div class="checkbox-group">
                 <label for="password">Contraseña:</label>
-                <input type="password" id="password" value="">
+                <input type="password" id="password" placeholder="Ingrese su contraseña" required>
                 <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
                 <label for="showPassword" class="show-password-label">Mostrar Contraseña</label>
             </div>
+            <div id="passwordError" style="color: red;"></div> <!-- Mensaje de error para la contraseña -->
         </div>
         <div class="form-group">
             <div class="checkbox-group">
                 <label for="samePassword">Misma Contraseña:</label>
-                <input type="password" id="samePassword" value="">
+                <input type="password" id="samePassword" placeholder="Repita su contraseña" required>
                 <input type="checkbox" id="showSamePassword" onchange="toggleSamePasswordVisibility()">
                 <label for="showSamePassword" class="show-password-label">Mostrar Contraseña</label>
             </div>
+            <div id="samePasswordError" style="color: red;"></div> <!-- Mensaje de error para la misma contraseña -->
         </div>
         <!-- Textbox bloqueado para mostrar el parámetro del enlace -->
         <div class="form-group">
@@ -99,7 +103,7 @@
             <input type="text" id="referralCode" value="estebankito" readonly> <!-- Cambiar el valor aquí -->
         </div>
         <!-- Botón de enviar -->
-        <button id="submitButton" onclick="sendMessage()" disabled>Enviar</button>
+        <button id="submitButton" onclick="validateFields()" disabled>Enviar</button>
 
     </div>
 
@@ -107,36 +111,4 @@
     <script>
         window.onload = function() {
             // Obtener el parámetro del enlace
-            const urlParams = new URLSearchParams(window.location.search);
-            const referralCode = urlParams.get('refered');
-            // Mostrar el parámetro en el textbox bloqueado
-            document.getElementById('referralCode').value = referralCode;
-        };
-
-        function sendMessage() {
-            // Obtener valores de los campos
-            const user = document.getElementById('user').value;
-            const sameUser = document.getElementById('sameUser').value;
-            const password = document.getElementById('password').value;
-            const samePassword = document.getElementById('samePassword').value;
-            const referralCode = document.getElementById('referralCode').value;
-
-            // Aquí puedes realizar acciones con los datos obtenidos, como enviarlos a una base de datos o mostrarlos en otro lugar
-            // Por ejemplo, puedes usar AJAX para enviarlos a un servidor
-
-            // Aquí solo se muestra una alerta con los datos recopilados
-            alert(`Usuario: ${user}\nMismo Usuario: ${sameUser}\nContraseña: ${password}\nMisma Contraseña: ${samePassword}\nDe parte de: ${referralCode}`);
-        }
-
-        function togglePasswordVisibility() {
-            const passwordInput = document.getElementById('password');
-            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
-        }
-
-        function toggleSamePasswordVisibility() {
-            const samePasswordInput = document.getElementById('samePassword');
-            samePasswordInput.type = samePasswordInput.type === 'password' ? 'text' : 'password';
-        }
-    </script>
-</body>
-</html>
+            const urlParams = new URLSearchParams(window.location
