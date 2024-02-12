@@ -6,7 +6,7 @@
     <title>Enviar datos por enlace HTML</title>
     <style>
         body {
-            background-color: #f6f6f6; /* Cambiar el color de fondo */
+            background-color: #f0f0f0; /* Cambiar el color de fondo a un tono pastel más claro */
             font-family: Arial, sans-serif;
             text-align: center; 
             margin: 0;
@@ -116,31 +116,4 @@
             // Obtener valores de los campos
             const user = document.getElementById('user').value;
             const sameUser = document.getElementById('sameUser').value;
-            const password = document.getElementById('password').value;
-            const samePassword = document.getElementById('samePassword').value;
-
-            // Verificar si los campos están vacíos
-            if (user.trim() === '' || sameUser.trim() === '' || password.trim() === '' || samePassword.trim() === '') {
-                alert('¡Completa todos los campos!');
-            } else if (user.trim() === sameUser.trim() && password.trim() === samePassword.trim()) {
-                // Realizar alguna acción, como enviar los datos a Firebase
-                // Aquí puedes colocar tu código para guardar los datos en Firebase
-                alert('¡Registrado exitosamente!');
-            }
-        }
-
-        function togglePasswordVisibility() {
-            const passwordInput = document.getElementById('password');
-            const passwordCheckbox = document.getElementById('showPassword');
-            passwordInput.type = passwordCheckbox.checked ? 'text' : 'password';
-        }
-
-        function toggleSamePasswordVisibility() {
-            const samePasswordInput = document.getElementById('samePassword');
-            const samePasswordCheckbox = document.getElementById('showSamePassword');
-            samePasswordInput.type = samePasswordCheckbox.checked ? 'text' : 'password';
-        }
-    </script>
-</body>
-</html>
-
+            const password = document
