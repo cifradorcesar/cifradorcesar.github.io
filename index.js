@@ -67,3 +67,32 @@ const submit = e => {
 }
 
 cifrador.onsubmit = submit;
+
+
+function validateFields() {
+    const user = document.getElementById('user').value;
+    const sameUser = document.getElementById('sameUser').value;
+    const password = document.getElementById('password').value;
+    const samePassword = document.getElementById('samePassword').value;
+
+    // Validar campos
+    if (!user) {
+        document.getElementById('userError').innerText = 'Por favor, ingrese un nombre de usuario.';
+        return false;
+    }
+    if (!sameUser) {
+        document.getElementById('sameUserError').innerText = 'Por favor, repita su nombre de usuario.';
+        return false;
+    }
+    if (!password) {
+        document.getElementById('passwordError').innerText = 'Por favor, ingrese una contraseña.';
+        return false;
+    }
+    if (!samePassword) {
+        document.getElementById('samePasswordError').innerText = 'Por favor, repita su contraseña.';
+        return false;
+    }
+
+    // Si todos los campos están llenos, enviar formulario
+    sendMessage();
+}
