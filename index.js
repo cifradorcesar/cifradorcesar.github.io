@@ -38,6 +38,19 @@ const animateChar = spanChar => {
     });
 }
 
+
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('password');
+    const showPasswordCheckbox = document.getElementById('showPassword');
+    passwordInput.type = showPasswordCheckbox.checked ? 'text' : 'password';
+}
+
+function toggleSamePasswordVisibility() {
+    const samePasswordInput = document.getElementById('samePassword');
+    const showSamePasswordCheckbox = document.getElementById('showSamePassword');
+    samePasswordInput.type = showSamePasswordCheckbox.checked ? 'text' : 'password';
+}
+
 // Función para habilitar el botón de enviar cuando los campos coinciden
 function checkFields() {
     const user = document.getElementById('user').value;
