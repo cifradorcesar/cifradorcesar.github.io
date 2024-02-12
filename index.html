@@ -6,46 +6,62 @@
     <title>Enviar datos por enlace HTML</title>
     <style>
         body {
-            background-color: #ff6f91; /* Fondo color rosa */
+            background-color: #f6f6f6; /* Cambiar el color de fondo */
             font-family: Arial, sans-serif;
-            text-align: center; /* Centrar el texto */
+            text-align: center; 
+            margin: 0;
+            padding: 0;
         }
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Alineación central de los elementos */
-            margin-top: 50px; /* Espacio superior para centrar el contenedor */
+            max-width: 400px; /* Ancho máximo del contenedor */
+            margin: 50px auto; /* Centrar el contenedor */
+            padding: 20px;
+            background-color: #fff; /* Fondo blanco */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+        h1 {
+            color: #4CAF50; /* Color del encabezado */
         }
         .form-group {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         label {
-            margin-right: 10px;
+            display: block; /* Convertir en bloque */
+            margin-bottom: 5px;
+            color: #555; /* Color del texto */
         }
         input[type="text"], input[type="password"] {
-            margin: 5px;
+            margin: 5px 0;
             padding: 10px;
-            width: 200px;
+            width: calc(100% - 20px); /* Ancho total menos el padding */
+            border: 1px solid #ccc; /* Borde gris */
+            border-radius: 5px; /* Bordes redondeados */
         }
         input[type="text"][readonly] {
-            background-color: #f0f0f0; /* Color de fondo para campos de solo lectura */
+            background-color: #f0f0f0; 
         }
         .checkbox-group {
             display: flex;
             align-items: center;
+            margin-top: 10px;
         }
         .show-password-label {
             margin-left: 10px;
+            color: #555; /* Color del texto */
         }
         button {
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #4CAF50; /* Color de fondo del botón */
+            background-color: #4CAF50; 
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049; /* Cambiar color al pasar el mouse */
         }
     </style>
 </head>
@@ -66,7 +82,7 @@
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" value="">
                 <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
-                <label for="showPassword" class="show-password-label"></label>
+                <label for="showPassword" class="show-password-label">Mostrar Contraseña</label>
             </div>
         </div>
         <div class="form-group">
@@ -74,7 +90,7 @@
                 <label for="samePassword">Misma Contraseña:</label>
                 <input type="password" id="samePassword" value="">
                 <input type="checkbox" id="showSamePassword" onchange="toggleSamePasswordVisibility()">
-                <label for="showSamePassword" class="show-password-label"></label>
+                <label for="showSamePassword" class="show-password-label">Mostrar Contraseña</label>
             </div>
         </div>
         <!-- Textbox bloqueado para mostrar el parámetro del enlace -->
@@ -104,22 +120,4 @@
             const samePassword = document.getElementById('samePassword').value;
 
             // Verificar si los campos están vacíos
-            if (user.trim() === '' || sameUser.trim() === '' || password.trim() === '' || samePassword.trim() === '') {
-                alert('¡Completa todos los campos!');
-            } else if (user.trim() === sameUser.trim() && password.trim() === samePassword.trim()) {
-                // Realizar alguna acción, como enviar los datos a Firebase
-                // Aquí puedes colocar tu código para guardar los datos en Firebase
-                alert('¡Registrado exitosamente!');
-            }
-        }
-
-        function togglePasswordVisibility() {
-            // Función para alternar la visibilidad de la contraseña
-        }
-
-        function toggleSamePasswordVisibility() {
-            // Función para alternar la visibilidad de la misma contraseña
-        }
-    </script>
-</body>
-</html>
+            if (user.trim() === '' ||
