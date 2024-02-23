@@ -60,7 +60,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
-         {
+        button:hover {
             background-color: #45a049; /* Cambiar color al pasar el mouse */
         }
     </style>
@@ -71,12 +71,12 @@
         <!-- Formulario de entrada -->
         <div class="form-group">
             <label for="user">Correo:</label>
-            <input type="text" id="user" placeholder="Ingrese su Correo" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$>
+            <input type="text" id="user" placeholder="Ingrese su Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
             <div id="userError" style="color: red;"></div> <!-- Mensaje de error para el Correo -->
         </div>
         <div class="form-group">
             <label for="sameUser">Mismo Correo:</label>
-            <input type="text" id="sameUser" placeholder="Repita su Correo" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$>
+            <input type="text" id="sameUser" placeholder="Repita su Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
             <div id="sameUserError" style="color: red;"></div> <!-- Mensaje de error para el mismo Correo -->
         </div>
         <div class="form-group">
@@ -103,23 +103,19 @@
             <input type="text" id="referralCode" readonly> <!-- Cambiar el valor aquí -->
         </div>
         <!-- Botón de enviar -->
-        <button id="submitButton" </button>
+        <button id="submitButton">Enviar</button>
 
 
     </div>
 
     <!-- Script JavaScript -->
     <script>
-
-
-
-        
         // Obtener parámetros de la URL
-const urlParams = new URLSearchParams(window.location.search);
-// Obtener el valor del parámetro "refered"
-const referralCodeValue = urlParams.get('refered');
-// Asignar el valor al campo "referralCode"
-document.getElementById('referralCode').value = referralCodeValue;
+        const urlParams = new URLSearchParams(window.location.search);
+        // Obtener el valor del parámetro "refered"
+        const referralCodeValue = urlParams.get('refered');
+        // Asignar el valor al campo "referralCode"
+        document.getElementById('referralCode').value = referralCodeValue;
         
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('password');
@@ -133,6 +129,6 @@ document.getElementById('referralCode').value = referralCodeValue;
             samePasswordInput.type = showSamePasswordCheckbox.checked ? 'text' : 'password';
         }
     </script>
-    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js">
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 </body>
 </html>
