@@ -3,37 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Usuario con Firebase</title>
+    <title>Registro de Usuario</title>
     <!-- Agrega los enlaces a las bibliotecas de Firebase -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
     <script type="module">
-        // Importa las funciones necesarias de los SDKs de Firebase
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-        
-        // Configuración de tu aplicación web de Firebase
+        // Configura Firebase
         const firebaseConfig = {
-            apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
-            authDomain: "serverdatamoney.firebaseapp.com",
-            databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
-            projectId: "serverdatamoney",
-            storageBucket: "serverdatamoney.appspot.com",
-            messagingSenderId: "626275651972",
-            appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
-            measurementId: "G-8D3K9DR7CG"
+            apiKey: "Tu API Key",
+            authDomain: "Tu authDomain",
+            projectId: "Tu projectId",
+            storageBucket: "Tu storageBucket",
+            messagingSenderId: "Tu messagingSenderId",
+            appId: "Tu appId",
+            measurementId: "Tu measurementId"
         };
-
-        // Inicializa Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-
-        // Función para registrar un nuevo usuario con correo y contraseña en Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+        // Función para registrar un nuevo usuario
         function registrarUsuario() {
             const correo = document.getElementById('correo').value;
             const contraseña = document.getElementById('contraseña').value;
-            
-            // Utiliza las funciones de autenticación de Firebase para crear un nuevo usuario con correo y contraseña
+
+            // Verifica si el correo contiene '@'
+            if (!correo.includes('@')) {
+                alert('Por favor, introduce una dirección de correo válida.');
+                return;
+            }
+
+            // Registra el usuario con correo y contraseña
             firebase.auth().createUserWithEmailAndPassword(correo, contraseña)
                 .then((userCredential) => {
                     // Usuario registrado exitosamente
@@ -50,17 +49,55 @@
                 });
         }
     </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>Registro de Usuario con Firebase</h1>
-    <div>
-        <label for="correo">Correo:</label>
-        <input type="email" id="correo" required>
-    </div>
-    <div>
-        <label for="contraseña">Contraseña:</label>
-        <input type="password" id="contraseña" required>
-    </div>
-    <button onclick="registrarUsuario()">Registrarse</button>
+    <form>
+        <h2>Registro de Usuario</h2>
+        <input type="email" id="correo" placeholder="Correo electrónico" required>
+        <input type="password" id="contraseña" placeholder="Contraseña" required>
+        <button type="button" onclick="registrarUsuario()">Registrarse</button>
+    </form>
 </body>
 </html>
