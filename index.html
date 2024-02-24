@@ -3,157 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enviar datos por enlace HTML</title>
-    <style>
-        body {
-            background-color: #0066cc; /* Cambiar el color de fondo a un tono gris claro */
-            font-family: Arial, sans-serif;
-            text-align: center; 
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 400px; /* Ancho máximo del contenedor */
-            margin: 50px auto; /* Centrar el contenedor */
-            padding: 20px;
-            background-color: #f5e1e6; /* Fondo rosa pastel más suave */
-            border-radius: 10px; /* Bordes redondeados */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
-        }
-        h1 {
-            color: #d25a00; /* Color del encabezado marrón más suave */
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block; /* Convertir en bloque */
-            margin-bottom: 5px;
-            color: #666; /* Color del texto más oscuro */
-        }
-        input[type="text"], input[type="password"] {
-            margin: 5px 0;
-            padding: 10px;
-            width: calc(100% - 20px); /* Ancho total menos el padding */
-            border: 1px solid #ddd; /* Borde gris más suave */
-            border-radius: 5px; /* Bordes redondeados */
-        }
-        input[type="text"][readonly] {
-            background-color: #fcc; /* Fondo rosa claro para el código de referencia */
-        }
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-        .show-password-label {
-            margin-left: 10px;
-            color: #666; /* Color del texto más oscuro */
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50; 
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049; /* Cambiar color al pasar el mouse */
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Brownies</h1>
-        <!-- Formulario de entrada -->
-        <div class="form-group">
-            <label for="user">Correo:</label>
-            <input type="text" id="user" placeholder="Ingrese su Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
-            <div id="userError" style="color: red;"></div> <!-- Mensaje de error para el Correo -->
-        </div>
-        <div class="form-group">
-            <label for="sameUser">Mismo Correo:</label>
-            <input type="text" id="sameUser" placeholder="Repita su Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
-            <div id="sameUserError" style="color: red;"></div> <!-- Mensaje de error para el mismo Correo -->
-        </div>
-        <div class="form-group">
-            <div class="checkbox-group">
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" placeholder="Ingrese su contraseña" >
-                <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
-                <label for="showPassword" class="show-password-label">Mostrar Contraseña</label>
-            </div>
-            <div id="passwordError" style="color: red;"></div> <!-- Mensaje de error para la contraseña -->
-        </div>
-        <div class="form-group">
-            <div class="checkbox-group">
-                <label for="samePassword">Misma Contraseña:</label>
-                <input type="password" id="samePassword" placeholder="Repita su contraseña" required maxlength="8">
-                <input type="checkbox" id="showSamePassword" onchange="toggleSamePasswordVisibility()">
-                <label for="showSamePassword" class="show-password-label">Mostrar Contraseña</label>
-            </div>
-            <div id="samePasswordError" style="color: red;"></div> <!-- Mensaje de error para la misma contraseña -->
-        </div>
-        <!-- Textbox bloqueado para mostrar el parámetro del enlace -->
-        <div class="form-group">
-            <label for="referralCode">De parte de:</label>
-            <input type="text" id="referralCode" readonly> <!-- Cambiar el valor aquí -->
-        </div>
-        <!-- Botón de enviar -->
-        <button id="submitButton">Enviar</button>
-
-
-    </div>
-
-    <!-- Script JavaScript -->
-    <script>
-        // Obtener parámetros de la URL
-        const urlParams = new URLSearchParams(window.location.search);
-        // Obtener el valor del parámetro "refered"
-        const referralCodeValue = urlParams.get('refered');
-        // Asignar el valor al campo "referralCode"
-        document.getElementById('referralCode').value = referralCodeValue;
+    <title>Registro de Usuario con Firebase</title>
+    <!-- Agrega los enlaces a las bibliotecas de Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js"></script>
+    <script type="module">
+        // Importa las funciones necesarias de los SDKs de Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
         
-        function togglePasswordVisibility() {
-            const passwordInput = document.getElementById('password');
-            const showPasswordCheckbox = document.getElementById('showPassword');
-            passwordInput.type = showPasswordCheckbox.checked ? 'text' : 'password';
-        }
+        // Configuración de tu aplicación web de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
+            authDomain: "serverdatamoney.firebaseapp.com",
+            databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
+            projectId: "serverdatamoney",
+            storageBucket: "serverdatamoney.appspot.com",
+            messagingSenderId: "626275651972",
+            appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
+            measurementId: "G-8D3K9DR7CG"
+        };
 
-        function toggleSamePasswordVisibility() {
-            const samePasswordInput = document.getElementById('samePassword');
-            const showSamePasswordCheckbox = document.getElementById('showSamePassword');
-            samePasswordInput.type = showSamePasswordCheckbox.checked ? 'text' : 'password';
+        // Inicializa Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        // Función para registrar un nuevo usuario con correo y contraseña en Firebase
+        function registrarUsuario() {
+            const correo = document.getElementById('correo').value;
+            const contraseña = document.getElementById('contraseña').value;
+            
+            // Utiliza las funciones de autenticación de Firebase para crear un nuevo usuario con correo y contraseña
+            firebase.auth().createUserWithEmailAndPassword(correo, contraseña)
+                .then((userCredential) => {
+                    // Usuario registrado exitosamente
+                    const user = userCredential.user;
+                    console.log('Usuario registrado:', user);
+                    alert('¡Usuario registrado exitosamente!');
+                })
+                .catch((error) => {
+                    // Si hay un error durante el registro
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error('Error al registrar usuario:', errorMessage);
+                    alert('Error al registrar usuario: ' + errorMessage);
+                });
         }
     </script>
-    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-    <script src="./index.js"></script>
-    <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
-    authDomain: "serverdatamoney.firebaseapp.com",
-    databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
-    projectId: "serverdatamoney",
-    storageBucket: "serverdatamoney.appspot.com",
-    messagingSenderId: "626275651972",
-    appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
-    measurementId: "G-8D3K9DR7CG"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+</head>
+<body>
+    <h1>Registro de Usuario con Firebase</h1>
+    <div>
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" required>
+    </div>
+    <div>
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" required>
+    </div>
+    <button onclick="registrarUsuario()">Registrarse</button>
 </body>
 </html>
