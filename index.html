@@ -44,18 +44,20 @@
         <h2>Registro de Usuario</h2>
         <input type="email" id="email" placeholder="Correo electrónico">
         <div id="email-error" class="error-message"></div>
+        <input type="email" id="confirm-email" placeholder="Confirmar correo electrónico">
+        <div id="confirm-email-error" class="error-message"></div>
         <input type="password" id="password" placeholder="Contraseña">
         <div id="password-error" class="error-message"></div>
         <input type="password" id="confirm-password" placeholder="Confirmar contraseña">
         <div id="confirm-password-error" class="error-message"></div>
-        <button type="submit">Registrarse</button>
+        <button type="submit" onclick="registerUser()">Registrarse</button>
         <div id="success-message" class="success-message" style="display: none;">¡Usuario registrado exitosamente!</div>
     </form>
 
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
     <script>
-        // Configura Firebase
+        // Configurar Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
             authDomain: "serverdatamoney.firebaseapp.com",
@@ -72,14 +74,27 @@
         const auth = firebase.auth();
         
         // Función para registrar un nuevo usuario
-        document.getElementById('registration-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita que el formulario se envíe por defecto
-            
-            // Obtiene los valores de los campos de correo y contraseña
+        function registerUser() {
+            // Limpiar mensajes de error
+            document.querySelectorAll('.error-message').forEach(function(element) {
+                element.textContent = '';
+            });
+            // Obtener valores de los campos
             const email = document.getElementById('email').value;
+            const confirmEmail = document.getElementById('confirm-email').value;
             const password = document.getElementById('password').value;
-
-            // Crea el usuario en Firebase Auth
+            const confirmPassword = document.getElementById('confirm-password').value;
+            // Validar correo electrónico
+            if (email !== confirmEmail) {
+                document.getElementById('confirm-email-error').textContent = 'Los correos electrónicos no coinciden.';
+                return;
+            }
+            // Validar contraseña
+            if (password !== confirmPassword) {
+                document.getElementById('confirm-password-error').textContent = 'Las contraseñas no coinciden.';
+                return;
+            }
+            // Crear usuario en Firebase Auth
             auth.createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     // Usuario registrado exitosamente
@@ -94,7 +109,7 @@
                     console.error('Error al registrar usuario:', errorMessage);
                     alert('Error al registrar usuario: ' + errorMessage);
                 });
-        });
+        }
     </script>
 </body>
 </html>
