@@ -1,8 +1,0 @@
-{
-    "errors": [
-        {
-            "code": "UNAUTHORIZED",
-            "message": "authentication required"
-        }
-    ]
-}
