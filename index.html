@@ -40,7 +40,7 @@
     </style>
 </head>
 <body>
-    <form id="registration-form" onsubmit="return false;">
+    <form id="registration-form">
         <h2>Registro de Usuario</h2>
         <input type="email" id="email" placeholder="Correo electrónico">
         <div id="email-error" class="error-message"></div>
@@ -48,47 +48,53 @@
         <div id="password-error" class="error-message"></div>
         <input type="password" id="confirm-password" placeholder="Confirmar contraseña">
         <div id="confirm-password-error" class="error-message"></div>
-        <button onclick="registerUser()">Registrarse</button>
+        <button type="submit">Registrarse</button>
         <div id="success-message" class="success-message" style="display: none;">¡Usuario registrado exitosamente!</div>
     </form>
 
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
     <script>
-        function registerUser() {
-            // Validación de campos
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
-            var confirmPassword = document.getElementById('confirm-password').value;
-            var emailError = document.getElementById('email-error');
-            var passwordError = document.getElementById('password-error');
-            var confirmPasswordError = document.getElementById('confirm-password-error');
-            var successMessage = document.getElementById('success-message');
+        // Configura Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
+            authDomain: "serverdatamoney.firebaseapp.com",
+            databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
+            projectId: "serverdatamoney",
+            storageBucket: "serverdatamoney.appspot.com",
+            messagingSenderId: "626275651972",
+            appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
+            measurementId: "G-8D3K9DR7CG"
+        };
+        firebase.initializeApp(firebaseConfig);
+        
+        // Referencia al servicio de autenticación de Firebase
+        const auth = firebase.auth();
+        
+        // Función para registrar un nuevo usuario
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe por defecto
+            
+            // Obtiene los valores de los campos de correo y contraseña
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-            // Lógica de validación
-            if (!email) {
-                emailError.textContent = "Por favor, ingresa tu correo electrónico.";
-                return;
-            } else {
-                emailError.textContent = "";
-            }
-
-            if (!password) {
-                passwordError.textContent = "Por favor, ingresa tu contraseña.";
-                return;
-            } else {
-                passwordError.textContent = "";
-            }
-
-            if (password !== confirmPassword) {
-                confirmPasswordError.textContent = "Las contraseñas no coinciden.";
-                return;
-            } else {
-                confirmPasswordError.textContent = "";
-            }
-
-            // Si se pasan todas las validaciones, mostrar mensaje de éxito
-            successMessage.style.display = "block";
-            // Aquí puedes agregar la lógica para enviar los datos a Firebase u otro backend
-        }
+            // Crea el usuario en Firebase Auth
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Usuario registrado exitosamente
+                    const user = userCredential.user;
+                    console.log('Usuario registrado:', user);
+                    document.getElementById('success-message').style.display = 'block';
+                })
+                .catch((error) => {
+                    // Error al registrar el usuario
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error('Error al registrar usuario:', errorMessage);
+                    alert('Error al registrar usuario: ' + errorMessage);
+                });
+        });
     </script>
 </body>
 </html>
