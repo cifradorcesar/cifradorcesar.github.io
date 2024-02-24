@@ -11,30 +11,35 @@
     <script type="module">
         // Configura Firebase
         const firebaseConfig = {
-            apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
-            authDomain: "serverdatamoney.firebaseapp.com",
-            databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
-            projectId: "serverdatamoney",
-            storageBucket: "serverdatamoney.appspot.com",
-            messagingSenderId: "626275651972",
-            appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
-            measurementId: "G-8D3K9DR7CG"
+            apiKey: "Tu API Key",
+            authDomain: "Tu authDomain",
+            projectId: "Tu projectId",
+            storageBucket: "Tu storageBucket",
+            messagingSenderId: "Tu messagingSenderId",
+            appId: "Tu appId",
+            measurementId: "Tu measurementId"
         };
         firebase.initializeApp(firebaseConfig);
         
         // Función para registrar un nuevo usuario
         function registrarUsuario() {
-            const correo = document.getElementById('correo').value;
-            const contraseña = document.getElementById('contraseña').value;
+            const correo1 = document.getElementById('correo1').value;
+            const correo2 = document.getElementById('correo2').value;
+            const contraseña1 = document.getElementById('contraseña1').value;
+            const contraseña2 = document.getElementById('contraseña2').value;
 
-            // Verifica si el correo contiene '@'
-            if (!correo.includes('@')) {
-                alert('Por favor, introduce una dirección de correo válida.');
+            // Verifica si los correos y contraseñas son iguales
+            if (correo1 !== correo2) {
+                alert('Los correos no coinciden.');
+                return;
+            }
+            if (contraseña1 !== contraseña2) {
+                alert('Las contraseñas no coinciden.');
                 return;
             }
 
             // Registra el usuario con correo y contraseña
-            firebase.auth().createUserWithEmailAndPassword(correo, contraseña)
+            firebase.auth().createUserWithEmailAndPassword(correo1, contraseña1)
                 .then((userCredential) => {
                     // Usuario registrado exitosamente
                     const user = userCredential.user;
@@ -53,7 +58,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f0f0f0; /* Color de fondo lindo */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -62,7 +67,7 @@
         }
 
         form {
-            background-color: #fff;
+            background-color: #fff; /* Color de fondo del formulario */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -96,8 +101,10 @@
 <body>
     <form>
         <h2>Registro de Usuario</h2>
-        <input type="email" id="correo" placeholder="Correo electrónico" required>
-        <input type="password" id="contraseña" placeholder="Contraseña" required>
+        <input type="email" id="correo1" placeholder="Correo electrónico" required>
+        <input type="email" id="correo2" placeholder="Confirmar correo electrónico" required>
+        <input type="password" id="contraseña1" placeholder="Contraseña" required>
+        <input type="password" id="contraseña2" placeholder="Confirmar contraseña" required>
         <button type="button" onclick="registrarUsuario()">Registrarse</button>
     </form>
 </body>
