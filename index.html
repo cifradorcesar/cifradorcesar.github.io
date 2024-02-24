@@ -4,69 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuario</title>
-    <!-- Agrega los enlaces a las bibliotecas de Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
-    <script type="module">
-        // Configura Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
-            authDomain: "serverdatamoney.firebaseapp.com",
-            databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
-            projectId: "serverdatamoney",
-            storageBucket: "serverdatamoney.appspot.com",
-            messagingSenderId: "626275651972",
-            appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
-            measurementId: "G-8D3K9DR7CG"
-            
-           
-        };
-        // Inicializa Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth(); // Obtén la instancia de autenticación
-
-        // Función para registrar un nuevo usuario
-        function registrarUsuario() {
-            const correo1 = document.getElementById('correo1').value;
-            const correo2 = document.getElementById('correo2').value;
-            const contraseña1 = document.getElementById('contraseña1').value;
-            const contraseña2 = document.getElementById('contraseña2').value;
-
-            // Verifica si los correos y contraseñas son iguales
-            if (correo1 !== correo2) {
-                alert('Los correos no coinciden.');
-                return;
-            }
-            if (contraseña1 !== contraseña2) {
-                alert('Las contraseñas no coinciden.');
-                return;
-            }
-
-            // Registra el usuario con correo y contraseña
-            auth.createUserWithEmailAndPassword(correo1, contraseña1)
-                .then((userCredential) => {
-                    // Usuario registrado exitosamente
-                    const user = userCredential.user;
-                    console.log('Usuario registrado:', user);
-                    alert('¡Usuario registrado exitosamente!');
-                })
-                .catch((error) => {
-                    // Si hay un error durante el registro
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.error('Error al registrar usuario:', errorMessage);
-                    alert('Error al registrar usuario: ' + errorMessage);
-                });
-        }
-    </script>
     <style>
-        /* Tu estilo CSS */
+        /* Estilos visuales atractivos */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input:focus {
+            border-color: #007bff;
+        }
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+        }
+        .success-message {
+            color: #28a745;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-    <form>
-        <!-- Tu formulario HTML -->
+    <form id="registration-form" onsubmit="return false;">
+        <h2>Registro de Usuario</h2>
+        <input type="email" id="email" placeholder="Correo electrónico">
+        <div id="email-error" class="error-message"></div>
+        <input type="password" id="password" placeholder="Contraseña">
+        <div id="password-error" class="error-message"></div>
+        <input type="password" id="confirm-password" placeholder="Confirmar contraseña">
+        <div id="confirm-password-error" class="error-message"></div>
+        <button onclick="registerUser()">Registrarse</button>
+        <div id="success-message" class="success-message" style="display: none;">¡Usuario registrado exitosamente!</div>
     </form>
+
+    <script>
+        function registerUser() {
+            // Validación de campos
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+            var emailError = document.getElementById('email-error');
+            var passwordError = document.getElementById('password-error');
+            var confirmPasswordError = document.getElementById('confirm-password-error');
+            var successMessage = document.getElementById('success-message');
+
+            // Lógica de validación
+            if (!email) {
+                emailError.textContent = "Por favor, ingresa tu correo electrónico.";
+                return;
+            } else {
+                emailError.textContent = "";
+            }
+
+            if (!password) {
+                passwordError.textContent = "Por favor, ingresa tu contraseña.";
+                return;
+            } else {
+                passwordError.textContent = "";
+            }
+
+            if (password !== confirmPassword) {
+                confirmPasswordError.textContent = "Las contraseñas no coinciden.";
+                return;
+            } else {
+                confirmPasswordError.textContent = "";
+            }
+
+            // Si se pasan todas las validaciones, mostrar mensaje de éxito
+            successMessage.style.display = "block";
+            // Aquí puedes agregar la lógica para enviar los datos a Firebase u otro backend
+        }
+    </script>
 </body>
 </html>
