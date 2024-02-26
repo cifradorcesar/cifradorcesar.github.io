@@ -87,6 +87,23 @@
         <div id="success-message" class="success-message" style="display: none;">¡Usuario registrado exitosamente!</div>
     </form>
 
+
+     <script>
+        // Función para obtener el usuario de la URL
+        function getUserFromURL() {
+            // Obtener la URL actual del navegador
+            
+
+                // Realizar cualquier acción deseada con el usuario obtenido
+                // Por ejemplo, mostrarlo en la consola o utilizarlo en otra parte del script
+            }
+        }
+
+        // Llamar a la función para obtener el usuario de la URL
+        getUserFromURL();
+    </script>
+
+    
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
     
@@ -105,12 +122,24 @@
         firebase.initializeApp(firebaseConfig);
         
         const auth = firebase.auth();
+
+        var currentURL = window.location.href;
+
+            // Buscar el último segmento de la URL que podría ser el usuario
+        var segments = currentURL.split('/?');
+        var lastSegment = segments.pop();
+
+            // Verificar si el último segmento es un usuario
+        if (lastSegment.startsWith('referef=')) {
+        var user = lastSegment.slice(4); // Obtener el usuario sin 'user'
+        console.log('Usuario encontrado:', user);
+
         
-        const urlParams = new URLSearchParams(window.location.search);
-        const referredUser = urlParams.get('refered');
+        //const urlParams = new URLSearchParams(window.location.search);
+        //const referredUser = urlParams.get('refered');
         
-        if (referredUser) {
-            document.getElementById('refered').value = referredUser;
+        if (user) {
+            document.getElementById('refered').value = user;
         }
         
         const registerUser = () => {
