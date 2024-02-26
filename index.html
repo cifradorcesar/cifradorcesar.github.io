@@ -98,7 +98,7 @@
             var lastSegment = segments.pop();
 
             // Verificar si el último segmento es un usuario
-            if (lastSegment.startsWith('refered')) {
+            if (lastSegment.startsWith('refered=')) {
                 var user = lastSegment.slice(7); // Obtener el usuario después de 'refered='
                 console.log('Usuario encontrado:', user);
 
