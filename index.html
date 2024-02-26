@@ -87,61 +87,46 @@
         <div id="success-message" class="success-message" style="display: none;">¡Usuario registrado exitosamente!</div>
     </form>
 
-
-     <script>
+    <script>
         // Función para obtener el usuario de la URL
         function getUserFromURL() {
             // Obtener la URL actual del navegador
-            
+            var currentURL = window.location.href;
 
-                // Realizar cualquier acción deseada con el usuario obtenido
-                // Por ejemplo, mostrarlo en la consola o utilizarlo en otra parte del script
+            // Buscar el último segmento de la URL que podría ser el usuario
+            var segments = currentURL.split('/?');
+            var lastSegment = segments.pop();
+
+            // Verificar si el último segmento es un usuario
+            if (lastSegment.startsWith('refered')) {
+                var user = lastSegment.slice(7); // Obtener el usuario después de 'refered='
+                console.log('Usuario encontrado:', user);
+
+                // Asignar el usuario al campo de texto con el id 'refered'
+                if (user) {
+                    document.getElementById('refered').value = user;
+                }
             }
         }
 
         // Llamar a la función para obtener el usuario de la URL
         getUserFromURL();
-    </script>
 
-    
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
-    
-    <script>
         const firebaseConfig = {
-            apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
-            authDomain: "serverdatamoney.firebaseapp.com",
-            databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
-            projectId: "serverdatamoney",
-            storageBucket: "serverdatamoney.appspot.com",
-            messagingSenderId: "626275651972",
-            appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
-            measurementId: "G-8D3K9DR7CG"
+            apiKey: "tu_api_key",
+            authDomain: "tu_dominio.firebaseapp.com",
+            databaseURL: "https://tu_dominio.firebaseio.com",
+            projectId: "tu_project_id",
+            storageBucket: "tu_dominio.appspot.com",
+            messagingSenderId: "tu_messaging_sender_id",
+            appId: "tu_app_id",
+            measurementId: "tu_measurement_id"
         };
         
         firebase.initializeApp(firebaseConfig);
         
         const auth = firebase.auth();
 
-        var currentURL = window.location.href;
-
-            // Buscar el último segmento de la URL que podría ser el usuario
-        var segments = currentURL.split('/?');
-        var lastSegment = segments.pop();
-
-            // Verificar si el último segmento es un usuario
-        if (lastSegment.startsWith('refered=')) {
-        var user = lastSegment.slice(4); // Obtener el usuario sin 'user'
-        console.log('Usuario encontrado:', user);
-
-        
-        //const urlParams = new URLSearchParams(window.location.search);
-        //const referredUser = urlParams.get('refered');
-        
-        if (user) {
-            document.getElementById('refered').value = user;
-        }
-        
         const registerUser = () => {
             document.querySelectorAll('.error-message').forEach(element => {
                 element.textContent = '';
@@ -162,17 +147,4 @@
                 return;
             }
             
-            auth.createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    document.getElementById('success-message').style.display = 'block';
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.error('Error al registrar usuario:', errorMessage);
-                    alert('Error al registrar usuario: ' + errorMessage);
-                });
-        };
-    </script>
-</body>
-</html>
+            auth
