@@ -37,10 +37,20 @@
             color: #28a745;
             font-size: 14px;
         }
+        #referral-textbox {
+            display: none; /* inicialmente oculto */
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
     </style>
 </head>
 <body>
-    <form id="registration-form">
+    <form id="registration-form" onsubmit="return false;"> <!-- previene el envío del formulario -->
         <h2>Registro de Usuario</h2>
         <input type="email" id="email" placeholder="Correo electrónico">
         <div id="email-error" class="error-message"></div>
@@ -50,8 +60,9 @@
         <div id="password-error" class="error-message"></div>
         <input type="password" id="confirm-password" placeholder="Confirmar contraseña">
         <div id="confirm-password-error" class="error-message"></div>
-        <button type="submit" >Registrarse</button>
+        <button type="button" onclick="registerUser()">Registrarse</button> <!-- llama a la función de registro -->
         <div id="success-message" class="success-message" style="display: none;">¡Usuario registrado exitosamente!</div>
+        <input type="text" id="referral-textbox" readonly value="amigo"> <!-- campo de texto para el referido, readonly para que no se pueda editar -->
     </form>
 
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
@@ -110,6 +121,11 @@
                     console.error('Error al registrar usuario:', errorMessage);
                     alert('Error al registrar usuario: ' + errorMessage);
                 });
+        }
+        
+        // Verificar si el enlace contiene "referred:amigo"
+        if (window.location.href.includes("referred:amigo")) {
+            document.getElementById('referral-textbox').style.display = 'block'; // mostrar el campo de texto de referido
         }
     </script>
 </body>
