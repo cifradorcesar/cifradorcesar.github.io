@@ -60,7 +60,7 @@
         <div id="password-error" class="error-message"></div>
         <input type="password" id="confirm-password" placeholder="Confirmar contraseña">
         <div id="confirm-password-error" class="error-message"></div>
-        <input type="refered" id="referido" text="usuario" enabled=false >
+        <input type="text" id="referido" placeholder="Usuario" disabled>
         <div id="mensaje-registrado" class="success-message"></div>
         <button type="button" onclick="registerUser()">Registrarse</button> <!-- llama a la función de registro -->
         <div id="success-message" class="success-message" style="display: none;">¡Usuario registrado exitosamente!</div>
@@ -100,36 +100,4 @@
             const confirmPassword = document.getElementById('confirm-password').value;
             // Validar correo electrónico
             if (email !== confirmEmail) {
-                document.getElementById('confirm-email-error').textContent = 'Los correos electrónicos no coinciden.';
-                return;
-            }
-            // Validar contraseña
-            if (password !== confirmPassword) {
-                document.getElementById('confirm-password-error').textContent = 'Las contraseñas no coinciden.';
-                return;
-            }
-            // Crear usuario en Firebase Auth
-            auth.createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    // Usuario registrado exitosamente
-                    const user = userCredential.user;
-                     document.getElementById('confirm-password-error').textContent = 'Usuario registrado',user;
-                    console.log('Usuario registrado:', user);
-                    document.getElementById('success-message').style.display = 'block';
-                })
-                .catch((error) => {
-                    // Error al registrar el usuario
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.error('Error al registrar usuario:', errorMessage);
-                    alert('Error al registrar usuario: ' + errorMessage);
-                });
-        }
-        
-        // Verificar si el enlace contiene "referred:amigo"
-        if (window.location.href.includes("referred:amigo")) {
-            document.getElementById('referral-textbox').style.display = 'block'; // mostrar el campo de texto de referido
-        }
-    </script>
-</body>
-</html>
+                document.getElementById('confirm-email-error').textContent = '
