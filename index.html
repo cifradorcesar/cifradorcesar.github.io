@@ -147,4 +147,17 @@
                 return;
             }
             
-            auth
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    document.getElementById('success-message').style.display = 'block';
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error('Error al registrar usuario:', errorMessage);
+                    alert('Error al registrar usuario: ' + errorMessage);
+                });
+        };
+    </script>
+</body>
+</html>
