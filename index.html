@@ -60,11 +60,11 @@
         <div id="password-error" class="error-message"></div>
         <input type="password" id="confirm-password" placeholder="Confirmar contraseña">
         <div id="confirm-password-error" class="error-message"></div>
-        <input type="text" id="referido" placeholder="Usuario" disabled>
+        <input type="text" id="refered" placeholder="Usuario" disabled>
         <div id="mensaje-registrado" class="success-message"></div>
         <button type="button" onclick="registerUser()">Registrarse</button> <!-- llama a la función de registro -->
         <div id="success-message" class="success-message" style="display: none;">¡Usuario registrado exitosamente!</div>
-        <input type="text" id="referral-textbox" readonly value="amigo"> <!-- campo de texto para el referido, readonly para que no se pueda editar -->
+       
     </form>
 
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
@@ -72,6 +72,15 @@
     
     <script src="firebase-auth.js"></script>
     <script>
+
+      const urlParams = new URLSearchParams(window.location.search);
+const referredUser = urlParams.get('refered');
+
+        
+if (referredUser) {
+    // Actualizar el valor del campo de referencia con el valor obtenido
+    document.getElementById('referido').value = referredUser;
+}
         // Configurar Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
