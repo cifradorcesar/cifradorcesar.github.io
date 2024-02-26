@@ -100,6 +100,9 @@
             // Verificar si el último segmento es un usuario
             if (lastSegment.startsWith('refered=')) {
                 var user = lastSegment.slice(7); // Obtener el usuario después de 'refered='
+                if (user.endsWith('=')) {
+                user = user.slice(0, -1); // Eliminar el último carácter "="
+            }
                 console.log('Usuario encontrado:', user);
 
                 // Asignar el usuario al campo de texto con el id 'refered'
