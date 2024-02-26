@@ -8,37 +8,65 @@
         /* Estilos visuales atractivos */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa; /* Color de fondo más claro */
+            margin: 0; /* Elimina el margen predeterminado */
+            padding: 20px; /* Agrega espacio alrededor del formulario */
+            display: flex;
+            justify-content: center; /* Centra el formulario horizontalmente */
+            align-items: center; /* Centra el formulario verticalmente */
+            min-height: 100vh; /* Asegura que el formulario ocupe toda la altura de la ventana */
         }
         form {
-            max-width: 400px;
-            margin: 20px auto;
+            width: 100%;
+            max-width: 400px; /* Ancho máximo del formulario */
             padding: 20px;
             background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        }
+        h2 {
+            margin-top: 0; /* Elimina el margen superior del encabezado */
+            margin-bottom: 20px; /* Agrega espacio debajo del encabezado */
+            text-align: center; /* Centra el texto */
+            color: #333; /* Color de texto más oscuro */
         }
         input, button {
             width: 100%;
             padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
+            margin-bottom: 15px; /* Aumenta el espacio entre los elementos */
+            border: 1px solid #ced4da; /* Borde más suave */
             border-radius: 5px;
             box-sizing: border-box;
+            font-size: 16px; /* Tamaño de fuente más grande */
         }
         input:focus {
-            border-color: #007bff;
+            border-color: #007bff; /* Cambia el color del borde al enfocar */
+            outline: none; /* Elimina el contorno predeterminado */
         }
         .error-message {
             color: #dc3545;
             font-size: 14px;
+            margin-top: -10px; /* Ajusta la posición de los mensajes de error */
+            margin-bottom: 10px; /* Aumenta el espacio entre los mensajes de error y los campos */
         }
         .success-message {
             color: #28a745;
             font-size: 14px;
+            margin-top: -10px; /* Ajusta la posición de los mensajes de éxito */
+            margin-bottom: 10px; /* Aumenta el espacio entre los mensajes de éxito y los campos */
         }
         #refered {
             background-color: #f9f9f9;
+        }
+        button {
+            background-color: #007bff; /* Color de fondo del botón */
+            color: #fff; /* Color de texto blanco */
+            font-weight: bold; /* Texto en negrita */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+        }
+        button:hover {
+            background-color: #0056b3; /* Cambia el color de fondo al pasar el ratón */
         }
     </style>
 </head>
