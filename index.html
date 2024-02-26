@@ -111,6 +111,7 @@
                 .then((userCredential) => {
                     // Usuario registrado exitosamente
                     const user = userCredential.user;
+                     document.getElementById('confirm-password-error').textContent = 'Usuario registrado',user;
                     console.log('Usuario registrado:', user);
                     document.getElementById('success-message').style.display = 'block';
                 })
