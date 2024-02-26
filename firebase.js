@@ -1,13 +1,39 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js"
-import { } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js"
+import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
+import { auth } from "./firebase.js";
+import { showMessage } from "./showMessage.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
-  authDomain: "serverdatamoney.firebaseapp.com",
-  databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
-  projectId: "serverdatamoney",
-  storageBucket: "serverdatamoney.appspot.com",
-  messagingSenderId: "626275651972",
-  appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
-  measurementId: "G-8D3K9DR7CG"
-};
+const signUpForm = document.querySelector("#signup-form");
+
+signUpForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = index["email"].value;
+  const password = index["password"].value;
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+    console.log(userCredential)
+
+    // Close the signup modal
+    const signupModal = document.querySelector('#signupModal');
+    const modal = bootstrap.Modal.getInstance(signupModal);
+    modal.hide();
+
+    // reset the form
+    signUpForm.reset();
+
+    // show welcome message
+    showMessage("Welcome" + userCredentials.user.email);
+
+  } catch (error) {
+    if (error.code === 'auth/email-already-in-use') {
+      showMessage("Email already in use", "error")
+    } else if (error.code === 'auth/invalid-email') {
+      showMessage("Invalid email", "error")
+    } else if (error.code === 'auth/weak-password') {
+      showMessage("Weak password", "error")
+    } else if (error.code) {
+      showMessage("Something went wrong", "error")
+    }
+  }
+
+});
