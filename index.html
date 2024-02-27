@@ -190,7 +190,7 @@
                 .then((userCredential) => {
                     // User registered successfully
                     console.log('User registered successfully:', userCredential.user);
-                    alert('¡Correo registrado exitosamente!');
+                    
 
                     // Write user data to Realtime Database
                     const userData = {
@@ -224,7 +224,7 @@
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     console.error('Error al registrar usuario:', errorMessage);
-                    alert('el correo ya existe' );
+                    alert('el correo ya existe o esta mal escrito' );
                 });
         }
     </script>
