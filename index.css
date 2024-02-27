@@ -1,81 +1,62 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap');
-
-:root {
-    --color-terminal: #292b36;
-    --borde-redondo: 4px;
-}
-
-* {
-    font-family: 'Source Code Pro', monospace;
-}
-
 body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #5c4b7a;
-    color: white;
-}
-
-input, button {
-    border: none;
-    outline: none;
-}
-
-main {
-    padding: 25px;
-    box-shadow: 8px 8px 35px 0px rgb(0 0 0 / 75%);
-    border-radius: var(--borde-redondo);
-}
-
-h1 {
-    margin: 0;
-}
-
-#input-original, #resultado {
-    background-color: var(--color-terminal);
-    width: -webkit-fill-available;
-}
-
-#input-original {
-    margin: 10px 0 0;
-    padding: 10px;
-    color: white;
-    border-top-left-radius: var(--borde-redondo);
-    border-top-right-radius: var(--borde-redondo);
-}
-
-#resultado {
-    height: 20px;
-    color: #5af78d;
-    padding: 0 10px 10px;
-    border-bottom-left-radius: var(--borde-redondo);
-    border-bottom-right-radius: var(--borde-redondo);
-}
-
-.rango {
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: 1fr 30px;
+    background-color: #f0a8c5; /* Cambia el color de fondo a un tono rosa suave */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Usa una fuente más moderna y legible */
     text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    margin-top: 50px;
 }
 
-input[type='range'] {
-    -webkit-appearance: none;
-    border-radius: var(--borde-redondo);
-    background:var(--color-terminal);
-    margin: 0;
-    padding: 0 5px;
-    height: 20px;
+.form-group {
+    margin-bottom: 20px; /* Aumenta el espacio entre los grupos de formulario */
 }
 
-input[type='range']::-webkit-slider-thumb {
+label {
+    margin-right: 5px; /* Reduzca el margen derecho para una apariencia más limpia */
+    font-weight: bold; /* Hace que las etiquetas sean más prominentes */
+}
+
+input[type="text"],
+input[type="password"] {
+    margin: 10px; /* Aumenta el espacio alrededor de los campos de entrada */
+    padding: 12px; /* Aumenta el relleno para una apariencia más cómoda */
+    width: 250px; /* Incrementa el ancho para una mejor usabilidad */
+    border-radius: 15px; /* Bordes redondeados más pronunciados */
+    border: 2px solid #ccc; /* Aumenta el grosor del borde */
+    outline: none; /* Elimina el contorno al enfocar */
+}
+
+input[type="text"][readonly] {
+    background-color: #f8f8f8; /* Cambia el color de fondo de los campos de solo lectura */
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Aumenta el espacio debajo del grupo de casillas de verificación */
+}
+
+.show-password-label {
+    margin-left: 10px;
+    font-weight: bold; /* Hace que la etiqueta sea más prominente */
+}
+
+button {
+    margin-top: 30px; /* Aumenta el espacio entre el botón y el resto del formulario */
+    padding: 12px 24px; /* Aumenta el relleno para una apariencia más cómoda */
+    font-size: 18px; /* Incrementa el tamaño del texto del botón */
+    background-color: #6cd67d; /* Cambia el color de fondo a un tono verde agradable */
+    color: white; /* Cambia el color del texto a blanco para mayor contraste */
+    border: none;
+    border-radius: 25px; /* Bordes redondeados más pronunciados */
     cursor: pointer;
-    -webkit-appearance: none;
-    background:white;
-    border-radius: 50%;
-    height:10px;
-    width:10px;
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+button:hover {
+    background-color: #4bb763; /* Cambia el color de fondo al pasar el ratón para dar retroalimentación visual */
 }

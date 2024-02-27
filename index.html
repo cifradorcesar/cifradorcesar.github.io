@@ -1,24 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cifrador Cesar</title>
-    <link href="index.css" rel="stylesheet " />
-    <script src="index.js" type="text/javascript" defer></script>
+    <title>Enviar datos por enlace HTML</title>
+    <style>
+        body {
+            background-color: #337408; /* Cambiar el color de fondo a un tono gris claro */
+            font-family: Arial, sans-serif;
+            text-align: center; 
+            margin: 0;
+            padding: 0;
+            animation: changeBackground 9s infinite; /* Cambia el fondo cada 9 segundos */
+        }
+        @keyframes changeBackground {
+            0% { background-image: url('imagen1.jpg'); } /* Cambia la imagen cada 3 segundos */
+            33.33% { background-image: url('imagen2.jpg'); }
+            66.66% { background-image: url('imagen3.jpg'); }
+        }
+        .container {
+            max-width: 400px; /* Ancho máximo del contenedor */
+            margin: 50px auto; /* Centrar el contenedor */
+            padding: 20px;
+            background-color: #f5e1e6; /* Fondo rosa pastel más suave */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+        h1 {
+            color: #d25a00; /* Color del encabezado marrón más suave */
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block; /* Convertir en bloque */
+            margin-bottom: 5px;
+            color: #666; /* Color del texto más oscuro */
+        }
+        input[type="text"], input[type="password"] {
+            margin: 5px 0;
+            padding: 10px;
+            width: calc(100% - 20px); /* Ancho total menos el padding */
+            border: 1px solid #ddd; /* Borde gris más suave */
+            border-radius: 5px; /* Bordes redondeados */
+        }
+        input[type="text"][readonly] {
+            background-color: #fcc; /* Fondo rosa claro para el código de referencia */
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .show-password-label {
+            margin-left: 10px;
+            color: #666; /* Color del texto más oscuro */
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049; /* Cambiar color al pasar el mouse */
+        }
+    </style>
 </head>
 <body>
-    <main>
-        <h1>Cifrador Cesar.</h1>
-        <form id="cifrador" autocomplete="off">
-            <input id="input-original" spellcheck="false" placeholder="Ingrese el texto" type="text" name="text">
-        </form>
-        <div id="resultado"></div>
-        <div class="rango">
-            <input id="rango" type="range" value="10" min="1" max="20" oninput="this.nextElementSibling.value = this.value">
-            <output>10</output>
+    <div class="container">
+        <h1>Brownies</h1>
+        <!-- Formulario de entrada -->
+        <div class="form-group">
+            <label for="user">Correo:</label>
+            <input type="text" id="user" placeholder="Ingrese su Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
+            <div id="userError" style="color: red;"></div> <!-- Mensaje de error para el Correo -->
         </div>
-    </main>
+        <div class="form-group">
+            <label for="sameUser">Mismo Correo:</label>
+            <input type="text" id="sameUser" placeholder="Repita su Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
+            <div id="sameUserError" style="color: red;"></div> <!-- Mensaje de error para el mismo Correo -->
+        </div>
+        <div class="form-group">
+            <div class="checkbox-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" placeholder="Ingrese su contraseña" >
+                <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
+                <label for="showPassword" class="show-password-label">Mostrar Contraseña</label>
+            </div>
+            <div id="passwordError" style="color: red;"></div> <!-- Mensaje de error para la contraseña -->
+        </div>
+        <div class="form-group">
+            <div class="checkbox-group">
+                <label for="samePassword">Misma Contraseña:</label>
+                <input type="password" id="samePassword" placeholder="Repita su contraseña" required maxlength="8">
+                <input type="checkbox" id="showSamePassword" onchange="toggleSamePasswordVisibility()">
+                <label for="showSamePassword" class="show-password-label">Mostrar Contraseña</label>
+            </div>
+            <div id="samePasswordError" style="color: red;"></div> <!-- Mensaje de error para la misma contraseña -->
+        </div>
+        <!-- Textbox bloqueado para mostrar el parámetro del enlace -->
+        <div class="form-group">
+            <label for="referralCode">De parte de:</label>
+            <input type="text" id="referralCode" readonly> <!-- Cambiar el valor aquí -->
+        </div>
+        <!-- Botón de enviar -->
+        <button id="submitButton">Enviar</button>
+
+
+    </div>
+
+    <!-- Script JavaScript -->
+    <script>
+        // Obtener parámetros de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        // Obtener el valor del parámetro "refered"
+        const referralCodeValue = urlParams.get('refered');
+        // Asignar el valor al campo "referralCode"
+        document.getElementById('referralCode').value = referralCodeValue;
+        
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const showPasswordCheckbox = document.getElementById('showPassword');
+            passwordInput.type = showPasswordCheckbox.checked ? 'text' : 'password';
+        }
+
+        function toggleSamePasswordVisibility() {
+            const samePasswordInput = document.getElementById('samePassword');
+            const showSamePasswordCheckbox = document.getElementById('showSamePassword');
+            samePasswordInput.type = showSamePasswordCheckbox.checked ? 'text' : 'password';
+        }
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 </body>
 </html>
