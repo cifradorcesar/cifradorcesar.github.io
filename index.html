@@ -70,14 +70,6 @@
             background-color: #45a049; /* Cambiar color al pasar el mouse */
         }
     </style>
-    <style>
-        /* Styles from index.css */
-        /* Incorporate CSS styles from index.css */
-        /* Example: */
-        /* body { */
-        /*     background-color: #337408; */
-        /* } */
-    </style>
 </head>
 <body>
     <div class="container">
@@ -173,6 +165,32 @@
                     // User registered successfully
                     console.log('User registered successfully:', userCredential.user);
                     alert('¡Correo registrado exitosamente!');
+
+                    // Write user data to Realtime Database
+                    const userData = {
+                        correo: email,
+                        cvu: "CVU123456789",
+                        usuario: "Nombre de Usuario",
+                        puntos: 0,
+                        experiencia: 0,
+                        nivel: 1,
+                        alias: "Alias de Usuario",
+                        color: "#FFFFFF",
+                        direccion: "Dirección del Usuario"
+                    };
+
+                    // Get a reference to the database service
+                    const database = firebase.database();
+
+                    // Write the user data to the database
+                    database.ref('users/' + userCredential.user.uid).set(userData)
+                        .then(() => {
+                            console.log('User data added to database successfully');
+                        })
+                        .catch((error) => {
+                            console.error('Error adding user data to database:', error);
+                            alert('Error adding user data to database');
+                        });
                 })
                 .catch((error) => {
                     // An error occurred during registration
@@ -183,6 +201,7 @@
                 });
         }
     </script>
+    <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 </body>
 </html>
