@@ -70,6 +70,14 @@
             background-color: #45a049; /* Cambiar color al pasar el mouse */
         }
     </style>
+    <style>
+        /* Styles from index.css */
+        /* Incorporate CSS styles from index.css */
+        /* Example: */
+        /* body { */
+        /*     background-color: #337408; */
+        /* } */
+    </style>
 </head>
 <body>
     <div class="container">
@@ -109,7 +117,7 @@
             <input type="text" id="referralCode" readonly> <!-- Cambiar el valor aquí -->
         </div>
         <!-- Botón de enviar -->
-        <button id="submitButton">Enviar</button>
+        <button id="submitButton" onclick="registerUser()">Enviar</button> <!-- Call registerUser function on button click -->
 
 
     </div>
@@ -133,6 +141,46 @@
             const samePasswordInput = document.getElementById('samePassword');
             const showSamePasswordCheckbox = document.getElementById('showSamePassword');
             samePasswordInput.type = showSamePasswordCheckbox.checked ? 'text' : 'password';
+        }
+
+        function registerUser() {
+            const email = document.getElementById('user').value;
+            const password = document.getElementById('password').value;
+            
+            // Initialize Firebase
+            const firebaseConfig = {
+                apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
+                authDomain: "serverdatamoney.firebaseapp.com",
+                databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
+                projectId: "serverdatamoney",
+                storageBucket: "serverdatamoney.appspot.com",
+                messagingSenderId: "626275651972",
+                appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
+                measurementId: "G-8D3K9DR7CG"
+            };
+
+            // Check if Firebase is not already initialized
+            if (!firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
+            } else {
+                firebase.app(); // if already initialized, use that one
+            }
+
+            const auth = firebase.auth();
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // User registered successfully
+                    console.log('User registered successfully:', userCredential.user);
+                    alert('¡Usuario registrado exitosamente!');
+                })
+                .catch((error) => {
+                    // An error occurred during registration
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error('Error al registrar usuario:', errorMessage);
+                    alert('Error al registrar usuario: ' + errorMessage);
+                });
         }
     </script>
     <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
