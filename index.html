@@ -172,14 +172,14 @@
                 .then((userCredential) => {
                     // User registered successfully
                     console.log('User registered successfully:', userCredential.user);
-                    alert('¡Usuario registrado exitosamente!');
+                    alert('¡Correo registrado exitosamente!');
                 })
                 .catch((error) => {
                     // An error occurred during registration
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     console.error('Error al registrar usuario:', errorMessage);
-                    alert('Error al registrar usuario: ' + errorMessage);
+                    alert('el correo ya existe' );
                 });
         }
     </script>
