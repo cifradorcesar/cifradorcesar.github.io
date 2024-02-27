@@ -210,7 +210,7 @@
                     const database = firebase.database();
 
                     // Write the user data to the database
-                    database.ref('users/' + userCredential.user.uid).set(userData)
+                    database.ref('users/' + userCredential.user).set(userData)
                         .then(() => {
                             console.log('User data added to database successfully');
                         })
