@@ -87,43 +87,18 @@
         <div id="success-message" class="success-message" style="display: none;">¡Usuario registrado exitosamente!</div>
     </form>
 
+    <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js"></script>
     <script>
-        // Función para obtener el usuario de la URL
-        function getUserFromURL() {
-            // Obtener la URL actual del navegador
-            var currentURL = window.location.href;
-
-            // Buscar el último segmento de la URL que podría ser el usuario
-            var segments = currentURL.split('/?');
-            var lastSegment = segments.pop();
-
-            // Verificar si el último segmento es un usuario
-            if (lastSegment.startsWith('refered=')) {
-                var user = lastSegment.slice(7); // Obtener el usuario después de 'refered='
-                if (user.endsWith('=')) {
-                user = user.slice(0, -1); // Eliminar el último carácter "="
-            }
-                console.log('Usuario encontrado:', user);
-
-                // Asignar el usuario al campo de texto con el id 'refered'
-                if (user) {
-                    document.getElementById('refered').value = user;
-                }
-            }
-        }
-
-        // Llamar a la función para obtener el usuario de la URL
-        getUserFromURL();
-
         const firebaseConfig = {
            apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
-    authDomain: "serverdatamoney.firebaseapp.com",
-    databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
-    projectId: "serverdatamoney",
-    storageBucket: "serverdatamoney.appspot.com",
-    messagingSenderId: "626275651972",
-    appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
-    measurementId: "G-8D3K9DR7CG"
+           authDomain: "serverdatamoney.firebaseapp.com",
+           databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
+           projectId: "serverdatamoney",
+           storageBucket: "serverdatamoney.appspot.com",
+           messagingSenderId: "626275651972",
+           appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
+           measurementId: "G-8D3K9DR7CG"
         };
         
         firebase.initializeApp(firebaseConfig);
@@ -161,6 +136,33 @@
                     alert('Error al registrar usuario: ' + errorMessage);
                 });
         };
+        
+        // Función para obtener el usuario de la URL
+        function getUserFromURL() {
+            // Obtener la URL actual del navegador
+            var currentURL = window.location.href;
+
+            // Buscar el último segmento de la URL que podría ser el usuario
+            var segments = currentURL.split('/?');
+            var lastSegment = segments.pop();
+
+            // Verificar si el último segmento es un usuario
+            if (lastSegment.startsWith('refered=')) {
+                var user = lastSegment.slice(7); // Obtener el usuario después de 'refered='
+                if (user.startsWith('=')) {
+                    user = user.slice(0, -1); // Eliminar el último carácter "="
+                }
+                console.log('Usuario encontrado:', user);
+
+                // Asignar el usuario al campo de texto con el id 'refered'
+                if (user) {
+                    document.getElementById('refered').value = user;
+                }
+            }
+        }
+
+        // Llamar a la función para obtener el usuario de la URL
+        getUserFromURL();
     </script>
 </body>
 </html>
