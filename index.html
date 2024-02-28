@@ -236,7 +236,7 @@ button:hover {
                     database.ref('users/').set(userData)
                         .then(() => {
                             console.log('User data added to database successfully');
-                            alert('registro exitoso con el correo'+email);
+                            alert('registro exitoso con el correo '+email);
                         })
                         .catch((error) => {
                             console.error('Error adding user data to database:', error);
