@@ -159,7 +159,7 @@
     const referralCodeValue = urlParams.get('refered');
     // Asignar el valor al campo "referralCode"
     document.getElementById('referralCode').value = referralCodeValue;
-    
+
     function togglePasswordVisibility() {
         const passwordInput = document.getElementById('password');
         const showPasswordCheckbox = document.getElementById('showPassword');
@@ -189,7 +189,7 @@
             document.getElementById('nickError').textContent = 'El nombre de usuario solo puede contener letras y números.';
             return;
         } else {
-           //document.getElementById('nickError').textContent = '';
+           document.getElementById('nickError').textContent = '';
         }
 
         const userRef = firebase.database().ref(nick);
@@ -202,25 +202,25 @@
                 // Si el usuario no existe, continuar con la validación y registro
                 document.getElementById('nickError').textContent = '';
                 // Resto de la validación y registro aquí
-                
-        // Validate if email and confirm email match
-        if (email !== confirmEmail || email.trim() === '' || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
-            document.getElementById('sameUserError').textContent = 'Por favor, ingrese un correo electrónico válido y confirme que coincide.';
-            return;
-        } else {
-            document.getElementById('sameUserError').textContent = '';
-        }
 
-        // Validate if password and confirm password match
-        if (password !== confirmPassword) {
-            document.getElementById('samePasswordError').textContent = 'Las contraseñas no coinciden.';
-            return;
-        } else {
-            document.getElementById('samePasswordError').textContent = '';
-        }
+                // Validate if email and confirm email match
+                if (email !== confirmEmail || email.trim() === '' || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+                    document.getElementById('sameUserError').textContent = 'Por favor, ingrese un correo electrónico válido y confirme que coincide.';
+                    return;
+                } else {
+                    document.getElementById('sameUserError').textContent = '';
+                }
 
-        // Proceed with registration if all validations pass
-        registerUser(nick, email);
+                // Validate if password and confirm password match
+                if (password !== confirmPassword) {
+                    document.getElementById('samePasswordError').textContent = 'Las contraseñas no coinciden.';
+                    return;
+                } else {
+                    document.getElementById('samePasswordError').textContent = '';
+                }
+
+                // Proceed with registration if all validations pass
+                registerUser(nick, email);
             }
         });
 
@@ -254,7 +254,6 @@
             .then((userCredential) => {
                 // User registered successfully
                 console.log('User registered successfully:', userCredential.user);
-                
 
                 // Write user data to Realtime Database
                 const userData = {
