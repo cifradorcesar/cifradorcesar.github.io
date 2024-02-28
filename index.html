@@ -169,12 +169,13 @@ button:hover {
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('samePassword').value;
 
-if (email.trim() === '' ) {
-    document.getElementById('nickError').textContent = 'Por favor, ingrese un nombre de usuario';
+if (/[^a-zA-Z0-9]/.test(nick)) {
+    document.getElementById('nickError').textContent = 'El nombre de usuario solo puede contener letras y números.';
     return;
 } else {
     document.getElementById('nickError').textContent = '';
 }
+
             
             // Validate if email and confirm email match
           if (email !== confirmEmail || email.trim() === '' || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
@@ -245,7 +246,7 @@ if (email.trim() === '' ) {
                     const database = firebase.database();
 
                     // Write the user data to the database
-                    database.ref(email+'/').set(userData)
+                    database.ref(nick+'/').set(userData)
                         .then(() => {
                             console.log('User data added to database successfully');
                             alert('registro exitoso con el correo '+email);
