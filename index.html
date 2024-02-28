@@ -205,7 +205,7 @@ function checkIfUserExists(nick) {
             document.getElementById('nickError').textContent = 'Por favor, ingrese un nombre de usuario.';
             return;
         } else if (nick.length < 6) {
-            document.getElementById('nickError').textContent = 'El nombre de usuario debe tener al menos 6 caracteres.';
+            document.getElementById('nickError').textContent = 'El nombre de usuario debe tener al menos 6 caracteres.'+nick;
             return;
         } else if (/[^a-zA-Z0-9]/.test(nick)) {
             document.getElementById('nickError').textContent = 'El nombre de usuario solo puede contener letras y números.';
