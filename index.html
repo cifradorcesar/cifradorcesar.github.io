@@ -5,110 +5,111 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brownies</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-size: cover;
-        animation: changeBackground 20s infinite;
-    }
-
-    @keyframes changeBackground {
-        0% {
-            background-image: url('https://envios.es/img/enviar-paquetes/persona-feliz-recibiendo-paquete.jpg');
+   body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            animation: changeBackground 20s infinite;
         }
-        20% {
-            background-image: url('https://i.iplsc.com/odbior-paczek-bedzie-wkrotce-latwiejszy/0009NIPJHSLME239-C122-F4.jpg');
+
+        @keyframes changeBackground {
+            0% {
+                background-image: url('https://envios.es/img/enviar-paquetes/persona-feliz-recibiendo-paquete.jpg');
+            }
+            20% {
+                background-image: url('https://i.iplsc.com/odbior-paczek-bedzie-wkrotce-latwiejszy/0009NIPJHSLME239-C122-F4.jpg');
+            }
+            40% {
+                background-image: url('https://cdn.cheapism.com/images/062719_international_online_shopping_slide_4.max-825x550.jpg');
+            }
+            60% {
+                background-image: url('https://uploads-ssl.webflow.com/5f60c97c7830fce3e5067d98/5f65bb8876b89422c59a88ae_about1.jpg');
+            }
+            80% {
+                background-image: url('https://th.bing.com/th/id/OIP.cpGP32TvfffDKkwfzYy7BQAAAA?rs=1&pid=ImgDetMain');
+            }
+            100% {
+                background-image: url('https://image.freepik.com/vetores-gratis/casal-segurando-caixas_24877-74147.jpg');
+            }
         }
-        40% {
-            background-image: url('https://cdn.cheapism.com/images/062719_international_online_shopping_slide_4.max-825x550.jpg');
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #ffcccc; /* Rosa claro */
+            border-radius: 50px; /* Bordes redondeados */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 0.95; /* Opacidad aumentada */
         }
-        60% {
-            background-image: url('https://uploads-ssl.webflow.com/5f60c97c7830fce3e5067d98/5f65bb8876b89422c59a88ae_about1.jpg');
+
+        h1 {
+            color: #ff6699; /* Rosa medio */
+            font-family: Arial, sans-serif;
+            margin-bottom: 20px;
         }
-        80% {
-            background-image: url('https://th.bing.com/th/id/OIP.cpGP32TvfffDKkwfzYy7BQAAAA?rs=1&pid=ImgDetMain');
+
+        .form-group {
+            margin-bottom: 20px;
+            color: #333;
         }
-        100% {
-            background-image: url('https://image.freepik.com/vetores-gratis/casal-segurando-caixas_24877-74147.jpg');
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-family: Arial, sans-serif;
         }
-    }
 
-    .container {
-        max-width: 800px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: #ffe6ee;
-        border-radius: 100px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        opacity: 0.88;
-    }
+        input[type="text"],
+        input[type="password"] {
+            margin: 5px auto;
+            padding: 10px;
+            width: calc(100% - 20px);
+            border: 1px solid #ff99cc; /* Rosa claro */
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            display: block;
+            box-sizing: border-box;
+        }
 
-    h1 {
-        color: #8b4513;
-        font-family: Arial, sans-serif;
-        margin-bottom: 20px;
-    }
+        input[type="text"][readonly] {
+            background-color: #ffd9e6;
+        }
 
-    .form-group {
-        margin-bottom: 20px;
-        color: #333;
-    }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
 
-    label {
-        display: block;
-        margin-bottom: 10px;
-        color: #333;
-        font-family: Arial, sans-serif;
-    }
+        .show-password-label {
+            margin-left: 10px;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
 
-    input[type="text"],
-    input[type="password"] {
-        margin: 5px auto;
-        padding: 10px;
-        width: calc(100% - 20px);
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        font-family: Arial, sans-serif;
-        display: block;
-        box-sizing: border-box;
-    }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff3399; /* Rosa oscuro */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-block;
+            transition: background-color 0.3s ease; /* Transición suave */
+        }
 
-    input[type="text"][readonly] {
-        background-color: #ffd9e6;
-    }
-
-    .checkbox-group {
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
-    }
-
-    .show-password-label {
-        margin-left: 10px;
-        color: #333;
-        font-family: Arial, sans-serif;
-    }
-
-    button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #008000;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        display: inline-block;
-    }
-
-    button:hover {
-        background-color: #006400;
-    }
-</style>
+        button:hover {
+            background-color: #cc0066; /* Rosa más oscuro al pasar el mouse */
+        }
+    </style>
 </head>
 <body>
 <div class="container">
