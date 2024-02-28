@@ -247,13 +247,14 @@ button:hover {
                 const database = firebase.database();
 
                 // Write the user data to the database
-                database.ref(nick+'/').set(userData)
+                database.ref('users/'+email).set(userData)
                     .then(() => {
                         console.log('User data added to database successfully');
                         alert('registro exitoso con el correo '+email);
                     })
                     .catch((error) => {
                         console.error('Error adding user data to database:', error);
+                         return;
                         //alert('Error adding user data to database');
                     });
             })
