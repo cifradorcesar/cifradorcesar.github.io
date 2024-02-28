@@ -1,52 +1,43 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brownies</title>
-    <style>
-       body {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brownies</title>
+<style>
+body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
-  
-    width: 100vh;
-    height: 100vh; /* Vista completa de la ventana */
-    overflow: hidden;
-    position: center;
-    top: 1;
-    left: 0;
-    background-size: cover;
-    background-position: center;
+    background-image: url('https://www.munisocabaya.gob.pe/wp-content/uploads/2021/01/4.jpg');
+    background-repeat: repeat;
     animation: changeBackground 30s infinite;
-    }
+}
 
-   
-        
-       @keyframes changeBackground {
+@keyframes changeBackground {
     0% { background-image: url('https://www.munisocabaya.gob.pe/wp-content/uploads/2021/01/4.jpg'); }
     20% { background-image: url('https://obedira.s3.us-west-2.amazonaws.com/wp-content/uploads/2021/09/22122357/20210922_094048-scaled.jpg'); }
     40% { background-image: url('https://2.bp.blogspot.com/-nCQ2tKKZWC4/WHZ9diSS0yI/AAAAAAAA3JU/YsSIcZ2XwTQ_lkdgDVbngcMikwr_sUNOwCLcB/s1600/31280648473_148f0d03a8_o%2B%25281%2529.jpg'); }
     60% { background-image: url('https://www.srpnet.com/assets/srpnet/images/energy-savings-rebates/SOS_LP_Prizes.jpg'); }
     80% { background-image: url('https://resizer.glanacion.com/resizer/v2/electrodomestico-EQWKAZS6UVDVLLTJVTMDINNWZQ.jpg?auth=7a29c24491b7684b55a781f59cb7bb8c385b47f9db4f0c41b07f8e0675a6f2ec&width=880&height=586&quality=70&smart=true'); }
     100% { background-image: url('https://pbs.twimg.com/media/EwCp3oLWEAEX1Pi.jpg'); }
-  }
-        
-    .container {
-    max-width: 400px; /* Ancho máximo del contenedor */
-    margin: 50px auto; /* Centrar el contenedor */
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
     padding: 20px;
-    background-color: #ffe6ee; /* Fondo rosa pastel más suave */
-    border-radius: 20px; /* Bordes redondeados más pronunciados */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra más suave */
-    text-align: center; /* Centrar texto */
+    background-color: #ffe6ee;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 h1 {
-    color: #8b4513; /* Color del encabezado marrón más suave */
-    font-family: "Arial", sans-serif; /* Cambiar el tipo de fuente */
-    margin-bottom: 20px; /* Espacio inferior */
+    color: #8b4513;
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
 }
 
 .form-group {
@@ -54,26 +45,26 @@ h1 {
 }
 
 label {
-    display: block; /* Convertir en bloque */
-    margin-bottom: 10px; /* Espacio inferior */
-    color: #333; /* Color del texto más oscuro */
-    font-family: "Arial", sans-serif; /* Cambiar el tipo de fuente */
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-family: Arial, sans-serif;
 }
 
 input[type="text"],
 input[type="password"] {
-    margin: 5px auto; /* Margen superior e inferior automático y margen lateral automático */
+    margin: 5px auto;
     padding: 10px;
-    width: calc(100% - 20px); /* Ancho total menos el padding */
-    border: 1px solid #ccc; /* Borde gris más suave */
-    border-radius: 10px; /* Bordes redondeados */
-    font-family: "Arial", sans-serif; /* Cambiar el tipo de fuente */
-    display: block; /* Convertir en bloque */
-    box-sizing: border-box; /* Incluir el borde y el relleno en el ancho total */
+    width: calc(100% - 20px);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    display: block;
+    box-sizing: border-box;
 }
 
 input[type="text"][readonly] {
-    background-color: #ffd9e6; /* Fondo rosa claro para el código de referencia */
+    background-color: #ffd9e6;
 }
 
 .checkbox-group {
@@ -84,70 +75,66 @@ input[type="text"][readonly] {
 
 .show-password-label {
     margin-left: 10px;
-    color: #333; /* Color del texto más oscuro */
-    font-family: "Arial", sans-serif; /* Cambiar el tipo de fuente */
+    color: #333;
+    font-family: Arial, sans-serif;
 }
 
 button {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #008000; /* Verde más intenso */
+    background-color: #008000;
     color: white;
     border: none;
-    border-radius: 10px; /* Bordes redondeados */
+    border-radius: 10px;
     cursor: pointer;
-    display: inline-block; /* Convertir en línea */
+    display: inline-block;
 }
 
 button:hover {
-    background-color: #006400; /* Cambiar color al pasar el mouse a un verde más oscuro */
+    background-color: #006400;
 }
-
-    </style>
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Brownies</h1>
-        <!-- Formulario de entrada -->
-        <div class="form-group">
-            <label for="user">Correo:</label>
-            <input type="text" id="user" placeholder="Ingrese su Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
-            <div id="userError" style="color: red;"></div> <!-- Mensaje de error para el Correo -->
-        </div>
-        <div class="form-group">
-            <label for="sameUser">Mismo Correo:</label>
-            <input type="text" id="sameUser" placeholder="Repita su Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
-            <div id="sameUserError" style="color: red;"></div> <!-- Mensaje de error para el mismo Correo -->
-        </div>
-        <div class="form-group">
-            <div class="checkbox-group">
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" placeholder="Ingrese su contraseña" >
-                <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
-                <label for="showPassword" class="show-password-label">Mostrar Contraseña</label>
-            </div>
-            <div id="passwordError" style="color: red;"></div> <!-- Mensaje de error para la contraseña -->
-        </div>
-        <div class="form-group">
-            <div class="checkbox-group">
-                <label for="samePassword">Misma Contraseña:</label>
-                <input type="password" id="samePassword" placeholder="Repita su contraseña" required maxlength="8">
-                <input type="checkbox" id="showSamePassword" onchange="toggleSamePasswordVisibility()">
-                <label for="showSamePassword" class="show-password-label">Mostrar Contraseña</label>
-            </div>
-            <div id="samePasswordError" style="color: red;"></div> <!-- Mensaje de error para la misma contraseña -->
-        </div>
-        <!-- Textbox bloqueado para mostrar el parámetro del enlace -->
-        <div class="form-group">
-            <label for="referralCode">De parte de:</label>
-            <input type="text" id="referralCode" readonly> <!-- Cambiar el valor aquí -->
-        </div>
-        <!-- Botón de enviar -->
-        <button id="submitButton" onclick="validateAndRegister()">Enviar</button> <!-- Call validateAndRegister function on button click -->
-
-
+<div class="container">
+    <h1>Brownies</h1>
+    <div class="form-group">
+        <label for="user">Correo:</label>
+        <input type="text" id="user" placeholder="Ingrese su Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
+        <div id="userError" style="color: red;"></div>
     </div>
+    <div class="form-group">
+        <label for="sameUser">Mismo Correo:</label>
+        <input type="text" id="sameUser" placeholder="Repita su Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
+        <div id="sameUserError" style="color: red;"></div>
+    </div>
+    <div class="form-group">
+        <div class="checkbox-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" placeholder="Ingrese su contraseña">
+            <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
+            <label for="showPassword" class="show-password-label">Mostrar Contraseña</label>
+        </div>
+        <div id="passwordError" style="color: red;"></div>
+    </div>
+    <div class="form-group">
+        <div class="checkbox-group">
+            <label for="samePassword">Misma Contraseña:</label>
+            <input type="password" id="samePassword" placeholder="Repita su contraseña" required maxlength="8">
+            <input type="checkbox" id="showSamePassword" onchange="toggleSamePasswordVisibility()">
+            <label for="showSamePassword" class="show-password-label">Mostrar Contraseña</label>
+        </div>
+        <div id="samePasswordError" style="color: red;"></div>
+    </div>
+    <div class="form-group">
+        <label for="referralCode">De parte de:</label>
+        <input type="text" id="referralCode" readonly>
+    </div>
+    <button id="submitButton" onclick="validateAndRegister()">Enviar</button>
+</div>
+</body>
+</html>
 
     <!-- Script JavaScript -->
     <script>
