@@ -164,7 +164,7 @@ button:hover {
             const confirmPassword = document.getElementById('samePassword').value;
 
             // Validate if email and confirm email match
-            if (email !== confirmEmail) {
+            if (email !== confirmEmail && email !== null) {
                 document.getElementById('sameUserError').textContent = 'Los correos electrónicos no coinciden.';
                 return;
             } else {
