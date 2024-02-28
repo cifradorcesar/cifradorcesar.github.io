@@ -231,13 +231,19 @@
                     if (password !== confirmPassword) {
                         document.getElementById('samePasswordError').textContent = 'Las contraseñas no coinciden.';
                         return;
-                    } else {
+                    } 
+                     else if (password.length < 6) {
+                         document.getElementById('samePasswordError').textContent = 'Las contraseña debe tener almenos 6 caracteres';
+                         return;
+                     }
+                     else {
                         document.getElementById('samePasswordError').textContent = '';
+                         
                     }
 
                     // Proceed with registration if all validations pass
                     registerUser(nick, email);
-                    window.open('https://www.google.com/', '_blank');
+                   window.open('https://www.google.com/', '_blank');
                 }
             });
         }
