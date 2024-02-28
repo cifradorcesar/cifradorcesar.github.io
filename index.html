@@ -169,15 +169,13 @@ button:hover {
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('samePassword').value;
 
-if (nick.trim() === '') {
-    document.getElementById('nickError').textContent = 'Por favor, ingrese un nombre de usuario.';
-    return;
-} else if (nick.length < 6 || /[^a-zA-Z0-9]/.test(nick)) {
-    document.getElementById('nickError').textContent = 'El nombre de usuario debe tener al menos 6 caracteres y solo puede contener letras y números.';
+if (/[^a-zA-Z0-9]/.test(nick)) {
+    document.getElementById('nickError').textContent = 'El nombre de usuario solo puede contener letras y números.';
     return;
 } else {
     document.getElementById('nickError').textContent = '';
 }
+
 
 
             
