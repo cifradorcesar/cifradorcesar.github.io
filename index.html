@@ -33,18 +33,20 @@
     100% { background-image: url('https://pbs.twimg.com/media/EwCp3oLWEAEX1Pi.jpg'); }
   }
         
-      container {
+    .container {
     max-width: 400px; /* Ancho máximo del contenedor */
     margin: 50px auto; /* Centrar el contenedor */
     padding: 20px;
     background-color: #ffe6ee; /* Fondo rosa pastel más suave */
     border-radius: 20px; /* Bordes redondeados más pronunciados */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra más suave */
+    text-align: center; /* Centrar texto */
 }
 
 h1 {
     color: #8b4513; /* Color del encabezado marrón más suave */
     font-family: "Arial", sans-serif; /* Cambiar el tipo de fuente */
+    margin-bottom: 20px; /* Espacio inferior */
 }
 
 .form-group {
@@ -53,19 +55,21 @@ h1 {
 
 label {
     display: block; /* Convertir en bloque */
-    margin-bottom: 5px;
+    margin-bottom: 10px; /* Espacio inferior */
     color: #333; /* Color del texto más oscuro */
     font-family: "Arial", sans-serif; /* Cambiar el tipo de fuente */
 }
 
 input[type="text"],
 input[type="password"] {
-    margin: 5px 0;
+    margin: 5px auto; /* Margen superior e inferior automático y margen lateral automático */
     padding: 10px;
     width: calc(100% - 20px); /* Ancho total menos el padding */
     border: 1px solid #ccc; /* Borde gris más suave */
     border-radius: 10px; /* Bordes redondeados */
     font-family: "Arial", sans-serif; /* Cambiar el tipo de fuente */
+    display: block; /* Convertir en bloque */
+    box-sizing: border-box; /* Incluir el borde y el relleno en el ancho total */
 }
 
 input[type="text"][readonly] {
@@ -93,11 +97,13 @@ button {
     border: none;
     border-radius: 10px; /* Bordes redondeados */
     cursor: pointer;
+    display: inline-block; /* Convertir en línea */
 }
 
 button:hover {
     background-color: #006400; /* Cambiar color al pasar el mouse a un verde más oscuro */
 }
+
     </style>
 </head>
 <body>
