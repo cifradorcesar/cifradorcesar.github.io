@@ -102,7 +102,7 @@ button:hover {
     <div class="form-group">
         <label for="user">Usuario:</label>
         <input type="text" id="nick" placeholder="Ingrese su Usuario" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
-        <div id="NickError" style="color: red;"></div>
+        <div id="nickError" style="color: red;"></div>
     </div>
     <div class="form-group">
         <label for="user">Correo:</label>
@@ -138,136 +138,135 @@ button:hover {
     </div>
     <button id="submitButton" onclick="validateAndRegister()">Enviar</button>
 </div>
-</body>
-</html>
+<!-- Script JavaScript -->
+<script>
+    // Obtener parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    // Obtener el valor del parámetro "refered"
+    const referralCodeValue = urlParams.get('refered');
+    // Asignar el valor al campo "referralCode"
+    document.getElementById('referralCode').value = referralCodeValue;
+    
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById('password');
+        const showPasswordCheckbox = document.getElementById('showPassword');
+        passwordInput.type = showPasswordCheckbox.checked ? 'text' : 'password';
+    }
 
-    <!-- Script JavaScript -->
-    <script>
-        // Obtener parámetros de la URL
-        const urlParams = new URLSearchParams(window.location.search);
-        // Obtener el valor del parámetro "refered"
-        const referralCodeValue = urlParams.get('refered');
-        // Asignar el valor al campo "referralCode"
-        document.getElementById('referralCode').value = referralCodeValue;
+    function toggleSamePasswordVisibility() {
+        const samePasswordInput = document.getElementById('samePassword');
+        const showSamePasswordCheckbox = document.getElementById('showSamePassword');
+        samePasswordInput.type = showSamePasswordCheckbox.checked ? 'text' : 'password';
+    }
+
+    function validateAndRegister() {
+        const nick = document.getElementById('nick').value;
+        const email = document.getElementById('user').value;
+        const confirmEmail = document.getElementById('sameUser').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('samePassword').value;
+
+        if (nick.trim() === '') {
+            document.getElementById('nickError').textContent = 'Por favor, ingrese un nombre de usuario.';
+            return;
+        } else if (nick.length < 6) {
+            document.getElementById('nickError').textContent = 'El nombre de usuario debe tener al menos 6 caracteres.';
+            return;
+        } else if (/[^a-zA-Z0-9]/.test(nick)) {
+            document.getElementById('nickError').textContent = 'El nombre de usuario solo puede contener letras y números.';
+            return;
+        } else {
+            document.getElementById('nickError').textContent = '';
+        }
+
+        // Validate if email and confirm email match
+        if (email !== confirmEmail || email.trim() === '' || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+            document.getElementById('sameUserError').textContent = 'Por favor, ingrese un correo electrónico válido y confirme que coincide.';
+            return;
+        } else {
+            document.getElementById('sameUserError').textContent = '';
+        }
+
+        // Validate if password and confirm password match
+        if (password !== confirmPassword) {
+            document.getElementById('samePasswordError').textContent = 'Las contraseñas no coinciden.';
+            return;
+        } else {
+            document.getElementById('samePasswordError').textContent = '';
+        }
+
+        // Proceed with registration if all validations pass
+        registerUser();
+    }
+
+    function registerUser() {
+        const email = document.getElementById('user').value;
+        const password = document.getElementById('password').value;
         
-        function togglePasswordVisibility() {
-            const passwordInput = document.getElementById('password');
-            const showPasswordCheckbox = document.getElementById('showPassword');
-            passwordInput.type = showPasswordCheckbox.checked ? 'text' : 'password';
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
+            authDomain: "serverdatamoney.firebaseapp.com",
+            databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
+            projectId: "serverdatamoney",
+            storageBucket: "serverdatamoney.appspot.com",
+            messagingSenderId: "626275651972",
+            appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
+            measurementId: "G-8D3K9DR7CG"
+        };
+
+        // Check if Firebase is not already initialized
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        } else {
+            firebase.app(); // if already initialized, use that one
         }
 
-        function toggleSamePasswordVisibility() {
-            const samePasswordInput = document.getElementById('samePassword');
-            const showSamePasswordCheckbox = document.getElementById('showSamePassword');
-            samePasswordInput.type = showSamePasswordCheckbox.checked ? 'text' : 'password';
-        }
+        const auth = firebase.auth();
 
-        function validateAndRegister() {
-            const nick = document.getElementById('nick').value;
-            const email = document.getElementById('user').value;
-            const confirmEmail = document.getElementById('sameUser').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('samePassword').value;
+        auth.createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // User registered successfully
+                console.log('User registered successfully:', userCredential.user);
+                
 
-if (/[^a-zA-Z0-9]/.test(nick)) {
-    document.getElementById('nickError').textContent = 'El nombre de usuario solo puede contener letras y números.';
-    return;
-} else {
-    document.getElementById('nickError').textContent = '';
-}
-
-
-
-            
-            // Validate if email and confirm email match
-          if (email !== confirmEmail || email.trim() === '' || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
-    document.getElementById('sameUserError').textContent = 'Por favor, ingrese un correo electrónico válido y confirme que coincide.';
-    return;
-} else {
-    document.getElementById('sameUserError').textContent = '';
-}
-
-
-            // Validate if password and confirm password match
-            if (password !== confirmPassword) {
-                document.getElementById('samePasswordError').textContent = 'Las contraseñas no coinciden.';
-                return;
-            } else {
-                document.getElementById('samePasswordError').textContent = '';
-            }
-
-            // Proceed with registration if all validations pass
-            registerUser();
-        }
-
-        function registerUser() {
-            const email = document.getElementById('user').value;
-            const password = document.getElementById('password').value;
-            
-            // Initialize Firebase
-            const firebaseConfig = {
-                apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
-    authDomain: "serverdatamoney.firebaseapp.com",
-    databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
-    projectId: "serverdatamoney",
-    storageBucket: "serverdatamoney.appspot.com",
-    messagingSenderId: "626275651972",
-    appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
-    measurementId: "G-8D3K9DR7CG"
-            };
-
-            // Check if Firebase is not already initialized
-            if (!firebase.apps.length) {
-                firebase.initializeApp(firebaseConfig);
-            } else {
-                firebase.app(); // if already initialized, use that one
-            }
-
-            const auth = firebase.auth();
-
-            auth.createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    // User registered successfully
-                    console.log('User registered successfully:', userCredential.user);
+                // Write user data to Realtime Database
+                const userData = {
                     
+                    cvu: "CVU123456789",
+                    alias: "Alias de Usuario",
+                    puntos: 0,
+                    experiencia: 0,
+                    nivel: 0,
+                    
+                    direccion: email,
+                    referido: referralCodeValue
+                };
 
-                    // Write user data to Realtime Database
-                    const userData = {
-                        
-                        cvu: "CVU123456789",
-                        alias: "Alias de Usuario",
-                        puntos: 0,
-                        experiencia: 0,
-                        nivel: 0,
-                        
-                        direccion: email,
-                        referido: referralCodeValue
-                    };
+                // Get a reference to the database service
+                const database = firebase.database();
 
-                    // Get a reference to the database service
-                    const database = firebase.database();
-
-                    // Write the user data to the database
-                    database.ref(nick+'/').set(userData)
-                        .then(() => {
-                            console.log('User data added to database successfully');
-                            alert('registro exitoso con el correo '+email);
-                        })
-                        .catch((error) => {
-                            console.error('Error adding user data to database:', error);
-                            //alert('Error adding user data to database');
-                        });
-                })
-                .catch((error) => {
-                    // An error occurred during registration
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.error('Error al registrar usuario:', errorMessage);
-                    alert(errorMessage);
-                });
-        }
-    </script>
-    <!-- Firebase App is always required and must be first -->
-    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+                // Write the user data to the database
+                database.ref(nick+'/').set(userData)
+                    .then(() => {
+                        console.log('User data added to database successfully');
+                        alert('registro exitoso con el correo '+email);
+                    })
+                    .catch((error) => {
+                        console.error('Error adding user data to database:', error);
+                        //alert('Error adding user data to database');
+                    });
+            })
+            .catch((error) => {
+                // An error occurred during registration
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error('Error al registrar usuario:', errorMessage);
+                alert(errorMessage);
+            });
+    }
+</script>
+<!-- Firebase App is always required and must be first -->
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 </body>
 </html>
