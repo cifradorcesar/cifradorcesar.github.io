@@ -192,15 +192,7 @@
            document.getElementById('nickError').textContent = '';
         }
 
-        const userRef = firebase.database().ref(nick);
-        userRef.once('value', (snapshot) => {
-            if (snapshot.exists()) {
-                // Si el usuario ya existe, mostrar mensaje de error y salir de la función
-                document.getElementById('nickError').textContent = 'Este usuario ya existe. Por favor, elija otro.';
-                return;
-            } else {
-                // Si el usuario no existe, continuar con la validación y registro
-                document.getElementById('nickError').textContent = '';
+        
                 // Resto de la validación y registro aquí
 
                 // Validate if email and confirm email match
@@ -221,8 +213,7 @@
 
                 // Proceed with registration if all validations pass
                 registerUser(nick, email);
-            }
-        });
+            
 
     }
 
