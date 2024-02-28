@@ -178,20 +178,7 @@
 // Función para comprobar si el nick ya está registrado
 function checkIfUserExists(nick) {
     // Obtener una referencia al nodo del usuario en la base de datos
-    const userRef = database.ref(nick);
     
-    // Consultar la base de datos para ver si el usuario ya existe
-    userRef.once('value', (snapshot) => {
-        if (snapshot.exists()) {
-            // Si el nick ya existe, mostrar un mensaje de error
-            alert('El usuario ya está registrado.');
-            return;
-            
-        } else {
-            // Si el nick no existe, continuar con el proceso de registro
-            //alert('El usuario no está registrado. Procede con el registro.');
-            // Aquí puedes llamar a la función de registro de usuario
-        }
     });
 }
     function validateAndRegister() {
@@ -212,8 +199,22 @@ function checkIfUserExists(nick) {
             return;
         } else {
             
-           document.getElementById('nickError').textContent = '';
-            checkIfUserExists(nick);
+           
+            const userRef = database.ref(nick);
+    
+    // Consultar la base de datos para ver si el usuario ya existe
+    userRef.once('value', (snapshot) => {
+        if (snapshot.exists()) {
+            // Si el nick ya existe, mostrar un mensaje de error
+            document.getElementById('nickError').textContent = 'El usuario ya está registrado';
+            return;
+            
+        } else {
+            // Si el nick no existe, continuar con el proceso de registro
+            document.getElementById('nickError').textContent = '';
+            // Aquí puedes llamar a la función de registro de usuario
+        }
+           
         }
 
        // Validate if email and confirm email match
