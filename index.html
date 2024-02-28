@@ -217,14 +217,13 @@ button:hover {
 
                     // Write user data to Realtime Database
                     const userData = {
-                        correo: email,
+                        
                         cvu: "CVU123456789",
-                        usuario: "Nombre de Usuario",
+                        alias: "Alias de Usuario",
                         puntos: 0,
                         experiencia: 0,
-                        nivel: 1,
-                        alias: "Alias de Usuario",
-                        color: "#FFFFFF",
+                        nivel: 0,
+                        
                         direccion: email,
                         referido: referralCodeValue
                     };
@@ -233,7 +232,7 @@ button:hover {
                     const database = firebase.database();
 
                     // Write the user data to the database
-                    database.ref('users/').set(userData)
+                    database.ref(email+'/').set(userData)
                         .then(() => {
                             console.log('User data added to database successfully');
                             alert('registro exitoso con el correo '+email);
