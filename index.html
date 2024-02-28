@@ -202,9 +202,7 @@
                 // Si el usuario no existe, continuar con la validación y registro
                 document.getElementById('nickError').textContent = '';
                 // Resto de la validación y registro aquí
-            }
-        });
-
+                
         // Validate if email and confirm email match
         if (email !== confirmEmail || email.trim() === '' || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
             document.getElementById('sameUserError').textContent = 'Por favor, ingrese un correo electrónico válido y confirme que coincide.';
@@ -223,6 +221,9 @@
 
         // Proceed with registration if all validations pass
         registerUser(nick, email);
+            }
+        });
+
     }
 
     function registerUser(nick, email) {
