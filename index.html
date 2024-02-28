@@ -164,12 +164,12 @@ button:hover {
             const confirmPassword = document.getElementById('samePassword').value;
 
             // Validate if email and confirm email match
-            if (email !== confirmEmail && email !== null) {
-                document.getElementById('sameUserError').textContent = 'Los correos electrónicos no coinciden.';
-                return;
-            } else {
-                document.getElementById('sameUserError').textContent = '';
-            }
+            if (email !== confirmEmail || email.trim() === '') {
+    document.getElementById('sameUserError').textContent = 'Por favor, ingrese un correo electrónico válido y confirme que coincide.';
+    return;
+} else {
+    document.getElementById('sameUserError').textContent = '';
+}
 
             // Validate if password and confirm password match
             if (password !== confirmPassword) {
