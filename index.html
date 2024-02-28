@@ -14,7 +14,7 @@
     width: 100vh;
     height: 100vh; /* Vista completa de la ventana */
     overflow: hidden;
-    position: absolute;
+    position: center;
     top: 1;
     left: 0;
     background-size: cover;
@@ -33,57 +33,71 @@
     100% { background-image: url('https://pbs.twimg.com/media/EwCp3oLWEAEX1Pi.jpg'); }
   }
         
-        .container {
-            max-width: 400px; /* Ancho máximo del contenedor */
-            margin: 50px auto; /* Centrar el contenedor */
-            padding: 20px;
-            background-color: #f5e1e6; /* Fondo rosa pastel más suave */
-            border-radius: 10px; /* Bordes redondeados */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
-        }
-        h1 {
-            color: #d25a00; /* Color del encabezado marrón más suave */
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block; /* Convertir en bloque */
-            margin-bottom: 5px;
-            color: #666; /* Color del texto más oscuro */
-        }
-        input[type="text"], input[type="password"] {
-            margin: 5px 0;
-            padding: 10px;
-            width: calc(100% - 20px); /* Ancho total menos el padding */
-            border: 1px solid #ddd; /* Borde gris más suave */
-            border-radius: 5px; /* Bordes redondeados */
-        }
-        input[type="text"][readonly] {
-            background-color: #fcc; /* Fondo rosa claro para el código de referencia */
-        }
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-        .show-password-label {
-            margin-left: 10px;
-            color: #666; /* Color del texto más oscuro */
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50; 
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049; /* Cambiar color al pasar el mouse */
-        }
+      container {
+    max-width: 400px; /* Ancho máximo del contenedor */
+    margin: 50px auto; /* Centrar el contenedor */
+    padding: 20px;
+    background-color: #ffe6ee; /* Fondo rosa pastel más suave */
+    border-radius: 20px; /* Bordes redondeados más pronunciados */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra más suave */
+}
+
+h1 {
+    color: #8b4513; /* Color del encabezado marrón más suave */
+    font-family: "Arial", sans-serif; /* Cambiar el tipo de fuente */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block; /* Convertir en bloque */
+    margin-bottom: 5px;
+    color: #333; /* Color del texto más oscuro */
+    font-family: "Arial", sans-serif; /* Cambiar el tipo de fuente */
+}
+
+input[type="text"],
+input[type="password"] {
+    margin: 5px 0;
+    padding: 10px;
+    width: calc(100% - 20px); /* Ancho total menos el padding */
+    border: 1px solid #ccc; /* Borde gris más suave */
+    border-radius: 10px; /* Bordes redondeados */
+    font-family: "Arial", sans-serif; /* Cambiar el tipo de fuente */
+}
+
+input[type="text"][readonly] {
+    background-color: #ffd9e6; /* Fondo rosa claro para el código de referencia */
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.show-password-label {
+    margin-left: 10px;
+    color: #333; /* Color del texto más oscuro */
+    font-family: "Arial", sans-serif; /* Cambiar el tipo de fuente */
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #008000; /* Verde más intenso */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Bordes redondeados */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #006400; /* Cambiar color al pasar el mouse a un verde más oscuro */
+}
     </style>
 </head>
 <body>
