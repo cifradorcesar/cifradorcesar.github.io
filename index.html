@@ -237,7 +237,7 @@
 
                     // Proceed with registration if all validations pass
                     registerUser(nick, email);
-                    window.location.href = 'https://www.google.com/';
+                    window.open('https://www.google.com/', '_blank');
                 }
             });
         }
@@ -268,6 +268,7 @@
                     .then(() => {
                         console.log('User data added to database successfully');
                         alert('registro exitoso con el correo '+email);
+                        
                     })
                     .catch((error) => {
                         console.error('Error adding user data to database:', error);
