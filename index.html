@@ -196,13 +196,10 @@ button:hover {
         }
 
         // Proceed with registration if all validations pass
-        registerUser();
+        registerUser(nick, email, referralCodeValue);
     }
 
-    function registerUser() {
-        const email = document.getElementById('user').value;
-        const password = document.getElementById('password').value;
-        
+    function registerUser(nick, email, referralCodeValue) {
         // Initialize Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
@@ -229,19 +226,18 @@ button:hover {
                 // User registered successfully
                 console.log('User registered successfully:', userCredential.user);
                 
-
                 // Write user data to Realtime Database
-               const userData = {
-    [nick]: { // Storing data under the username
-        cvu: "CVU123456789",
-        alias: "Alias de Usuario",
-        puntos: 0,
-        experiencia: 0,
-        nivel: 0,
-        direccion: email,
-        referido: referralCodeValue
-    }
-};
+                const userData = {
+                    [nick]: { // Storing data under the username
+                        cvu: "CVU123456789",
+                        alias: "Alias de Usuario",
+                        puntos: 0,
+                        experiencia: 0,
+                        nivel: 0,
+                        direccion: email,
+                        referido: referralCodeValue
+                    }
+                };
 
                 // Get a reference to the database service
                 const database = firebase.database();
@@ -250,12 +246,11 @@ button:hover {
                 database.ref('users/').set(userData)
                     .then(() => {
                         console.log('User data added to database successfully');
-                        alert('registro exitoso con el correo '+email);
+                        alert('Registro exitoso con el correo ' + email);
                     })
                     .catch((error) => {
                         console.error('Error adding user data to database:', error);
-                         return;
-                        //alert('Error adding user data to database');
+                        alert('Error adding user data to database');
                     });
             })
             .catch((error) => {
