@@ -5,99 +5,136 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brownies</title>
 <style>
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    background-repeat: repeat;
-    animation: changeBackground 30s infinite;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brownies</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
 
-@keyframes changeBackground {
-    0% { background-image: url('https://www.munisocabaya.gob.pe/wp-content/uploads/2021/01/4.jpg'); }
-    20% { background-image: url('https://obedira.s3.us-west-2.amazonaws.com/wp-content/uploads/2021/09/22122357/20210922_094048-scaled.jpg'); }
-    40% { background-image: url('https://2.bp.blogspot.com/-nCQ2tKKZWC4/WHZ9diSS0yI/AAAAAAAA3JU/YsSIcZ2XwTQ_lkdgDVbngcMikwr_sUNOwCLcB/s1600/31280648473_148f0d03a8_o%2B%25281%2529.jpg'); }
-    60% { background-image: url('https://www.srpnet.com/assets/srpnet/images/energy-savings-rebates/SOS_LP_Prizes.jpg'); }
-    80% { background-image: url('https://resizer.glanacion.com/resizer/v2/electrodomestico-EQWKAZS6UVDVLLTJVTMDINNWZQ.jpg?auth=7a29c24491b7684b55a781f59cb7bb8c385b47f9db4f0c41b07f8e0675a6f2ec&width=880&height=586&quality=70&smart=true'); }
-    100% { background-image: url('https://pbs.twimg.com/media/EwCp3oLWEAEX1Pi.jpg'); }
-}
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #ffe6ee;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
 
-.container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #ffe6ee;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
+    h1 {
+        color: #8b4513;
+        font-family: Arial, sans-serif;
+        margin-bottom: 20px;
+    }
 
-h1 {
-    color: #8b4513;
-    font-family: Arial, sans-serif;
-    margin-bottom: 20px;
-}
+    .image-slider {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: slideImages 20s infinite;
+    }
 
-.form-group {
-    margin-bottom: 20px;
-}
+    @keyframes slideImages {
+        0% {
+            transform: translateX(0%);
+        }
+        25% {
+            transform: translateX(-100%);
+        }
+        50% {
+            transform: translateX(-200%);
+        }
+        75% {
+            transform: translateX(-300%);
+        }
+        100% {
+            transform: translateX(-400%);
+        }
+    }
 
-label {
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
-    font-family: Arial, sans-serif;
-}
+    .image-slider img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 
-input[type="text"],
-input[type="password"] {
-    margin: 5px auto;
-    padding: 10px;
-    width: calc(100% - 20px);
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-family: Arial, sans-serif;
-    display: block;
-    box-sizing: border-box;
-}
+    .form-group {
+        margin-bottom: 20px;
+    }
 
-input[type="text"][readonly] {
-    background-color: #ffd9e6;
-}
+    label {
+        display: block;
+        margin-bottom: 10px;
+        color: #333;
+        font-family: Arial, sans-serif;
+    }
 
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
+    input[type="text"],
+    input[type="password"] {
+        margin: 5px auto;
+        padding: 10px;
+        width: calc(100% - 20px);
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-family: Arial, sans-serif;
+        display: block;
+        box-sizing: border-box;
+    }
 
-.show-password-label {
-    margin-left: 10px;
-    color: #333;
-    font-family: Arial, sans-serif;
-}
+    input[type="text"][readonly] {
+        background-color: #ffd9e6;
+    }
 
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #008000;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    display: inline-block;
-}
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
 
-button:hover {
-    background-color: #006400;
-}
+    .show-password-label {
+        margin-left: 10px;
+        color: #333;
+        font-family: Arial, sans-serif;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #008000;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    button:hover {
+        background-color: #006400;
+    }
 </style>
 </head>
 <body>
 <div class="container">
     <h1>Brownies</h1>
+    <div class="image-slider">
+        <img src="https://www.munisocabaya.gob.pe/wp-content/uploads/2021/01/4.jpg" alt="Brownies">
+        <img src="https://obedira.s3.us-west-2.amazonaws.com/wp-content/uploads/2021/09/22122357/20210922_094048-scaled.jpg" alt="Brownies">
+        <img src="https://2.bp.blogspot.com/-nCQ2tKKZWC4/WHZ9diSS0yI/AAAAAAAA3JU/YsSIcZ2XwTQ_lkdgDVbngcMikwr_sUNOwCLcB/s1600/31280648473_148f0d03a8_o%2B%25281%2529.jpg" alt="Brownies">
+        <img src="https://www.srpnet.com/assets/srpnet/images/energy-savings-rebates/SOS_LP_Prizes.jpg" alt="Brownies">
+        <img src="https://resizer.glanacion.com/resizer/v2/electrodomestico-EQWKAZS6UVDVLLTJVTMDINNWZQ.jpg?auth=7a29c24491b7684b55a781f59cb7bb8c385b47f9db4f0c41b07f8e0675a6f2ec&width=880&height=586&quality=70&smart=true" alt="Brownies">
+        <img src="https://pbs.twimg.com/media/EwCp3oLWEAEX1Pi.jpg" alt="Brownies">
+    </div>
     <div class="form-group">
         <label for="nick">Usuario:</label>
         <input type="text" id="nick" placeholder="Ingrese su Usuario" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
@@ -137,6 +174,9 @@ button:hover {
     </div>
     <button id="submitButton" onclick="validateAndRegister()">Enviar</button>
 </div>
+</body>
+</html>
+
 <!-- Script JavaScript -->
 <script>
     // Obtener parámetros de la URL
