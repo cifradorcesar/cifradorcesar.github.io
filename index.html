@@ -34,11 +34,10 @@
         }
 
          
-         .containerimage{
+         .containerimage {
             max-width: 800px;
             margin: 50px auto;
             padding: 40px;
-            
             border-radius: 50px; /* Bordes redondeados */
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             text-align: center;
@@ -47,6 +46,7 @@
             opacity: 0.95; /* Opacidad aumentada */
             background-size: cover;
             animation: changeBackground 20s infinite;
+            float: left; /* Agregado para colocarlo a la par */
    }
 
         .container {
@@ -60,6 +60,7 @@
             position: relative;
             overflow: hidden;
             opacity: 0.95; /* Opacidad aumentada */
+            float: left; /* Agregado para colocarlo a la par */
         }
 
         h1 {
@@ -127,11 +128,9 @@
     </style>
 </head>
 <body>
-<div 
-    class="containerimage">
-   
-   
-   class="container">
+<div class="containerimage">
+</div>
+<div class="container">
     <h1>Brownies</h1>
     <div class="form-group">
         <label for="nick">Usuario:</label>
