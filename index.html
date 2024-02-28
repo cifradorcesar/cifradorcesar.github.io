@@ -5,48 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brownies</title>
 <style>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brownies</title>
-<style>
     body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-    }
-    .image-slider {
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        animation: slideImages 20s infinite;
+        background-size: cover;
+        animation: changeBackground 20s infinite;
     }
 
-    @keyframes slideImages {
+    @keyframes changeBackground {
         0% {
-            transform: translateX(0%);
+            background-image: url('https://www.munisocabaya.gob.pe/wp-content/uploads/2021/01/4.jpg');
         }
-        25% {
-            transform: translateX(-100%);
+        20% {
+            background-image: url('https://obedira.s3.us-west-2.amazonaws.com/wp-content/uploads/2021/09/22122357/20210922_094048-scaled.jpg');
         }
-        50% {
-            transform: translateX(-200%);
+        40% {
+            background-image: url('https://2.bp.blogspot.com/-nCQ2tKKZWC4/WHZ9diSS0yI/AAAAAAAA3JU/YsSIcZ2XwTQ_lkdgDVbngcMikwr_sUNOwCLcB/s1600/31280648473_148f0d03a8_o%2B%25281%2529.jpg');
         }
-        75% {
-            transform: translateX(-300%);
+        60% {
+            background-image: url('https://www.srpnet.com/assets/srpnet/images/energy-savings-rebates/SOS_LP_Prizes.jpg');
+        }
+        80% {
+            background-image: url('https://resizer.glanacion.com/resizer/v2/electrodomestico-EQWKAZS6UVDVLLTJVTMDINNWZQ.jpg?auth=7a29c24491b7684b55a781f59cb7bb8c385b47f9db4f0c41b07f8e0675a6f2ec&width=880&height=586&quality=70&smart=true');
         }
         100% {
-            transform: translateX(-400%);
+            background-image: url('https://pbs.twimg.com/media/EwCp3oLWEAEX1Pi.jpg');
         }
-    }
-
-    .image-slider img {
-        width: 100%;
-        height: auto;
-        display: block;
     }
 
     .container {
@@ -66,8 +51,6 @@
         font-family: Arial, sans-serif;
         margin-bottom: 20px;
     }
-
-    .
 
     .form-group {
         margin-bottom: 20px;
@@ -128,14 +111,6 @@
 <body>
 <div class="container">
     <h1>Brownies</h1>
-    <div class="image-slider">
-        <img src="https://www.munisocabaya.gob.pe/wp-content/uploads/2021/01/4.jpg" alt="Brownies">
-        <img src="https://obedira.s3.us-west-2.amazonaws.com/wp-content/uploads/2021/09/22122357/20210922_094048-scaled.jpg" alt="Brownies">
-        <img src="https://2.bp.blogspot.com/-nCQ2tKKZWC4/WHZ9diSS0yI/AAAAAAAA3JU/YsSIcZ2XwTQ_lkdgDVbngcMikwr_sUNOwCLcB/s1600/31280648473_148f0d03a8_o%2B%25281%2529.jpg" alt="Brownies">
-        <img src="https://www.srpnet.com/assets/srpnet/images/energy-savings-rebates/SOS_LP_Prizes.jpg" alt="Brownies">
-        <img src="https://resizer.glanacion.com/resizer/v2/electrodomestico-EQWKAZS6UVDVLLTJVTMDINNWZQ.jpg?auth=7a29c24491b7684b55a781f59cb7bb8c385b47f9db4f0c41b07f8e0675a6f2ec&width=880&height=586&quality=70&smart=true" alt="Brownies">
-        <img src="https://pbs.twimg.com/media/EwCp3oLWEAEX1Pi.jpg" alt="Brownies">
-    </div>
     <div class="form-group">
         <label for="nick">Usuario:</label>
         <input type="text" id="nick" placeholder="Ingrese su Usuario" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
@@ -175,8 +150,6 @@
     </div>
     <button id="submitButton" onclick="validateAndRegister()">Enviar</button>
 </div>
-</body>
-</html>
 
 <!-- Script JavaScript -->
 <script>
