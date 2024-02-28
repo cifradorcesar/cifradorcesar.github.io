@@ -9,6 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #6699ff ; /* Rosa claro */
             
         }
 
@@ -45,7 +46,7 @@
             overflow: hidden;
             opacity: 0.95; /* Opacidad aumentada */
             background-size: cover;
-            animation: changeBackground 40s infinite;
+            background-image: url('brownieslocos');
             float: center; /* Agregado para colocarlo a la par */
    }
 
@@ -131,7 +132,9 @@
 <div class="containerimage">
 
 <div class="container">
+   <class="containerimage">
     <h1>Brownies</h1>
+   
     <div class="form-group">
         <label for="nick">Usuario:</label>
         <input type="text" id="nick" placeholder="Ingrese su Usuario" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
