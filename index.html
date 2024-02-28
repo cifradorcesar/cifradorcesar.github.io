@@ -231,23 +231,23 @@ button:hover {
                 
 
                 // Write user data to Realtime Database
-                const userData = {
-                    
-                    cvu: "CVU123456789",
-                    alias: "Alias de Usuario",
-                    puntos: 0,
-                    experiencia: 0,
-                    nivel: 0,
-                    
-                    direccion: email,
-                    referido: referralCodeValue
-                };
+               const userData = {
+    [nick]: { // Storing data under the username
+        cvu: "CVU123456789",
+        alias: "Alias de Usuario",
+        puntos: 0,
+        experiencia: 0,
+        nivel: 0,
+        direccion: email,
+        referido: referralCodeValue
+    }
+};
 
                 // Get a reference to the database service
                 const database = firebase.database();
 
                 // Write the user data to the database
-                database.ref('users/'+nick).set(userData)
+                database.ref('users/').set(userData)
                     .then(() => {
                         console.log('User data added to database successfully');
                         alert('registro exitoso con el correo '+email);
