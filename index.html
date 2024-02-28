@@ -10,7 +10,6 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-   
     background-repeat: repeat;
     animation: changeBackground 30s infinite;
 }
@@ -100,7 +99,7 @@ button:hover {
 <div class="container">
     <h1>Brownies</h1>
     <div class="form-group">
-        <label for="user">Usuario:</label>
+        <label for="nick">Usuario:</label>
         <input type="text" id="nick" placeholder="Ingrese su Usuario" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
         <div id="nickError" style="color: red;"></div>
     </div>
@@ -196,11 +195,10 @@ button:hover {
         }
 
         // Proceed with registration if all validations pass
-        registerUser();
+        registerUser(nick, email);
     }
 
-    function registerUser() {
-        const email = document.getElementById('user').value;
+    function registerUser(nick, email) {
         const password = document.getElementById('password').value;
         
         // Initialize Firebase
@@ -232,13 +230,11 @@ button:hover {
 
                 // Write user data to Realtime Database
                 const userData = {
-                    
                     cvu: "CVU123456789",
                     alias: "Alias de Usuario",
                     puntos: 0,
                     experiencia: 0,
                     nivel: 0,
-                    
                     direccion: email,
                     referido: referralCodeValue
                 };
