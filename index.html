@@ -159,7 +159,7 @@
   <div class="form-group">
     <div class="checkbox-group">
       <label for="password">Contraseña:</label>
-      <input type="password" id="password" placeholder="Ingrese su contraseña">
+      <input type="password" id="password" placeholder="Ingrese su contraseña" required maxlength="15">
       <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
       <label for="showPassword" class="show-password-label">Mostrar Contraseña</label>
     </div>
@@ -168,7 +168,7 @@
   <div class="form-group">
     <div class="checkbox-group">
       <label for="samePassword">Misma Contraseña:</label>
-      <input type="password" id="samePassword" placeholder="Repita su contraseña" required maxlength="8">
+      <input type="password" id="samePassword" placeholder="Repita su contraseña" required maxlength="15">
       <input type="checkbox" id="showSamePassword" onchange="toggleSamePasswordVisibility()">
       <label for="showSamePassword" class="show-password-label">Mostrar Contraseña</label>
     </div>
