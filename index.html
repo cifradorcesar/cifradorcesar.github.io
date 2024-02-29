@@ -9,31 +9,51 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #6699ff ; /* Rosa claro */
-            
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet) fixed;
+            animation: changeBackground 40s infinite;
         }
 
-       
+        @keyframes changeBackground {
+            0% { background-color: red; }
+            14.28% { background-color: orange; }
+            28.57% { background-color: yellow; }
+            42.85% { background-color: green; }
+            57.14% { background-color: blue; }
+            71.42% { background-color: indigo; }
+            85.71% { background-color: violet; }
+            100% { background-color: red; }
+        }
 
         .container {
             max-width: 800px;
             margin: 50px auto;
             padding: 40px;
-            background-color: #6699ff ; /* Rosa claro */
-            border-radius: 50px; /* Bordes redondeados */
+            border-radius: 50px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             text-align: center;
             position: relative;
             overflow: hidden;
-            opacity: 0.95; /* Opacidad aumentada */
+            opacity: 0.95;
+            background-color: rgba(255, 255, 255, 0.8);
         }
 
         h1 {
-            color: #8B4513; /* Color marrón */
-            font-family: Arial, sans-serif;
-            margin-top: 20px; /* Ajuste de margen superior */
+            font-size: 50px;
+            margin-top: 20px;
             margin-bottom: 20px;
-            font-size: 40px; /* Tamaño de fuente aumentado */
+            color: #8B4513;
+            animation: changeTextColor 40s infinite;
+        }
+
+        @keyframes changeTextColor {
+            0% { color: red; }
+            14.28% { color: orange; }
+            28.57% { color: yellow; }
+            42.85% { color: green; }
+            57.14% { color: blue; }
+            71.42% { color: indigo; }
+            85.71% { color: violet; }
+            100% { color: red; }
         }
 
         .form-group {
@@ -53,7 +73,7 @@
             margin: 5px auto;
             padding: 10px;
             width: calc(100% - 20px);
-            border: 1px solid #ff99cc; /* Rosa claro */
+            border: 1px solid #ff99cc;
             border-radius: 10px;
             font-family: Arial, sans-serif;
             display: block;
@@ -80,29 +100,28 @@
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #ff3399; /* Rosa oscuro */
+            background-color: #ff3399;
             color: white;
             border: none;
             border-radius: 10px;
             cursor: pointer;
             display: inline-block;
-            transition: background-color 0.3s ease; /* Transición suave */
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #cc0066; /* Rosa más oscuro al pasar el mouse */
+            background-color: #cc0066;
         }
 
         button:active {
-            background-color: #99004d; /* Rosa aún más oscuro cuando se presiona */
+            background-color: #99004d;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <img src="brownieslocos" alt="Brownies Locos" style="margin-right: 10px;">
-        <h1 style="font-size: 50px; color: #8B4513; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);">Brownies</h1>
-        <!
+        <h1>Brownies</h1>
         <div class="form-group">
             <label for="nick">Usuario:</label>
             <input type="text" id="nick" placeholder="Ingrese su Usuario" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
