@@ -5,120 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brownies</title>
 <style>
-  body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(40deg, red, orange, yellow, green, blue, indigo, violet) fixed;
-            animation: changeBackground 2s infinite;
-        }
-
-        @keyframes changeBackground {
-            0% { background-color: red; }
-            14.28% { background-color: orange; }
-            28.57% { background-color: yellow; }
-            42.85% { background-color: green; }
-            57.14% { background-color: blue; }
-            71.42% { background-color: indigo; }
-            85.71% { background-color: violet; }
-            100% { background-color: red; }
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 40px;
-            border-radius: 50px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            opacity: 0.95;
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-
-        h1 {
-            font-size: 50px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            color: #8B4513;
-            animation: changeTextColor 20s infinite;
-        }
-
-        @keyframes changeTextColor {
-            0% { color: red; }
-            14.28% { color: orange; }
-            28.57% { color: yellow; }
-            42.85% { color: green; }
-            57.14% { color: blue; }
-            71.42% { color: indigo; }
-            85.71% { color: violet; }
-            100% { color: red; }
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            color: #333;
-            font-family: Arial, sans-serif;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            margin: 5px auto;
-            padding: 10px;
-            width: calc(100% - 20px);
-            border: 1px solid #ff99cc;
-            border-radius: 10px;
-            font-family: Arial, sans-serif;
-            display: block;
-            box-sizing: border-box;
-        }
-
-        input[type="text"][readonly] {
-            background-color: #ffd9e6;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-
-        .show-password-label {
-            margin-left: 10px;
-            color: #333;
-            font-family: Arial, sans-serif;
-        }
-
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #ff3399;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            display: inline-block;
-            transition: background-color 0.5s ease;
-        }
-
-        button:hover {
-            background-color: #cc0066;
-        }
-
-        button:active {
-            background-color: #99004d;
-        }
-    </style>
-</head>
-<body>
+ <body>
     <div class="container">
         <img src="brownieslocos" alt="Brownies Locos" style="margin-right: 10px;">
         <h1>Brownies</h1>
@@ -161,7 +48,6 @@
         </div>
         <button id="submitButton" onclick="validateAndRegister()">Enviar</button>
     </div>
- 
 <!-- Firebase App is always required and must be first -->
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 <!-- Script JavaScript -->
