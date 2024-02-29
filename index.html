@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Brownies</title>
 <style>
   body {
@@ -34,6 +34,12 @@
     overflow: hidden;
     opacity: 0.95;
     background-color: rgba(255, 255, 255, 0.8);
+    max-width: 800px;
+    width: 90%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   h1 {
@@ -174,6 +180,9 @@
   </div>
   <button id="submitButton" onclick="validateAndRegister()">Enviar</button>
 </div>
+
+
+  
 <!-- Firebase App is always required and must be first -->
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 <!-- Script JavaScript -->
