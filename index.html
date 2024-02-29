@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brownies</title>
 <style>
- body {
+  body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #6699ff; /* Rosa claro */
-            animation: changeBackground 30s infinite; /* Cambiar imagen de fondo gradualmente durante 30 segundos */
+            background-color: #6699ff ; /* Rosa claro */
+            animation: changeBackground 30s infinite; /* Change background image gradually over 30 seconds */
         }
 
         @keyframes changeBackground {
@@ -38,7 +38,7 @@
             max-width: 800px;
             margin: 50px auto;
             padding: 40px;
-            background-color: #6699ff; /* Rosa claro */
+            background-color: #6699ff ; /* Rosa claro */
             border-radius: 50px; /* Bordes redondeados */
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             text-align: center;
@@ -50,6 +50,7 @@
         h1 {
             color: #8B4513; /* Color marrón */
             font-family: Arial, sans-serif;
+            margin-top: 20px; /* Ajuste de margen superior */
             margin-bottom: 20px;
             font-size: 40px; /* Tamaño de fuente aumentado */
         }
@@ -118,11 +119,50 @@
 </head>
 <body>
     <div class="container">
-        <img src="brownieslocos" alt="Brownies Locos" style="display: block; margin: 0 auto; margin-bottom: 20px;">
-        <h1 style="font-size: 50px; color: #8B4513;">Brownies</h1> <!-- Tamaño de fuente aumentado y color cambiado -->
+        <img src="brownieslocos" alt="Brownies Locos" style="margin-right: 10px;">
+        <h1 style="font-size: 50px; color: #8B4513; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);">Brownies</h1> <!-- Tamaño de fuente aumentado, color cambiado y posición ajustada -->
        
-        <!-- El resto del formulario permanece sin cambios -->
+        <div class="form-group">
+            <label for="nick">Usuario:</label>
+            <input type="text" id="nick" placeholder="Ingrese su Usuario" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
+            <div id="nickError" style="color: red;"></div>
+        </div>
+        <div class="form-group">
+            <label for="user">Correo:</label>
+            <input type="text" id="user" placeholder="Ingrese su Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
+            <div id="userError" style="color: red;"></div>
+        </div>
+        <div class="form-group">
+            <label for="sameUser">Mismo Correo:</label>
+            <input type="text" id="sameUser" placeholder="Repita su Correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
+            <div id="sameUserError" style="color: red;"></div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" placeholder="Ingrese su contraseña">
+                <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
+                <label for="showPassword" class="show-password-label">Mostrar Contraseña</label>
+            </div>
+            <div id="passwordError" style="color: red;"></div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox-group">
+                <label for="samePassword">Misma Contraseña:</label>
+                <input type="password" id="samePassword" placeholder="Repita su contraseña" required maxlength="8">
+                <input type="checkbox" id="showSamePassword" onchange="toggleSamePasswordVisibility()">
+                <label for="showSamePassword" class="show-password-label">Mostrar Contraseña</label>
+            </div>
+            <div id="samePasswordError" style="color: red;"></div>
+        </div>
+        <div class="form-group">
+            <label for="referralCode">De parte de:</label>
+            <input type="text" id="referralCode" readonly>
+        </div>
+        <button id="submitButton" onclick="validateAndRegister()">Enviar</button>
     </div>
+
+ 
 <!-- Firebase App is always required and must be first -->
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 <!-- Script JavaScript -->
