@@ -21,7 +21,7 @@
 
   #container {
     display: flex;
-    align-items: center;
+    align-items: flex-end; /* Alinea el contenido al final */
     justify-content: center;
     flex-direction: column; /* Agregado para alinear verticalmente */
     height: 100vh;
@@ -36,13 +36,10 @@
   }
 
   #button {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #ff3399;
+    padding: 20px 40px; /* Aumenta el tamaño del botón */
+    font-size: 24px; /* Aumenta el tamaño del texto del botón */
+    width: 80%; /* Ancho del botón */
+    background-color: rgb(255, 0, 0); /* Color inicial */
     color: white;
     border: none;
     border-radius: 10px;
@@ -51,16 +48,16 @@
   }
 
   #button:hover {
-    background-color: #cc0066;
+    background-color: rgb(0, 255, 0); /* Cambia de color al pasar el mouse */
   }
 
   #button:active {
-    background-color: #99004d;
+    background-color: rgb(0, 0, 255); /* Cambia de color al hacer clic */
   }
 
   /* Estilos para el texto */
   .step-text {
-    font-size: 24px; /* Tamaño grande */
+    font-size: 36px; /* Tamaño grande */
     font-family: "Arial Black", sans-serif; /* Fuente elegante */
     color: #fff; /* Color blanco */
     text-align: center; /* Centrado */
@@ -78,11 +75,15 @@
   var images = ["imagen1.jpg", "imagen2.jpg", "imagen3.jpg", "imagen4.jpg", "imagen5.jpg"];
   var currentIndex = 0;
   var image = document.getElementById("image");
+  var button = document.getElementById("button");
 
   function changeImage() {
     currentIndex = (currentIndex + 1) % images.length;
     image.src = images[currentIndex];
     document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1); // Cambia el texto del paso
+    // Genera colores aleatorios RGB
+    var randomColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
+    button.style.backgroundColor = randomColor;
   }
 </script>
 </body>
