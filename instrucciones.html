@@ -21,11 +21,12 @@
 
   #container {
     display: flex;
-    align-items: center; /* Centra verticalmente */
+    align-items: center;
     justify-content: center;
     flex-direction: column; /* Agregado para alinear verticalmente */
     height: 100vh;
     position: relative;
+    padding-bottom: 80px; /* Espacio para el botón */
   }
 
   #image {
@@ -36,18 +37,19 @@
   }
 
   #button {
-    padding: 20px 0; /* Aumenta el tamaño del botón y lo ajusta al ancho de la página */
-    width: 100%; /* Ancho del botón */
+    padding: 40px; /* Aumenta el tamaño del botón */
+    font-size: 24px; /* Aumenta el tamaño del texto del botón */
+    width: calc(100% - 40px); /* Ancho del botón (100% del ancho menos el espacio para los bordes izquierdo y derecho) */
     background-color: rgb(255, 0, 0); /* Color inicial */
     color: white;
     border: none;
-    border-radius: 0; /* Quita el borde redondeado */
+    border-radius: 0; /* Bordes redondos */
     cursor: pointer;
-    transition: background-color 0.5s ease;
     position: absolute;
-    bottom: 0; /* Lo coloca en la parte inferior */
-    left: 0; /* Lo coloca en el borde izquierdo */
-    right: 0; /* Lo coloca en el borde derecho */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: background-color 0.5s ease;
   }
 
   #button:hover {
@@ -71,8 +73,8 @@
 <div id="container">
   <span class="step-text">Paso 1</span>
   <img id="image" src="imagen1.jpg" alt="Imagen" />
-  <button id="button" onclick="changeImage()">Siguiente</button>
 </div>
+<button id="button" onclick="changeImage()">Siguiente</button>
 
 <script>
   var images = ["imagen1.jpg", "imagen2.jpg", "imagen3.jpg", "imagen4.jpg", "imagen5.jpg"];
