@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instrucciones de Instalación</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(-45deg, red, green, blue) fixed;
+    animation: changeBackground 10s infinite;
+    font-family: Arial, sans-serif;
+  }
+
+  @keyframes changeBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  #container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+  }
+
+  #image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  #button {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff3399;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+  }
+
+  #button:hover {
+    background-color: #cc0066;
+  }
+
+  #button:active {
+    background-color: #99004d;
+  }
+</style>
+</head>
+<body>
+<div id="container">
+  <img id="image" src="imagen1.jpg" alt="Imagen" />
+  <button id="button" onclick="changeImage()">Siguiente</button>
+</div>
+
+<script>
+  var images = ["imagen1.jpg", "imagen2.jpg", "imagen3.jpg", "imagen4.jpg", "imagen5.jpg"];
+  var currentIndex = 0;
+  var image = document.getElementById("image");
+
+  function changeImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    image.src = images[currentIndex];
+  }
+</script>
+</body>
+</html>
