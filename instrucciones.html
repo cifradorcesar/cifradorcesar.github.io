@@ -23,6 +23,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column; /* Agregado para alinear verticalmente */
     height: 100vh;
     position: relative;
   }
@@ -31,6 +32,7 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    margin-bottom: 20px; /* Espacio entre la imagen y el texto */
   }
 
   #button {
@@ -55,10 +57,19 @@
   #button:active {
     background-color: #99004d;
   }
+
+  /* Estilos para el texto */
+  .step-text {
+    font-size: 24px; /* Tamaño grande */
+    font-family: "Arial Black", sans-serif; /* Fuente elegante */
+    color: #fff; /* Color blanco */
+    text-align: center; /* Centrado */
+  }
 </style>
 </head>
 <body>
 <div id="container">
+  <span class="step-text">Paso 1</span>
   <img id="image" src="imagen1.jpg" alt="Imagen" />
   <button id="button" onclick="changeImage()">Siguiente</button>
 </div>
@@ -71,6 +82,7 @@
   function changeImage() {
     currentIndex = (currentIndex + 1) % images.length;
     image.src = images[currentIndex];
+    document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1); // Cambia el texto del paso
   }
 </script>
 </body>
