@@ -21,7 +21,7 @@
 
   #container {
     display: flex;
-    align-items: flex-end; /* Alinea el contenido al final */
+    align-items: center; /* Centra verticalmente */
     justify-content: center;
     flex-direction: column; /* Agregado para alinear verticalmente */
     height: 100vh;
@@ -36,15 +36,18 @@
   }
 
   #button {
-    padding: 20px 40px; /* Aumenta el tamaño del botón */
-    font-size: 24px; /* Aumenta el tamaño del texto del botón */
-    width: 80%; /* Ancho del botón */
+    padding: 20px 0; /* Aumenta el tamaño del botón y lo ajusta al ancho de la página */
+    width: 100%; /* Ancho del botón */
     background-color: rgb(255, 0, 0); /* Color inicial */
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 0; /* Quita el borde redondeado */
     cursor: pointer;
     transition: background-color 0.5s ease;
+    position: absolute;
+    bottom: 0; /* Lo coloca en la parte inferior */
+    left: 0; /* Lo coloca en el borde izquierdo */
+    right: 0; /* Lo coloca en el borde derecho */
   }
 
   #button:hover {
