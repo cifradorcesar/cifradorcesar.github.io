@@ -8,9 +8,9 @@
   body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(-45deg, red, green, blue) fixed;
+    background: linear-gradient(-45deg, #FF416C, #FF4B2B, #FFD801, #A0FE65) fixed; /* Nuevo degradado */
     animation: changeBackground 10s infinite;
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Fuente mejorada */
   }
 
   @keyframes changeBackground {
@@ -21,28 +21,28 @@
 
   #container {
     display: flex;
-    align-items: center; /* Alinear verticalmente */
+    align-items: center;
     justify-content: center;
-    flex-direction: column; /* Alinear horizontalmente */
-    height: 100vh;
+    flex-direction: column;
+    height: calc(100vh - 80px); /* Ajuste para dejar espacio para el botón */
     position: relative;
   }
 
   #image {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 80%; /* Mejora en el tamaño de la imagen */
+    max-height: 80%; /* Mejora en el tamaño de la imagen */
     object-fit: contain;
-    margin-bottom: 20px; /* Espacio entre la imagen y el texto */
+    margin-bottom: 20px;
   }
 
   #button {
-    padding: 40px; /* Aumenta el tamaño del botón */
-    font-size: 24px; /* Aumenta el tamaño del texto del botón */
+    padding: 20px; /* Tamaño del botón ajustado */
+    font-size: 20px; /* Tamaño de fuente del botón ajustado */
     width: calc(100% - 40px); /* Calcula el ancho del botón */
-    background-color: rgb(255, 0, 0); /* Color inicial */
+    background-color: #FF4B2B; /* Nuevo color */
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 20px; /* Bordes redondeados */
     cursor: pointer;
     transition: background-color 0.5s ease;
     position: fixed;
@@ -52,19 +52,20 @@
   }
 
   #button:hover {
-    background-color: rgb(0, 255, 0); /* Cambia de color al pasar el mouse */
+    background-color: #FF6384; /* Nuevo color al pasar el mouse */
   }
 
   #button:active {
-    background-color: rgb(0, 0, 255); /* Cambia de color al hacer clic */
+    background-color: #FF416C; /* Nuevo color al hacer clic */
   }
 
   /* Estilos para el texto */
   .step-text {
-    font-size: 36px; /* Tamaño grande */
-    font-family: "Arial Black", sans-serif; /* Fuente elegante */
-    color: #fff; /* Color blanco */
-    text-align: center; /* Centrado */
+    font-size: 36px;
+    font-weight: bold; /* Texto en negrita */
+    color: #fff;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
   }
 </style>
 </head>
@@ -84,8 +85,7 @@
   function changeImage() {
     currentIndex = (currentIndex + 1) % images.length;
     image.src = images[currentIndex];
-    document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1); // Cambia el texto del paso
-    // Genera colores aleatorios RGB
+    document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
     var randomColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
     button.style.backgroundColor = randomColor;
   }
