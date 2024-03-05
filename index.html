@@ -230,8 +230,8 @@
 
     function validateAndRegister() {
         const nick = document.getElementById('nick').value;
-        const email = document.getElementById('user').value;
-        const confirmEmail = document.getElementById('sameUser').value;
+        const email = document.getElementById('user').value.toLowerCase(); // Convertir a minúsculas
+        const confirmEmail = document.getElementById('sameUser').value.toLowerCase(); // Convertir a minúsculas
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('samePassword').value;
 
