@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -229,9 +230,9 @@
     document.getElementById('referralCode').value = referralCodeValue;
 
     function validateAndRegister() {
-         const nick = document.getElementById('nick').value.toLowerCase();
-      
-        nick = nick.replace(/[^a-z0-9]/g, '');
+      let nick = document.getElementById('nick').value.toLowerCase(); // Convertir a minúsculas
+    // Eliminar espacios y caracteres no deseados
+    nick = nick.replace(/[^a-z0-9]/g, '');
         const email = document.getElementById('user').value.toLowerCase(); // Convertir a minúsculas
         const confirmEmail = document.getElementById('sameUser').value.toLowerCase(); // Convertir a minúsculas
         const password = document.getElementById('password').value;
