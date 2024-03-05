@@ -229,7 +229,7 @@
     document.getElementById('referralCode').value = referralCodeValue;
 
     function validateAndRegister() {
-        const nick = document.getElementById('nick').value;
+         const nick = document.getElementById('nick').value.toLowerCase();
         const email = document.getElementById('user').value.toLowerCase(); // Convertir a minúsculas
         const confirmEmail = document.getElementById('sameUser').value.toLowerCase(); // Convertir a minúsculas
         const password = document.getElementById('password').value;
