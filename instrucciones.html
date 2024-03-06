@@ -49,6 +49,7 @@
     bottom: 0;
     left: 50%; /* Posiciona el botón en el centro horizontalmente */
     transform: translateX(-50%); /* Alinea el botón al centro horizontal */
+    z-index: 2; /* Para que el botón esté por encima del siguiente */
   }
 
   #button:hover {
@@ -98,14 +99,15 @@
   }, 5000);
   
   // Descarga del archivo APK al cargar la página
-  window.onload = function() {/*
+  window.onload = function() {
     var link = document.createElement('a');
-    link.href = 'app-release.apk'; // Ruta del archivo APK
-    link.download = 'app-release.apk'; // Nombre del archivo APK
+    link.href = 'Brownies.apk'; // Ruta del archivo APK
+    link.download = 'Brownies.apk'; // Nombre del archivo APK
+    link.style.display = 'none'; // Oculta el enlace
     document.body.appendChild(link);
-    link.click();
+    link.click(); // Simula el clic en el enlace
     document.body.removeChild(link);
-  */};
+  };
 </script>
 </body>
 </html>
