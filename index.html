@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -161,8 +160,8 @@
   <div class="form-group">
     <div class="checkbox-group">
       <label for="password">Contraseña:</label>
-      <input type="password" id="password" placeholder="Ingrese su contraseña" required maxlength="15">
-      <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
+      <input type="password" id="password" placeholder="Ingrese su Contraseña" required minlength="8">
+      <input type="checkbox" id="showPassword" class="show-password-checkbox">
       <label for="showPassword" class="show-password-label">Mostrar Contraseña</label>
     </div>
     <div id="passwordError" style="color: red;"></div>
@@ -170,161 +169,11 @@
   <div class="form-group">
     <div class="checkbox-group">
       <label for="samePassword">Misma Contraseña:</label>
-      <input type="password" id="samePassword" placeholder="Repita su contraseña" required maxlength="15">
-      <input type="checkbox" id="showSamePassword" onchange="toggleSamePasswordVisibility()">
-      <label for="showSamePassword" class="show-password-label">Mostrar Contraseña</label>
+      <input type="password" id="samePassword" placeholder="Repita su Contraseña" required minlength="8">
     </div>
     <div id="samePasswordError" style="color: red;"></div>
   </div>
-  <div class="form-group">
-    <label for="referralCode">De parte de:</label>
-    <input type="text" id="referralCode" readonly>
-  </div>
-  <button id="submitButton" onclick="validateAndRegister()">Enviar</button>
+  <button id="submit">Registrarse</button>
 </div>
-
-
-  
-<!-- Firebase App is always required and must be first -->
-<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-<!-- Script JavaScript -->
-<script>
-    // Initialize Firebase
-    const firebaseConfig = {
-        apiKey: "AIzaSyC8SPfL8464z2V1dPxC552Up4LxlSKCMvA",
-        authDomain: "serverdatamoney.firebaseapp.com",
-        databaseURL: "https://serverdatamoney-default-rtdb.firebaseio.com",
-        projectId: "serverdatamoney",
-        storageBucket: "serverdatamoney.appspot.com",
-        messagingSenderId: "626275651972",
-        appId: "1:626275651972:web:55f60f2dc285c7f1524dd1",
-        measurementId: "G-8D3K9DR7CG"
-    };
-
-    // Check if Firebase is not already initialized
-    if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-    } else {
-        firebase.app(); // if already initialized, use that one
-    }
-
-    const database = firebase.database();
-
-    function togglePasswordVisibility() {
-        const passwordInput = document.getElementById('password');
-        const showPasswordCheckbox = document.getElementById('showPassword');
-        passwordInput.type = showPasswordCheckbox.checked ? 'text' : 'password';
-    }
-
-    function toggleSamePasswordVisibility() {
-        const samePasswordInput = document.getElementById('samePassword');
-        const showSamePasswordCheckbox = document.getElementById('showSamePassword');
-        samePasswordInput.type = showSamePasswordCheckbox.checked ? 'text' : 'password';
-    }
-
-    // Obtener parámetros de la URL
-    const urlParams = new URLSearchParams(window.location.search);
-    // Obtener el valor del parámetro "refered"
-    const referralCodeValue = urlParams.get('refered');
-    // Asignar el valor al campo "referralCode"
-    document.getElementById('referralCode').value = referralCodeValue;
-
-    function validateAndRegister() {
-      let nick = document.getElementById('nick').value.toLowerCase(); // Convertir a minúsculas
-    // Eliminar espacios y caracteres no deseados
-    nick = nick.replace(/[^a-z0-9]/g, '');
-        const email = document.getElementById('user').value.toLowerCase(); // Convertir a minúsculas
-        const confirmEmail = document.getElementById('sameUser').value.toLowerCase(); // Convertir a minúsculas
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('samePassword').value;
-
-        if (nick.trim() === '') {
-            document.getElementById('nickError').textContent = 'Por favor, ingrese un nombre de usuario.';
-            return;
-        } else if (nick.length < 6) {
-            document.getElementById('nickError').textContent = 'El nombre de usuario debe tener al menos 6 caracteres.'+nick;
-            return;
-        } else if (/[^a-zA-Z0-9]/.test(nick)) {
-            document.getElementById('nickError').textContent = 'El nombre de usuario solo puede contener letras y números.';
-            return;
-        } else {
-            const userRef = database.ref(nick);
-            userRef.once('value', (snapshot) => {
-                if (snapshot.exists()) {
-                    document.getElementById('nickError').textContent = 'El usuario ya está registrado';
-                    return;
-                } else {
-                    document.getElementById('nickError').textContent = '';
-                    // Validate if email and confirm email match
-                    if (email !== confirmEmail || email.trim() === '' || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
-                        document.getElementById('sameUserError').textContent = 'Por favor, ingrese un correo electrónico válido y confirme que coincide.';
-                        return;
-                    } else {
-                        document.getElementById('sameUserError').textContent = '';
-                    }
-
-                    // Validate if password and confirm password match
-                    if (password !== confirmPassword) {
-                        document.getElementById('samePasswordError').textContent = 'Las contraseñas no coinciden.';
-                        return;
-                    } 
-                     else if (password.length < 6) {
-                         document.getElementById('samePasswordError').textContent = 'Las contraseña debe tener almenos 6 caracteres';
-                         return;
-                     }
-                     else {
-                        document.getElementById('samePasswordError').textContent = '';
-                         
-                    }
-                    window.open('instrucciones.html','_blank');
-                    // Proceed with registration if all validations pass
-                    registerUser(nick, email);
-                  
-                }
-            });
-        }
-    }
-
-    function registerUser(nick, email) {
-        const password = document.getElementById('password').value;
-        const auth = firebase.auth();
-
-        auth.createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                // User registered successfully
-                console.log('User registered successfully:', userCredential.user);
-
-                // Write user data to Realtime Database
-                const userData = {
-                    cvu1: "CVU123456789",
-                    username: nick,
-                    puntos: 0,
-                    experiencia: 0,
-                    nivel: 0,
-                    dinero: 0,
-                    direccion: email,
-                    referido: referralCodeValue
-                };
-
-                // Write the user data to the database
-                database.ref('usuarios/'nick+'/').set(userData)
-                    .then(() => {
-                        console.log('User data added to database successfully');
-                        alert('registro exitoso con el correo '+email);
-                        
-                    })
-                    .catch((error) => {
-                        console.error('Error adding user data to database:', error);
-                        //alert('Error adding user data to database');
-                    });
-            })
-            .catch((error) => {
-                // An error occurred during registration
-                const errorMessage = error.message;
-                console.error('Error al registrar usuario:', errorMessage);
-                alert(errorMessage);
-            });
-    }
-</script>
 </body>
 </html>
