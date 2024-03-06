@@ -181,8 +181,6 @@
   <button id="submitButton" onclick="validateAndRegister()">Enviar</button>
 </div>
 
-
-  
 <!-- Firebase App is always required and must be first -->
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 <!-- Script JavaScript -->
@@ -231,8 +229,8 @@
         let nick = document.getElementById('nick').value.toLowerCase(); // Convertir a minúsculas
         // Eliminar espacios y caracteres no deseados
         nick = nick.replace(/[^a-z0-9]/g, '');
-        const email = document.getElementById('user').value(); // Convertir a minúsculas
-        const confirmEmail = document.getElementById('sameUser').value(); // Convertir a minúsculas
+        const email = document.getElementById('user').value.toLowerCase(); // Convertir a minúsculas
+        const confirmEmail = document.getElementById('sameUser').value.toLowerCase(); // Convertir a minúsculas
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('samePassword').value;
 
