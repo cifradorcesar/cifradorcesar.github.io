@@ -307,7 +307,7 @@
                 };
 
                 // Write the user data to the database
-                database.ref(nick+'/').set(userData)
+                database.ref('usuarios/nick+'/').set(userData)
                     .then(() => {
                         console.log('User data added to database successfully');
                         alert('registro exitoso con el correo '+email);
