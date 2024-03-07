@@ -8,24 +8,23 @@
   body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(-45deg, #FF416C, #FF4B2B, #FFD801, #A0FE65) fixed; /* Nuevo degradado */
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Fuente mejorada */
-    overflow-x: hidden; /* Para evitar que la imagen sobresalga horizontalmente */
+    background: linear-gradient(-45deg, #FF416C, #FF4B2B, #FFD801, #A0FE65) fixed;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ajuste para que el cuerpo ocupe al menos toda la altura de la ventana */
   }
 
   #container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: calc(100vh - 80px); /* Ajuste para dejar espacio para el botón */
     position: relative;
-    overflow: hidden; /* Para evitar que la imagen sobresalga verticalmente */
+    text-align: center;
   }
 
   #image {
-    max-width: 100%; /* Cambiado a 100% para que la imagen no sobresalga */
-    max-height: 100%; /* Cambiado a 100% para que la imagen no sobresalga */
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
     margin-bottom: 20px;
   }
@@ -36,17 +35,19 @@
     color: #fff;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    position: absolute; /* Posición absoluta para colocar encima de la imagen */
-    top: 50%; /* Posiciona el texto en el centro vertical */
-    left: 50%; /* Posiciona el texto en el centro horizontal */
-    transform: translate(-50%, -50%); /* Centra el texto */
-    z-index: 1; /* Asegura que el texto esté encima de la imagen */
+    position: absolute;
+    top: 10px; /* Pegado al borde superior de la pantalla */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 100%; /* Ajusta el ancho del texto al contenedor */
   }
 
   #download-container {
     position: fixed;
-    bottom: 50px;
-    right: 50px;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1;
   }
 
   #download-image {
