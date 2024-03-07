@@ -33,6 +33,12 @@
     max-height: 80%; /* Mejora en el tamaño de la imagen */
     object-fit: contain;
     margin-bottom: 20px;
+    animation: fadeInOut 6s linear infinite; /* Duración de 6 segundos para el fade in/out */
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; } /* Estado inicial y final: completamente transparente */
+    50% { opacity: 1; } /* Estado intermedio: completamente visible */
   }
 
   #button {
