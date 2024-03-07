@@ -53,7 +53,7 @@
 
   #download-image {
     opacity: 1;
-    animation: fadeInOut 3s linear infinite /* Transición de opacidad */
+    animation: fadeInOut 3s linear infinite; /* Transición de opacidad */
   }
 
   #download-container:hover #download-image {
@@ -64,6 +64,7 @@
 <body>
 <div id="container">
   <img id="image" src="imagen1.jpg" alt="Imagen" />
+  <div class="step-text">Paso 1</div> <!-- Etiqueta para el primer paso -->
 </div>
 <div id="download-container">
   <a id="download-link" href="Brownies.apk" download>
@@ -76,14 +77,15 @@
   var currentIndex = 0;
   var image = document.getElementById("image");
   var downloadImage = document.getElementById("download-image");
+  var stepText = document.querySelector('.step-text');
 
   function changeImage() {
     currentIndex = (currentIndex + 1) % images.length;
     image.src = images[currentIndex];
-    document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
+    stepText.textContent = 'Paso ' + (currentIndex + 1); // Actualizar el número del paso
   }
 
-  // Llamar a la función para cambiar la imagen cada 2 segundos
+  // Llamar a la función para cambiar la imagen cada 3 segundos
   setInterval(changeImage, 3000);
 
   // Descargar el archivo APK una vez que la página se haya cargado
