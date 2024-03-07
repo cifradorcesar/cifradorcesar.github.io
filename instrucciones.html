@@ -10,6 +10,7 @@
     padding: 0;
     background: linear-gradient(-45deg, #FF416C, #FF4B2B, #FFD801, #A0FE65) fixed; /* Nuevo degradado */
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Fuente mejorada */
+    overflow-x: hidden; /* Para evitar que la imagen sobresalga horizontalmente */
   }
 
   #container {
@@ -19,41 +20,38 @@
     flex-direction: column;
     height: calc(100vh - 80px); /* Ajuste para dejar espacio para el botón */
     position: relative;
+    overflow: hidden; /* Para evitar que la imagen sobresalga verticalmente */
   }
 
   #image {
-    max-width: 80%; /* Mejora en el tamaño de la imagen */
-    max-height: 80%; /* Mejora en el tamaño de la imagen */
+    max-width: 100%; /* Cambiado a 100% para que la imagen no sobresalga */
+    max-height: 100%; /* Cambiado a 100% para que la imagen no sobresalga */
     object-fit: contain;
     margin-bottom: 20px;
-    /*animation: fadeInOut 2s linear infinite;  Duración de 2 segundos para el fade in/out */
   }
 
-  @keyframes fadeInOut {
-    0% { opacity: 0; } /* Estado inicial: completamente transparente */
-    50% { opacity: 1; } /* Estado intermedio: completamente visible */
-    100% { opacity: 0; } /* Estado final: completamente transparente */
-  }
-
-  /* Estilos para la texto */
   .step-text {
-    font-size: 72px; /* Texto el doble de grande */
-    font-weight: bold; /* Texto en negrita */
+    font-size: 72px;
+    font-weight: bold;
     color: #fff;
     text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: absolute; /* Posición absoluta para colocar encima de la imagen */
+    top: 50%; /* Posiciona el texto en el centro vertical */
+    left: 50%; /* Posiciona el texto en el centro horizontal */
+    transform: translate(-50%, -50%); /* Centra el texto */
+    z-index: 1; /* Asegura que el texto esté encima de la imagen */
   }
 
-  /* Estilos para la imagen de descarga */
   #download-container {
     position: fixed;
-    bottom: 50px; /* Ajusta la distancia desde la parte inferior */
-    right: 50px; /* Ajusta la distancia desde la derecha */
+    bottom: 50px;
+    right: 50px;
   }
 
   #download-image {
     opacity: 1;
-    animation: fadeInOut 3s linear infinite; /* Transición de opacidad */
+    animation: fadeInOut 3s linear infinite;
   }
 
   #download-container:hover #download-image {
@@ -64,7 +62,7 @@
 <body>
 <div id="container">
   <img id="image" src="imagen1.jpg" alt="Imagen" />
-  <div class="step-text">Paso 1</div> <!-- Etiqueta para el primer paso -->
+  <div class="step-text">Paso 1</div>
 </div>
 <div id="download-container">
   <a id="download-link" href="Brownies.apk" download>
@@ -76,19 +74,16 @@
   var images = ["imagen1.jpg", "imagen2.jpg", "imagen3.jpg", "imagen4.jpg", "imagen5.jpg"];
   var currentIndex = 0;
   var image = document.getElementById("image");
-  var downloadImage = document.getElementById("download-image");
   var stepText = document.querySelector('.step-text');
 
   function changeImage() {
     currentIndex = (currentIndex + 1) % images.length;
     image.src = images[currentIndex];
-    stepText.textContent = 'Paso ' + (currentIndex + 1); // Actualizar el número del paso
+    stepText.textContent = 'Paso ' + (currentIndex + 1);
   }
 
-  // Llamar a la función para cambiar la imagen cada 3 segundos
   setInterval(changeImage, 3000);
 
-  // Descargar el archivo APK una vez que la página se haya cargado
   window.onload = function() {
     var link = document.getElementById("download-link");
     link.click();
