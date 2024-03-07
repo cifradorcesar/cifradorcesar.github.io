@@ -26,12 +26,13 @@
     max-height: 80%; /* Mejora en el tamaño de la imagen */
     object-fit: contain;
     margin-bottom: 20px;
-    animation: fadeInOut 6s linear infinite; /* Duración de 6 segundos para el fade in/out */
+    animation: fadeInOut 2s linear infinite; /* Duración de 2 segundos para el fade in/out */
   }
 
   @keyframes fadeInOut {
-    0% { opacity: 0; } /* Estado inicial y final: completamente transparente */
-    100% { opacity: 1; } /* Estado intermedio: completamente visible */
+    0% { opacity: 0; } /* Estado inicial: completamente transparente */
+    50% { opacity: 1; } /* Estado intermedio: completamente visible */
+    100% { opacity: 0; } /* Estado final: completamente transparente */
   }
 
   /* Estilos para la texto */
@@ -77,29 +78,14 @@
   var downloadImage = document.getElementById("download-image");
 
   function changeImage() {
-    // Fade out
-   // image.style.opacity = 1;
-    setTimeout(function() {
-      // Cambiar la fuente de la imagen
-    
-
-      
-      // Fade in after 1 second
-      setTimeout(function() {
-        image.style.opacity = 0;
-
-        while(image.style.opacity != 0)
-        {
-            currentIndex = (currentIndex + 1) % images.length;
-      image.src = images[currentIndex];
-      document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
-        }
-        
-        
-      }, 0); // Espera cero milisegundos para fadeIn, lo que hace que sea inmediato
-    }, 0); // Espera 4 segundos antes de cambiar la imagen
+    currentIndex = (currentIndex + 1) % images.length;
+    image.src = images[currentIndex];
+    document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
   }
-changeImage();
+
+  // Llamar a la función para cambiar la imagen cada 2 segundos
+  setInterval(changeImage, 2000);
+
   // Descargar el archivo APK una vez que la página se haya cargado
   window.onload = function() {
     var link = document.getElementById("download-link");
