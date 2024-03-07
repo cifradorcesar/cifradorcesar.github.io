@@ -9,14 +9,7 @@
     margin: 0;
     padding: 0;
     background: linear-gradient(-45deg, #FF416C, #FF4B2B, #FFD801, #A0FE65) fixed; /* Nuevo degradado */
-    animation: changeBackground 10s infinite;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Fuente mejorada */
-  }
-
-  @keyframes changeBackground {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
   }
 
   #container {
@@ -33,12 +26,6 @@
     max-height: 80%; /* Mejora en el tamaño de la imagen */
     object-fit: contain;
     margin-bottom: 20px;
-    animation: fadeInOut 6s linear infinite; /* Duración de 6 segundos para el fade in/out */
-  }
-
-  @keyframes fadeInOut {
-    0%, 100% { opacity: 0; } /* Estado inicial y final: completamente transparente */
-    50% { opacity: 1; } /* Estado intermedio: completamente visible */
   }
 
   #button {
@@ -50,7 +37,6 @@
     border: 5px solid #FFFFFF; /* Borde más grueso */
     border-radius: 20px; /* Bordes redondeados */
     cursor: pointer;
-    transition: background-color 0.5s ease;
     position: fixed;
     bottom: 0;
     left: 50%; /* Posiciona el botón en el centro horizontalmente */
@@ -80,6 +66,9 @@
     position: fixed;
     bottom: 100px; /* Ajusta la distancia desde la parte inferior */
     right: 50px; /* Ajusta la distancia desde la derecha */
+  }
+
+  #download-image {
     opacity: 0; /* Inicialmente oculta la imagen */
     animation: fadeEffect 5s ease-in-out infinite; /* Aplica el efecto de fade-in/fade-out */
   }
@@ -129,13 +118,6 @@
       }, 500); // Ajusta el tiempo según la duración del fade out
     }
   }
-
-  // Función para presionar automáticamente el botón cada 5 segundos si no se presiona manualmente
-  setInterval(function() {
-    if (!document.querySelector(':active') && !changingImage) {
-      changeImage();
-    }
-  }, 5000);
 
   // Cambio de imagen al hacer clic en la imagen de descarga
   document.getElementById("download-image").onclick = function() {
