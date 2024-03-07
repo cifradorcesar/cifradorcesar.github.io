@@ -108,10 +108,14 @@
 
   function changeImage() {
     currentIndex = (currentIndex + 1) % images.length;
-    image.src = images[currentIndex];
-    document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
-    var randomColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
-    button.style.backgroundColor = randomColor;
+    image.style.opacity = 0; // Hacer la imagen transparente al inicio del cambio
+    setTimeout(function() {
+      image.src = images[currentIndex];
+      document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
+      var randomColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
+      button.style.backgroundColor = randomColor;
+      image.style.opacity = 1; // Hacer la imagen visible al finalizar el cambio
+    }, 6000); // Tiempo igual a la duración de la animación de fade in/out
   }
 
   // Función para presionar automáticamente el botón cada 5 segundos si no se presiona manualmente
