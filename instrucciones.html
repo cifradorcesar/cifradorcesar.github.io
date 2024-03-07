@@ -109,11 +109,11 @@
 
   function changeImage() {
     if (!changingImage) {
-      changingImage = true; // Evita múltiples cambios de imagen simultáneos
+     os
 
       // Fade out
       image.style.opacity = 0;
-
+ changingImage = true; // Evita múltiples cambios de imagen simultáne
       // Cambio de imagen
       currentIndex = (currentIndex + 1) % images.length;
       image.src = images[currentIndex];
