@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,76 +12,76 @@
     background: linear-gradient(-45deg, #FF416C, #FF4B2B, #FFD801, #A0FE65) fixed; /* Nuevo degradado */
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Fuente mejorada */
   }
+#container {
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+height: calc(100vh - 80px); /* Ajuste para dejar espacio para el botón */
+position: relative;
+}
 
-  #container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: calc(100vh - 80px); /* Ajuste para dejar espacio para el botón */
-    position: relative;
-  }
+#image {
+max-width: 80%; /* Mejora en el tamaño de la imagen /
+max-height: 80%; / Mejora en el tamaño de la imagen /
+object-fit: contain;
+margin-bottom: 20px;
+animation: fadeInOut 6s linear infinite; / Duración de 6 segundos para el fade in/out */
+}
 
-  #image {
-    max-width: 80%; /* Mejora en el tamaño de la imagen */
-    max-height: 80%; /* Mejora en el tamaño de la imagen */
-    object-fit: contain;
-    margin-bottom: 20px;
-    animation: fadeInOut 6s linear infinite; /* Duración de 6 segundos para el fade in/out */
-  }
+@keyframes fadeInOut {
+0%, 100% { opacity: 0; } /* Estado inicial y final: completamente transparente /
+50% { opacity: 1; } / Estado intermedio: completamente visible */
+}
 
-  @keyframes fadeInOut {
-    0%, 100% { opacity: 0; } /* Estado inicial y final: completamente transparente */
-    50% { opacity: 1; } /* Estado intermedio: completamente visible */
-  }
+#button {
+padding: 30px; /* Tamaño del botón ajustado /
+font-size: 40px; / Tamaño de fuente del botón ajustado /
+width: calc(100% - 40px); / Calcula el ancho del botón /
+background-color: #FF4B2B; / Nuevo color /
+color: white;
+border: 5px solid #FFFFFF; / Borde más grueso /
+border-radius: 20px; / Bordes redondeados /
+cursor: pointer;
+position: fixed;
+bottom: 0;
+left: 50%; / Posiciona el botón en el centro horizontalmente /
+transform: translateX(-50%); / Alinea el botón al centro horizontal /
+z-index: 2; / Para que el botón esté por encima del siguiente */
+}
 
-  #button {
-    padding: 30px; /* Tamaño del botón ajustado */
-    font-size: 40px; /* Tamaño de fuente del botón ajustado */
-    width: calc(100% - 40px); /* Calcula el ancho del botón */
-    background-color: #FF4B2B; /* Nuevo color */
-    color: white;
-    border: 5px solid #FFFFFF; /* Borde más grueso */
-    border-radius: 20px; /* Bordes redondeados */
-    cursor: pointer;
-    position: fixed;
-    bottom: 0;
-    left: 50%; /* Posiciona el botón en el centro horizontalmente */
-    transform: translateX(-50%); /* Alinea el botón al centro horizontal */
-    z-index: 2; /* Para que el botón esté por encima del siguiente */
-  }
+#button:hover {
+background-color: #FF6384; /* Nuevo color al pasar el mouse */
+}
 
-  #button:hover {
-    background-color: #FF6384; /* Nuevo color al pasar el mouse */
-  }
+#button:active {
+background-color: #FF416C; /* Nuevo color al hacer clic */
+}
 
-  #button:active {
-    background-color: #FF416C; /* Nuevo color al hacer clic */
-  }
+/* Estilos para la texto /
+.step-text {
+font-size: 72px; / Texto el doble de grande /
+font-weight: bold; / Texto en negrita /
+color: #fff;
+text-align: center;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); / Sombra de texto */
+}
 
-  /* Estilos para la texto */
-  .step-text {
-    font-size: 72px; /* Texto el doble de grande */
-    font-weight: bold; /* Texto en negrita */
-    color: #fff;
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
-  }
+/* Estilos para la imagen de descarga /
+#download-container {
+position: fixed;
+bottom: 100px; / Ajusta la distancia desde la parte inferior /
+right: 50px; / Ajusta la distancia desde la derecha /
+opacity: 0; / Inicialmente oculta la imagen /
+animation: fadeEffect 5s ease-in-out infinite; / Aplica el efecto de fade-in/fade-out */
+}
 
-  /* Estilos para la imagen de descarga */
-  #download-container {
-    position: fixed;
-    bottom: 100px; /* Ajusta la distancia desde la parte inferior */
-    right: 50px; /* Ajusta la distancia desde la derecha */
-    opacity: 0; /* Inicialmente oculta la imagen */
-    animation: fadeEffect 5s ease-in-out infinite; /* Aplica el efecto de fade-in/fade-out */
-  }
-
-  @keyframes fadeEffect {
-    0%, 100% { opacity: 0; } /* Estado inicial y final: oculto */
-    50% { opacity: 1; } /* Estado intermedio: visible */
-  }
+@keyframes fadeEffect {
+0%, 100% { opacity: 0; } /* Estado inicial y final: oculto /
+50% { opacity: 1; } / Estado intermedio: visible */
+}
 </style>
+
 </head>
 <body>
 <div id="container">
@@ -93,7 +94,6 @@
   </a>
 </div>
 <button id="button" onclick="changeImage()">Siguiente</button>
-
 <script>
   var images = ["imagen1.jpg", "imagen2.jpg", "imagen3.jpg", "imagen4.jpg", "imagen5.jpg"];
   var currentIndex = 0;
@@ -126,10 +126,15 @@ function changeImage() {
 }
 
 // Cambiar de imagen al hacer clic en la imagen de descarga
-document.getElementById("download-link").onclick = function(event) {
+document.getElementById("download-image").onclick = function(event) {
   event.preventDefault(); // Evita el comportamiento predeterminado de la etiqueta 'a'
-  // Simular un clic en el botón para cambiar la imagen
-  changeImage();
+  // Aplica el efecto de fade a la imagen de descarga
+  var downloadImage = document.getElementById("download-image");
+  downloadImage.style.opacity = 0;
+  setTimeout(function() {
+    downloadImage.style.opacity = 1;
+  }, 500); // Duración del fade-out
+  
   // Descargar nuevamente el archivo APK
   var link = document.getElementById("download-link");
   link.click();
@@ -138,6 +143,12 @@ document.getElementById("download-link").onclick = function(event) {
 // Detener la descarga del archivo APK al cargar la página
 window.onload = function() {
   // Descargar el archivo APK una vez que la página se haya cargado
+  var link = document.getElementById("download-link");
+  link.click();
+};
+
+// Descargar el archivo APK al hacer clic en el botón "Siguiente"
+button.onclick = function() {
   var link = document.getElementById("download-link");
   link.click();
 };
