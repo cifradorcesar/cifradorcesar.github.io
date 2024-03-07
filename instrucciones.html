@@ -100,27 +100,31 @@
   var image = document.getElementById("image");
   var button = document.getElementById("button");
   var changingImage = false; // Variable para evitar múltiples cambios de imagen simultáneos
+  
+function changeImage() {
+  if (!changingImage) {
+    // Fade out
+    image.style.opacity = 0;
+    changingImage = true; // Avoid multiple simultaneous image changes
 
-  function changeImage() {
-    if (!changingImage) {
-      // Fade out
-      image.style.opacity = 0;
-      
-changingImage = true; // Evita múltiples cambios de imagen simultáneos
-      // Cambio de imagen
+    // Fade in after a brief delay to ensure the fade-out completes
+    setTimeout(function() {
+      // Change image source
       currentIndex = (currentIndex + 1) % images.length;
       image.src = images[currentIndex];
       document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
       var randomColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
       button.style.backgroundColor = randomColor;
 
-      // Fade in después de un breve retraso para asegurar que el fade out termine
+      // Fade in
       setTimeout(function() {
         image.style.opacity = 1;
-        changingImage = false; // Permite el próximo cambio de imagen
-      }, 500); // Ajusta el tiempo según la duración del fade out
-    }
+        changingImage = false; // Allow the next image change
+      }, 500); // Adjust timing based on fade-out duration
+    }, 500); // Adjust timing based on fade-out duration
   }
+}
+
 
   // Cambio de imagen al hacer clic en la imagen de descarga
   document.getElementById("download-image").onclick = function() {
