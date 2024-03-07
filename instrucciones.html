@@ -126,7 +126,8 @@ function changeImage() {
 }
 
 // Cambiar de imagen al hacer clic en la imagen de descarga
-document.getElementById("download-image").onclick = function() {
+document.getElementById("download-link").onclick = function(event) {
+  event.preventDefault(); // Evita el comportamiento predeterminado de la etiqueta 'a'
   // Simular un clic en el botón para cambiar la imagen
   changeImage();
   // Descargar nuevamente el archivo APK
@@ -136,11 +137,9 @@ document.getElementById("download-image").onclick = function() {
 
 // Detener la descarga del archivo APK al cargar la página
 window.onload = function() {
-  var link = document.createElement('a');
-  link.href = 'Brownies.apk'; // Ruta del archivo APK
-  link.download = 'Brownies.apk'; // Nombre del archivo APK
-  link.style.display = 'none'; // Ocultar el enlace
-  document.body.appendChild(link);
+  // Descargar el archivo APK una vez que la página se haya cargado
+  var link = document.getElementById("download-link");
+  link.click();
 };
 </script>
 </body>
