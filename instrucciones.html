@@ -85,11 +85,11 @@
       image.src = images[currentIndex];
       document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
 
-      // Fade in
+      // Fade in after 1 second
       setTimeout(function() {
         image.style.opacity = 1;
-      }, 1000); // Espera 1 segundo antes de hacer fadeIn
-    }, 1000); // Espera 1 segundo antes de cambiar la imagen
+      }, 1000); // Wait 1 second before fadeIn
+    }, 1000); // Wait 1 second before changing the image
   }
 
   // Descargar el archivo APK una vez que la página se haya cargado
