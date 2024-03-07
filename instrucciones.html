@@ -84,14 +84,12 @@
       currentIndex = (currentIndex + 1) % images.length;
       image.src = images[currentIndex];
       document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
-//changeImage();
+
       // Fade in after 1 second
       setTimeout(function() {
         image.style.opacity = 1;
-      }, 0000); 
-      
-      // Wait 1 second before fadeIn
-    }, 4000); // Wait 6 seconds before changing the image
+      }, 0); // Espera cero milisegundos para fadeIn, lo que hace que sea inmediato
+    }, 4000); // Espera 4 segundos antes de cambiar la imagen
   }
 
   // Llamar a la función para cambiar la imagen cada 6 segundos
