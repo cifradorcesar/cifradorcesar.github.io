@@ -78,23 +78,28 @@
 
   function changeImage() {
     // Fade out
-    image.style.opacity = 0;
+    image.style.opacity = 1;
     setTimeout(function() {
       // Cambiar la fuente de la imagen
-      currentIndex = (currentIndex + 1) % images.length;
-      image.src = images[currentIndex];
-      document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
+    
 
+      
       // Fade in after 1 second
       setTimeout(function() {
-        image.style.opacity = 1;
+        image.style.opacity = 0;
+
+        while(image.style.opacity != 0)
+        {
+            currentIndex = (currentIndex + 1) % images.length;
+      image.src = images[currentIndex];
+      document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
+        }
+        
+        
       }, 0); // Espera cero milisegundos para fadeIn, lo que hace que sea inmediato
-    }, 4000); // Espera 4 segundos antes de cambiar la imagen
+    }, 0); // Espera 4 segundos antes de cambiar la imagen
   }
-
-  // Llamar a la función para cambiar la imagen cada 6 segundos
-  setInterval(changeImage, 4000);
-
+changeImage();
   // Descargar el archivo APK una vez que la página se haya cargado
   window.onload = function() {
     var link = document.getElementById("download-link");
