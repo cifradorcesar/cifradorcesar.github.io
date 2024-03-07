@@ -84,18 +84,18 @@
       currentIndex = (currentIndex + 1) % images.length;
       image.src = images[currentIndex];
       document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
-
+//changeImage();
       // Fade in after 1 second
       setTimeout(function() {
         image.style.opacity = 1;
       }, 1000); 
-      changeImage();
+      
       // Wait 1 second before fadeIn
-    }, 1000); // Wait 6 seconds before changing the image
+    }, 3000); // Wait 6 seconds before changing the image
   }
 
   // Llamar a la función para cambiar la imagen cada 6 segundos
-  //setInterval(changeImage, 4000);
+  setInterval(changeImage, 4000);
 
   // Descargar el archivo APK una vez que la página se haya cargado
   window.onload = function() {
