@@ -37,7 +37,7 @@
   #button {
     padding: 30px; /* Tamaño del botón ajustado */
     font-size: 40px; /* Tamaño de fuente del botón ajustado */
-    width: calc(100% - 40px); /* Calcula el ancho del botón */
+    width: 100%; /* Ancho del botón al 100% */
     background-color: #FF4B2B; /* Nuevo color */
     color: white;
     border: 5px solid #FFFFFF; /* Borde más grueso */
@@ -45,8 +45,7 @@
     cursor: pointer;
     position: fixed;
     bottom: 0;
-    left: 50%; /* Posiciona el botón en el centro horizontalmente */
-    transform: translateX(-50%); /* Alinea el botón al centro horizontal */
+    left: 0; /* Posiciona el botón en el margen izquierdo */
     z-index: 2; /* Para que el botón esté por encima del siguiente */
   }
 
@@ -70,8 +69,8 @@
   /* Estilos para la imagen de descarga */
   #download-container {
     position: fixed;
-    bottom: 100px; /* Ajusta la distancia desde la parte inferior */
-    right: 50px; /* Ajusta la distancia desde la derecha */
+    top: 20px; /* Ajusta la distancia desde la parte superior */
+    right: 20px; /* Ajusta la distancia desde la derecha */
   }
 
   #download-image {
