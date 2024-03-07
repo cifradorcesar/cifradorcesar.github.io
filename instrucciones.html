@@ -34,29 +34,6 @@
     50% { opacity: 1; } /* Estado intermedio: completamente visible */
   }
 
-  #button {
-    padding: 30px; /* Tamaño del botón ajustado */
-    font-size: 40px; /* Tamaño de fuente del botón ajustado */
-    width: 100%; /* Ancho del botón al 100% */
-    background-color: #FF4B2B; /* Nuevo color */
-    color: white;
-    border: 5px solid #FFFFFF; /* Borde más grueso */
-    border-radius: 20px; /* Bordes redondeados */
-    cursor: pointer;
-    position: fixed;
-    bottom: 0;
-    left: 0; /* Posiciona el botón en el margen izquierdo */
-    z-index: 2; /* Para que el botón esté por encima del siguiente */
-  }
-
-  #button:hover {
-    background-color: #FF6384; /* Nuevo color al pasar el mouse */
-  }
-
-  #button:active {
-    background-color: #FF416C; /* Nuevo color al hacer clic */
-  }
-
   /* Estilos para la texto */
   .step-text {
     font-size: 72px; /* Texto el doble de grande */
@@ -69,8 +46,8 @@
   /* Estilos para la imagen de descarga */
   #download-container {
     position: fixed;
-    top: 20px; /* Ajusta la distancia desde la parte superior */
-    right: 20px; /* Ajusta la distancia desde la derecha */
+    bottom: 50px; /* Ajusta la distancia desde la parte inferior */
+    right: 50px; /* Ajusta la distancia desde la derecha */
   }
 
   #download-image {
@@ -92,13 +69,11 @@
     <img id="download-image" src="download.png" alt="Download" />
   </a>
 </div>
-<button id="button" onclick="changeImage()">Siguiente</button>
 
 <script>
   var images = ["imagen1.jpg", "imagen2.jpg", "imagen3.jpg", "imagen4.jpg", "imagen5.jpg"];
   var currentIndex = 0;
   var image = document.getElementById("image");
-  var button = document.getElementById("button");
   var downloadImage = document.getElementById("download-image");
 
   function changeImage() {
