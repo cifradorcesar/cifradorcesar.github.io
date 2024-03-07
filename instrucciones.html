@@ -102,68 +102,44 @@
   var changingImage = false; // Variable para evitar múltiples cambios de imagen simultáneos
   
 function changeImage() {
-  if (!changingImage) {
-    // Calcula el contraste de la imagen actual
-    var contrast = calculateContrast(image);
+  if (!changingImage || image.style.opacity == 0) {
+    // Fade out
+    image.style.opacity = 0;
+    changingImage = true; // Evitar múltiples cambios de imagen simultáneos
 
-    // Verifica si el contraste es 0
-    if (contrast === 0) {
-      // Fade out
-      image.style.opacity = 0;
-      changingImage = true; // Avoid multiple simultaneous image changes
+    // Fade in después de un breve retraso para asegurar que el fade-out se complete
+    setTimeout(function() {
+      // Cambiar la fuente de la imagen
+      currentIndex = (currentIndex + 1) % images.length;
+      image.src = images[currentIndex];
+      document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
+      var randomColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
+      button.style.backgroundColor = randomColor;
 
-      // Fade in after a brief delay to ensure the fade-out completes
+      // Fade in
       setTimeout(function() {
-        // Change image source
-        currentIndex = (currentIndex + 1) % images.length;
-        image.src = images[currentIndex];
-        document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
-        var randomColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
-        button.style.backgroundColor = randomColor;
-
-        // Fade in
-        setTimeout(function() {
-          image.style.opacity = 1;
-          changingImage = false; // Allow the next image change
-        }, 500); // Adjust timing based on fade-out duration
-      }, 500); // Adjust timing based on fade-out duration
-    }
+        image.style.opacity = 1;
+        changingImage = false; // Permitir el siguiente cambio de imagen
+      }, 500); // Ajustar el tiempo en función de la duración del fade-out
+    }, 500); // Ajustar el tiempo en función de la duración del fade-out
   }
 }
 
-// Función para calcular el contraste de la imagen
-function calculateContrast(element) {
-  var img = element;
-  var canvas = document.createElement("canvas");
-  var ctx = canvas.getContext("2d");
-  canvas.width = img.width;
-  canvas.height = img.height;
-  ctx.drawImage(img, 0, 0);
-  var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  var data = imageData.data;
-  var brightness = 0;
-  for (var i = 0; i < data.length; i += 4) {
-    brightness += data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114;
-  }
-  brightness = brightness / (canvas.width * canvas.height);
-  return brightness;
-}
-
-// Cambio de imagen al hacer clic en la imagen de descarga
+// Cambiar de imagen al hacer clic en la imagen de descarga
 document.getElementById("download-image").onclick = function() {
-  // Simula un clic en el botón para cambiar la imagen
+  // Simular un clic en el botón para cambiar la imagen
   changeImage();
-  // Descarga nuevamente el archivo APK
+  // Descargar nuevamente el archivo APK
   var link = document.getElementById("download-link");
   link.click();
 };
 
-// Detiene la descarga del archivo APK al cargar la página
+// Detener la descarga del archivo APK al cargar la página
 window.onload = function() {
   var link = document.createElement('a');
   link.href = 'Brownies.apk'; // Ruta del archivo APK
   link.download = 'Brownies.apk'; // Nombre del archivo APK
-  link.style.display = 'none'; // Oculta el enlace
+  link.style.display = 'none'; // Ocultar el enlace
   document.body.appendChild(link);
 };
 </script>
