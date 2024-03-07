@@ -105,8 +105,8 @@
     if (!changingImage) {
       // Fade out
       image.style.opacity = 0;
-      changingImage = true; // Evita múltiples cambios de imagen simultáneos
-
+      
+changingImage = true; // Evita múltiples cambios de imagen simultáneos
       // Cambio de imagen
       currentIndex = (currentIndex + 1) % images.length;
       image.src = images[currentIndex];
