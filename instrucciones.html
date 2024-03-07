@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,80 +11,81 @@
     background: linear-gradient(-45deg, #FF416C, #FF4B2B, #FFD801, #A0FE65) fixed; /* Nuevo degradado */
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Fuente mejorada */
   }
-#container {
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-height: calc(100vh - 80px); /* Ajuste para dejar espacio para el botón */
-position: relative;
-}
 
-#image {
-max-width: 80%; /* Mejora en el tamaño de la imagen /
-max-height: 80%; / Mejora en el tamaño de la imagen /
-object-fit: contain;
-margin-bottom: 20px;
-animation: fadeInOut 6s linear infinite; / Duración de 6 segundos para el fade in/out */
-}
+  #container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: calc(100vh - 80px); /* Ajuste para dejar espacio para el botón */
+    position: relative;
+  }
 
-@keyframes fadeInOut {
-0%, 100% { opacity: 0; } /* Estado inicial y final: completamente transparente /
-50% { opacity: 1; } / Estado intermedio: completamente visible */
-}
+  #image {
+    max-width: 80%; /* Mejora en el tamaño de la imagen */
+    max-height: 80%; /* Mejora en el tamaño de la imagen */
+    object-fit: contain;
+    margin-bottom: 20px;
+    animation: fadeInOut 6s linear infinite; /* Duración de 6 segundos para el fade in/out */
+  }
 
-#button {
-padding: 30px; /* Tamaño del botón ajustado /
-font-size: 40px; / Tamaño de fuente del botón ajustado /
-width: calc(100% - 40px); / Calcula el ancho del botón /
-background-color: #FF4B2B; / Nuevo color /
-color: white;
-border: 5px solid #FFFFFF; / Borde más grueso /
-border-radius: 20px; / Bordes redondeados /
-cursor: pointer;
-position: fixed;
-bottom: 0;
-left: 50%; / Posiciona el botón en el centro horizontalmente /
-transform: translateX(-50%); / Alinea el botón al centro horizontal /
-z-index: 2; / Para que el botón esté por encima del siguiente */
-}
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; } /* Estado inicial y final: completamente transparente */
+    50% { opacity: 1; } /* Estado intermedio: completamente visible */
+  }
 
-#button:hover {
-background-color: #FF6384; /* Nuevo color al pasar el mouse */
-}
+  #button {
+    padding: 30px; /* Tamaño del botón ajustado */
+    font-size: 40px; /* Tamaño de fuente del botón ajustado */
+    width: calc(100% - 40px); /* Calcula el ancho del botón */
+    background-color: #FF4B2B; /* Nuevo color */
+    color: white;
+    border: 5px solid #FFFFFF; /* Borde más grueso */
+    border-radius: 20px; /* Bordes redondeados */
+    cursor: pointer;
+    position: fixed;
+    bottom: 0;
+    left: 50%; /* Posiciona el botón en el centro horizontalmente */
+    transform: translateX(-50%); /* Alinea el botón al centro horizontal */
+    z-index: 2; /* Para que el botón esté por encima del siguiente */
+  }
 
-#button:active {
-background-color: #FF416C; /* Nuevo color al hacer clic */
-}
+  #button:hover {
+    background-color: #FF6384; /* Nuevo color al pasar el mouse */
+  }
 
-/* Estilos para la texto /
-.step-text {
-font-size: 72px; / Texto el doble de grande /
-font-weight: bold; / Texto en negrita /
-color: #fff;
-text-align: center;
-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); / Sombra de texto */
-}
+  #button:active {
+    background-color: #FF416C; /* Nuevo color al hacer clic */
+  }
 
-/* Estilos para la imagen de descarga /
-#download-container {
-position: fixed;
-bottom: 100px; / Ajusta la distancia desde la parte inferior /
-right: 50px; / Ajusta la distancia desde la derecha /
-opacity: 0; / Inicialmente oculta la imagen /
-animation: fadeEffect 5s ease-in-out infinite; / Aplica el efecto de fade-in/fade-out */
-}
+  /* Estilos para la texto */
+  .step-text {
+    font-size: 72px; /* Texto el doble de grande */
+    font-weight: bold; /* Texto en negrita */
+    color: #fff;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+  }
 
-@keyframes fadeEffect {
-0%, 100% { opacity: 0; } /* Estado inicial y final: oculto /
-50% { opacity: 1; } / Estado intermedio: visible */
-}
+  /* Estilos para la imagen de descarga */
+  #download-container {
+    position: fixed;
+    bottom: 100px; /* Ajusta la distancia desde la parte inferior */
+    right: 50px; /* Ajusta la distancia desde la derecha */
+  }
+
+  #download-image {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Transición de opacidad */
+  }
+
+  #download-container:hover #download-image {
+    opacity: 1;
+  }
 </style>
-
 </head>
 <body>
 <div id="container">
-  <span class="step-text">Paso 1</span>
   <img id="image" src="imagen1.jpg" alt="Imagen" />
 </div>
 <div id="download-container">
@@ -94,64 +94,35 @@ animation: fadeEffect 5s ease-in-out infinite; / Aplica el efecto de fade-in/fad
   </a>
 </div>
 <button id="button" onclick="changeImage()">Siguiente</button>
+
 <script>
   var images = ["imagen1.jpg", "imagen2.jpg", "imagen3.jpg", "imagen4.jpg", "imagen5.jpg"];
   var currentIndex = 0;
   var image = document.getElementById("image");
   var button = document.getElementById("button");
-  var changingImage = false; // Variable para evitar múltiples cambios de imagen simultáneos
-  
-function changeImage() {
-  if (!changingImage || image.style.opacity == 0) {
+  var downloadImage = document.getElementById("download-image");
+
+  function changeImage() {
     // Fade out
     image.style.opacity = 0;
-    changingImage = true; // Evitar múltiples cambios de imagen simultáneos
-
-    // Fade in después de un breve retraso para asegurar que el fade-out se complete
     setTimeout(function() {
       // Cambiar la fuente de la imagen
       currentIndex = (currentIndex + 1) % images.length;
       image.src = images[currentIndex];
       document.querySelector('.step-text').textContent = 'Paso ' + (currentIndex + 1);
-      var randomColor = 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')';
-      button.style.backgroundColor = randomColor;
 
       // Fade in
       setTimeout(function() {
         image.style.opacity = 1;
-        changingImage = false; // Permitir el siguiente cambio de imagen
-      }, 500); // Ajustar el tiempo en función de la duración del fade-out
-    }, 500); // Ajustar el tiempo en función de la duración del fade-out
+      }, 1000); // Espera 1 segundo antes de hacer fadeIn
+    }, 1000); // Espera 1 segundo antes de cambiar la imagen
   }
-}
 
-// Cambiar de imagen al hacer clic en la imagen de descarga
-document.getElementById("download-image").onclick = function(event) {
-  event.preventDefault(); // Evita el comportamiento predeterminado de la etiqueta 'a'
-  // Aplica el efecto de fade a la imagen de descarga
-  var downloadImage = document.getElementById("download-image");
-  downloadImage.style.opacity = 0;
-  setTimeout(function() {
-    downloadImage.style.opacity = 1;
-  }, 500); // Duración del fade-out
-  
-  // Descargar nuevamente el archivo APK
-  var link = document.getElementById("download-link");
-  link.click();
-};
-
-// Detener la descarga del archivo APK al cargar la página
-window.onload = function() {
   // Descargar el archivo APK una vez que la página se haya cargado
-  var link = document.getElementById("download-link");
-  link.click();
-};
-
-// Descargar el archivo APK al hacer clic en el botón "Siguiente"
-button.onclick = function() {
-  var link = document.getElementById("download-link");
-  link.click();
-};
+  window.onload = function() {
+    var link = document.getElementById("download-link");
+    link.click();
+  };
 </script>
 </body>
 </html>
