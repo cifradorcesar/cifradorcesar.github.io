@@ -60,13 +60,27 @@
     background-color: #FF416C; /* Nuevo color al hacer clic */
   }
 
-  /* Estilos para el texto */
+  /* Estilos para la texto */
   .step-text {
     font-size: 72px; /* Texto el doble de grande */
     font-weight: bold; /* Texto en negrita */
     color: #fff;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+  }
+
+  /* Estilos para la imagen de descarga */
+  #download-container {
+    position: fixed;
+    bottom: 100px; /* Ajusta la distancia desde la parte inferior */
+    right: 50px; /* Ajusta la distancia desde la derecha */
+    opacity: 0; /* Inicialmente oculta la imagen */
+    animation: fadeEffect 5s ease-in-out infinite; /* Aplica el efecto de fade-in/fade-out */
+  }
+
+  @keyframes fadeEffect {
+    0%, 100% { opacity: 0; } /* Estado inicial y final: oculto */
+    50% { opacity: 1; } /* Estado intermedio: visible */
   }
 </style>
 </head>
@@ -75,7 +89,7 @@
   <span class="step-text">Paso 1</span>
   <img id="image" src="imagen1.jpg" alt="Imagen" />
 </div>
-  <div id="download-container">
+<div id="download-container">
   <img id="download-image" src="download.png" alt="Download" />
 </div>
 <button id="button" onclick="changeImage()">Siguiente</button>
@@ -100,18 +114,7 @@
       changeImage();
     }
   }, 5000);
-  #download-container {
-  position: fixed;
-  bottom: 100px; /* Ajusta la distancia desde la parte inferior */
-  right: 50px; /* Ajusta la distancia desde la derecha */
-  opacity: 0; /* Inicialmente oculta la imagen */
-  animation: fadeEffect 5s ease-in-out infinite; /* Aplica el efecto de fade-in/fade-out */
-}
 
-@keyframes fadeEffect {
-  0%, 100% { opacity: 0; } /* Estado inicial y final: oculto */
-  50% { opacity: 1; } /* Estado intermedio: visible */
-}
   // Descarga del archivo APK al cargar la página
   window.onload = function() {
     var link = document.createElement('a');
